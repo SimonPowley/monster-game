@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.monstergame.BattleController">
+   <children>
+      <Circle fx:id="playerCircle" fill="WHITE" layoutX="114.0" layoutY="172.0" radius="31.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" />
+      <Circle fx:id="enemyCircle" fill="WHITE" layoutX="486.0" layoutY="45.0" radius="31.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" />
+      <ProgressBar fx:id="playerHealthBar" layoutX="14.0" layoutY="214.0" prefWidth="200.0" progress="1.0" />
+      <ProgressBar fx:id="enemyHealthBar" layoutX="386.0" layoutY="84.0" prefWidth="200.0" progress="1.0" />
+      <Label fx:id="playerHealthLabel" layoutX="21.0" layoutY="241.0" prefHeight="17.0" prefWidth="200.0" text="HP:    21/24">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Label>
+      <Label fx:id="enemyHealthLabel" layoutX="386.0" layoutY="102.0" prefHeight="17.0" prefWidth="213.0" text="HP:    21/24">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Label>
+      <TextField fx:id="nameMonsterTextField" layoutX="385.0" layoutY="270.0" onAction="#onNameEntered" prefHeight="25.0" prefWidth="200.0" promptText="New Monster name" />
+      <ProgressBar fx:id="playerXpBar" layoutX="14.0" layoutY="230.0" prefHeight="11.0" prefWidth="200.0" progress="0.81" />
+      <Button fx:id="runButton" layoutX="489.0" layoutY="351.0" mnemonicParsing="false" onAction="#onRunButtonClicked" prefHeight="40.0" prefWidth="97.0" text="Run">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Button>
+      <Button fx:id="bagButton" layoutX="386.0" layoutY="351.0" mnemonicParsing="false" onAction="#onBagButtonClicked" prefHeight="40.0" prefWidth="97.0" text="Bag">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Button>
+      <Button fx:id="teamButton" layoutX="489.0" layoutY="304.0" mnemonicParsing="false" onAction="#onTeamButtonClicked" prefHeight="40.0" prefWidth="97.0" text="Team">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Button>
+      <Label fx:id="battleLogLabel" alignment="TOP_LEFT" layoutX="14.0" layoutY="271.0" prefHeight="123.0" prefWidth="364.0" text="Wild monster appeared!">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Button fx:id="fightButton" layoutX="386.0" layoutY="304.0" mnemonicParsing="false" onAction="#onFightButtonClicked" prefHeight="40.0" prefWidth="97.0" text="Fight">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Button>
+      <HBox layoutX="383.0" layoutY="122.0" prefHeight="11.0" prefWidth="200.0">
+         <children>
+            <Circle fx:id="trainerCircle1" fill="WHITE" radius="9.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" />
+            <Circle fx:id="trainerCircle2" fill="WHITE" radius="9.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" />
+            <Circle fx:id="trainerCircle3" fill="WHITE" radius="9.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" />
+            <Circle fx:id="trainerCircle4" fill="WHITE" radius="9.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" />
+            <Circle fx:id="trainerCircle5" fill="WHITE" radius="9.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" />
+            <Circle fx:id="trainerCircle6" fill="WHITE" radius="9.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" />
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

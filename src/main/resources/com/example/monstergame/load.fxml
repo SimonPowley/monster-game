@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.monstergame.LoadController">
+   <children>
+      <VBox alignment="TOP_CENTER" layoutX="231.0" layoutY="73.0" prefHeight="254.0" prefWidth="128.0" spacing="20.0">
+         <children>
+            <VBox prefHeight="0.0" prefWidth="100.0" spacing="5.0">
+               <children>
+                  <Label fx:id="saveFile1Label" prefHeight="17.0" prefWidth="210.0" text="Save File 1" />
+                  <HBox prefHeight="18.0" prefWidth="82.0">
+                     <children>
+                        <Circle fx:id="save1Circle1" fill="WHITE" radius="9.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" />
+                        <Circle fx:id="save1Circle2" fill="WHITE" radius="9.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" />
+                        <Circle fx:id="save1Circle3" fill="WHITE" radius="9.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" />
+                        <Circle fx:id="save1Circle4" fill="WHITE" radius="9.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" />
+                        <Circle fx:id="save1Circle5" fill="WHITE" radius="9.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" />
+                        <Circle fx:id="save1Circle6" fill="WHITE" radius="9.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" />
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="25.0" prefWidth="128.0" spacing="2.0">
+                     <children>
+                        <Button fx:id="loadSave1Button" mnemonicParsing="false" onAction="#loadSave1" prefHeight="25.0" prefWidth="63.0" text="Load" />
+                        <Button fx:id="deleteSave1Button" mnemonicParsing="false" onAction="#deleteSave1" prefHeight="25.0" prefWidth="63.0" text="Delete" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            <VBox prefHeight="0.0" prefWidth="100.0" spacing="5.0">
+               <children>
+                  <Label fx:id="saveFile2Label" prefHeight="17.0" prefWidth="281.0" text="Save File 2" />
+                  <HBox prefHeight="18.0" prefWidth="103.0">
+                     <children>
+                        <Circle fx:id="save2Circle1" fill="WHITE" radius="9.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" />
+                        <Circle fx:id="save2Circle2" fill="WHITE" radius="9.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" />
+                        <Circle fx:id="save2Circle3" fill="WHITE" radius="9.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" />
+                        <Circle fx:id="save2Circle4" fill="WHITE" radius="9.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" />
+                        <Circle fx:id="save2Circle5" fill="WHITE" radius="9.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" />
+                        <Circle fx:id="save2Circle6" fill="WHITE" radius="9.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" />
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="9.0" prefWidth="100.0" spacing="2.0">
+                     <children>
+                        <Button fx:id="loadSave2Button" mnemonicParsing="false" onAction="#loadSave2" prefHeight="25.0" prefWidth="63.0" text="Load" />
+                        <Button fx:id="deleteSave2Button" mnemonicParsing="false" onAction="#deleteSave2" prefHeight="25.0" prefWidth="63.0" text="Delete" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            <VBox prefHeight="0.0" prefWidth="100.0" spacing="5.0">
+               <children>
+                  <Label fx:id="saveFile3Label" prefHeight="17.0" prefWidth="316.0" text="Save File 3" />
+                  <HBox prefHeight="18.0" prefWidth="103.0">
+                     <children>
+                        <Circle fx:id="save3Circle1" fill="WHITE" radius="9.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" />
+                        <Circle fx:id="save3Circle2" fill="WHITE" radius="9.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" />
+                        <Circle fx:id="save3Circle3" fill="WHITE" radius="9.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" />
+                        <Circle fx:id="save3Circle4" fill="WHITE" radius="9.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" />
+                        <Circle fx:id="save3Circle5" fill="WHITE" radius="9.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" />
+                        <Circle fx:id="save3Circle6" fill="WHITE" radius="9.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" />
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="9.0" prefWidth="100.0" spacing="2.0">
+                     <children>
+                        <Button fx:id="loadSave3Button" mnemonicParsing="false" onAction="#loadSave3" prefHeight="25.0" prefWidth="63.0" text="Load" />
+                        <Button fx:id="deleteSave3Button" mnemonicParsing="false" onAction="#deleteSave3" prefHeight="25.0" prefWidth="63.0" text="Delete" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </VBox>
+      <Button fx:id="backButton" layoutX="274.0" layoutY="360.0" mnemonicParsing="false" onAction="#onBackButton" text="Back" />
+   </children>
+</AnchorPane>
