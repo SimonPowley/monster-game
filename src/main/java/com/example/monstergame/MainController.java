@@ -21,6 +21,7 @@ public class MainController {
     private Scene saveGameScene;
     private Scene titleScene;
     private Scene infoScene;
+    String questInfo; // for trainer battles
     @FXML
     private Button infoButton;
     @FXML
@@ -169,11 +170,11 @@ public class MainController {
         BattleController battleController = battleLoader.getController();
         //  battle trainer for quest
         if (mode == 2) {
-            battleController.setPlayer(player, new Battle(player, true));
+            battleController.setPlayer(player, new Battle(player, true, questInfo));
         }
         //  wild battle
         else {
-            battleController.setPlayer(player, new Battle(player, false));
+            battleController.setPlayer(player, new Battle(player, false, ""));
         }
         return new Scene(battle);
     }
@@ -335,6 +336,7 @@ public class MainController {
             if (!player.teamLeader.fainted) {
                 player.quests.get(0).trainer.resetTeam();
                 player.trainer = player.quests.get(0).trainer;
+                questInfo = player.quests.get(0).info;
                 mode = 2;
                 setBattleScene();
                 getBattleScene();
@@ -369,6 +371,7 @@ public class MainController {
             if (!player.teamLeader.fainted) {
                 player.quests.get(1).trainer.resetTeam();
                 player.trainer = player.quests.get(1).trainer;
+                questInfo = player.quests.get(1).info;
                 mode = 2;
                 setBattleScene();
                 getBattleScene();
@@ -403,6 +406,7 @@ public class MainController {
             if (!player.teamLeader.fainted) {
                 player.quests.get(2).trainer.resetTeam();
                 player.trainer = player.quests.get(2).trainer;
+                questInfo = player.quests.get(2).info;
                 mode = 2;
                 setBattleScene();
                 getBattleScene();

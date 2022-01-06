@@ -155,12 +155,13 @@ public class BagController {
     @FXML
     //  if in battle mode: enter battle scene in catch mode
     public void onBallClick() throws IOException {
+        if (player.ballsInBag == 0) {
+            shopLogLabel.setText("No balls to use!");
+            return;
+        }
         if (player.pc.size >= player.pcSizeLimit) {
             shopLogLabel.setText("Monster storage is full!");
             return;
-        }
-        if (player.ballsInBag == 0) {
-            shopLogLabel.setText("No balls to use!");
         }
         if (mode == 1) {
             if (battleController.battle.trainerBattle) {

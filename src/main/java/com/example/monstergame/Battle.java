@@ -21,14 +21,13 @@ public class Battle {
     Player player;
     Trainer enemyTrainer;
     Monster enemyMonster;
-    String winner = ""; //  do I need this ??
-    //  string winner has been there since version 1 tho lol
-    //  no wait I think it is used still cool
+    String winner = "";
+    String questInfo;
 
 
 
     //  create a new battle
-    public Battle(Player player, boolean trainerBattle) {
+    public Battle(Player player, boolean trainerBattle, String questInfo) {
         this.player = player;
         this.player.setLeader();
         this.trainerBattle = trainerBattle;
@@ -37,6 +36,7 @@ public class Battle {
             enemyTrainer = this.player.trainer;
             enemyMonster = enemyTrainer.pc.get(0);
             trainerSwap = false;
+            this.questInfo = questInfo;
         }
         //  fighting wild monster
         else {
@@ -91,6 +91,7 @@ public class Battle {
                 enemyTrainer.pc.remove(0);
                 player.addMonstersBeaten();
                 player.teamLeader.setXpCurr(enemyMonster.xpYield);
+                battleController.setBattleLog(enemyTrainer.pc.get(0).name + " fainted!" + "\n" + player.teamLeader.name + " gained " + enemyMonster.xpYield + " xp!");
                 //  enemy trainer out of monsters
                 if (enemyTrainer.pc.size <= 0) {
                     winner = player.name;
@@ -105,7 +106,6 @@ public class Battle {
                     }
                 } else {
                     enemyMonster = enemyTrainer.pc.get(0);
-                    battleController.setBattleLog(battleController.getBattleLog() + "\n" + player.teamLeader.name + " gained " + enemyMonster.xpYield + "xp!");
                     battleController.setBattleLog(battleController.getBattleLog() + "\n" + enemyTrainer.name + " sent out " + enemyMonster.name + "!");
                     trainerSwap = true;
                 }

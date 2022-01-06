@@ -66,12 +66,12 @@ public class BattleController {
         this.battle = battle;
         //  trainer battle
         if (this.battle.trainerBattle) {
-            setBattleLog(this.battle.enemyTrainer.name + " wants to battle!\n" +
+            setBattleLog(this.battle.questInfo + "\n" +
                     this.battle.enemyTrainer.name + " sent out " + this.battle.enemyMonster.name + "!");
         }
         //  wild monster battle
         else {
-            setBattleLog(this.battle.enemyMonster.type.name + " Monster appeared!");
+            setBattleLog("Wild " + this.battle.enemyMonster.type.name + " Monster appeared!");
         }
         setMonsterCircles();
         setTrainerCircles();
@@ -98,7 +98,8 @@ public class BattleController {
             playerHealthBar.setStyle("-fx-accent: #24ff24;");
         } else if (playerHealth < .5 && playerHealth > .2) {
             playerHealthBar.setStyle("-fx-accent: #ffde24");
-        } else if (playerHealth <= .2 || this.player.teamLeader.hpCurr <= 3) {
+        }
+        if (playerHealth <= .2 || this.player.teamLeader.hpCurr <= 3) {
             playerHealthBar.setStyle("-fx-accent: #ff2424");
         }
         //  enemy hp bar
@@ -108,7 +109,8 @@ public class BattleController {
             enemyHealthBar.setStyle("-fx-accent: #24ff24;");
         } else if (enemyHealth < .5 && playerHealth > .2) {
             enemyHealthBar.setStyle("-fx-accent: #ffde24");
-        } else if (enemyHealth <= .2 || battle.enemyMonster.hpCurr <= 3) {
+        }
+        if (enemyHealth <= .2 || battle.enemyMonster.hpCurr <= 3) {
             enemyHealthBar.setStyle("-fx-accent: #ff2424");
         }
     }
@@ -307,7 +309,7 @@ public class BattleController {
                 battleLogLabel.setText(player.name + " lost!\nGame Over\nScore: " + player.score);
                 mode = 2;
             } else {
-                battleLogLabel.setText(battleLogLabel.getText() + "\n" + player.name + " won! " + player.teamLeader.name + " gained " + battle.enemyMonster.xpYield + " xp.");
+                battleLogLabel.setText(battleLogLabel.getText() + "\n" + player.name + " won! " + player.teamLeader.name + " gained " + battle.enemyMonster.xpYield + " xp!");
                 player.trainer = null;
                 if (player.teamLeader.level > leaderLevel) {
                     battleLogLabel.setText(battleLogLabel.getText() + " " + player.teamLeader.name + " leveled up!");
