@@ -911,6 +911,7 @@ public class TeamController {
             return;
         } else if (mode == 2) {
             gameLogLabel.setText("Cannot release while in battle!");
+            return;
         }
         if (Objects.equals(releaseButton.getText(), "Confirm")) {
             releaseButton.setText("Release");

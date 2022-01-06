@@ -49,10 +49,10 @@ public class Battle {
         player.setInGame();
         //  if player monster faints
         if (player.teamLeader.fainted) {
-            //  if player has more monsters able ot fight
+            //  if player has more monsters able to fight
             player.setInGame();
             if (player.inGame) {
-                battleController.setBattleLog(player.teamLeader.name + " fainted!");
+                battleController.setBattleLog(battleController.getBattleLog().getText() +"\n" +  player.teamLeader.name + " fainted!");
                 player.setLeader();
                 playerSwap = true;
                 battleController.setBattleLog(battleController.getBattleLog().getText() + "\n" + player.teamLeader.name + " was sent in!");
@@ -68,6 +68,7 @@ public class Battle {
             if (!trainerBattle) {
                 winner = player.name;
                 player.addMonstersBeaten();
+                battleController.setBattleLog(battleController.getBattleLog().getText() + "\n" +  enemyMonster.name + " was defeated!" + "\n" + player.teamLeader.name + " gained " + enemyMonster.xpYield + " xp!");
                 //  check if player made progress on any quests
                 for (int i = 0; i < player.quests.size; i++) {
                     //  x wild battles quest
@@ -91,7 +92,7 @@ public class Battle {
                 enemyTrainer.pc.remove(0);
                 player.addMonstersBeaten();
                 player.teamLeader.setXpCurr(enemyMonster.xpYield);
-                battleController.setBattleLog(enemyTrainer.pc.get(0).name + " fainted!" + "\n" + player.teamLeader.name + " gained " + enemyMonster.xpYield + " xp!");
+                battleController.setBattleLog(battleController.getBattleLog().getText() + "\n" + enemyMonster.name + " fainted!" + "\n" + player.teamLeader.name + " gained " + enemyMonster.xpYield + " xp!");
                 //  enemy trainer out of monsters
                 if (enemyTrainer.pc.size <= 0) {
                     winner = player.name;
@@ -106,7 +107,7 @@ public class Battle {
                     }
                 } else {
                     enemyMonster = enemyTrainer.pc.get(0);
-                    battleController.setBattleLog(battleController.getBattleLog() + "\n" + enemyTrainer.name + " sent out " + enemyMonster.name + "!");
+                    battleController.setBattleLog(battleController.getBattleLog().getText() + "\n" + enemyTrainer.name + " sent out " + enemyMonster.name + "!");
                     trainerSwap = true;
                 }
             }
@@ -190,10 +191,14 @@ public class Battle {
             playerAttacks(battleController);
             //  if player defeats enemy wild monster/trainer
             if (Objects.equals(winner, player.name)) {
+                int prevLevel = player.teamLeader.level;
                 player.teamLeader.setXpCurr(enemyMonster.xpYield);
                 player.setHighestLevel();
                 player.setMoney(player.money + (enemyMonster.xpYield + 20));
                 this.player.setScore(player.score + (enemyMonster.xpYield / 2));
+                if (player.teamLeader.level > prevLevel) {
+                    battleController.getBattleLog().setText(battleController.getBattleLog().getText() + " " + player.teamLeader.name + " leveled up!");
+                }
                 return;
             }
             battleController.setBattleLog(battleController.getBattleLog().getText() + "\n");
@@ -213,10 +218,14 @@ public class Battle {
             battleController.setBattleLog(battleController.getBattleLog().getText() + "\n");
             playerAttacks(battleController);
             if (Objects.equals(winner, player.name) || trainerSwap) {
+                int prevLevel = player.teamLeader.level;
                 player.teamLeader.setXpCurr(enemyMonster.xpYield);
                 player.setHighestLevel();
                 player.setMoney((player.money + (enemyMonster.xpYield + 20) / 2));
                 this.player.setScore(player.score + (enemyMonster.xpYield / 2));
+                if (player.teamLeader.level > prevLevel) {
+                    battleController.getBattleLog().setText(battleController.getBattleLog().getText() + " " + player.teamLeader.name + " leveled up!");
+                }
             }
         }   else {
             //  if speed tie
@@ -224,10 +233,14 @@ public class Battle {
             if (rand.nextInt(2) == 0) {
                 playerAttacks(battleController);
                 if (Objects.equals(winner, player.name) || trainerSwap) {
+                    int prevLevel = player.teamLeader.level;
                     player.teamLeader.setXpCurr(enemyMonster.xpYield);
                     player.setHighestLevel();
                     player.setMoney((player.money + (enemyMonster.xpYield + 20) / 2));
                     player.setScore(player.score + (enemyMonster.xpYield / 2));
+                    if (player.teamLeader.level > prevLevel) {
+                        battleController.getBattleLog().setText(battleController.getBattleLog().getText() + " " + player.teamLeader.name + " leveled up!");
+                    }
                     return;
                 }
                 battleController.setBattleLog(battleController.getBattleLog().getText() + "\n");
@@ -240,10 +253,14 @@ public class Battle {
                 battleController.setBattleLog(battleController.getBattleLog().getText() + "\n");
                 playerAttacks(battleController);
                 if (Objects.equals(winner, player.name) || trainerSwap) {
+                    int prevLevel = player.teamLeader.level;
                     player.teamLeader.setXpCurr(enemyMonster.xpYield);
                     player.setHighestLevel();
                     player.setMoney((player.money + (enemyMonster.xpYield + 20) / 2));
                     player.setScore(player.score + (this.enemyMonster.xpYield / 2));
+                    if (player.teamLeader.level > prevLevel) {
+                        battleController.getBattleLog().setText(battleController.getBattleLog().getText() + " " + player.teamLeader.name + " leveled up!");
+                    }
                 }
             }
         }

@@ -309,11 +309,8 @@ public class BattleController {
                 battleLogLabel.setText(player.name + " lost!\nGame Over\nScore: " + player.score);
                 mode = 2;
             } else {
-                battleLogLabel.setText(battleLogLabel.getText() + "\n" + player.name + " won! " + player.teamLeader.name + " gained " + battle.enemyMonster.xpYield + " xp!");
+                battleLogLabel.setText(battleLogLabel.getText() + "\n" + player.name + " won!");
                 player.trainer = null;
-                if (player.teamLeader.level > leaderLevel) {
-                    battleLogLabel.setText(battleLogLabel.getText() + " " + player.teamLeader.name + " leveled up!");
-                }
                 if (player.pcSizeLimit > pcSize) {
                     battleLogLabel.setText(battleLogLabel.getText() + "\nTeam size expanded!");
                 }
