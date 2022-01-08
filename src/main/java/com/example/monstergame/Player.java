@@ -3,6 +3,7 @@ package com.example.monstergame;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 
+import java.util.Objects;
 import java.util.Random;
 
 public class Player implements java.io.Serializable {
@@ -31,6 +32,31 @@ public class Player implements java.io.Serializable {
     int questLimit;
     int monstersBeaten;
     int monstersCaught;
+    //  individual type fought, beaten, caught
+    int normalFought;
+    int normalBeaten;
+    int normalCaught;
+    int fireFought;
+    int fireBeaten;
+    int fireCaught;
+    int waterFought;
+    int waterBeaten;
+    int waterCaught;
+    int earthFought;
+    int earthBeaten;
+    int earthCaught;
+    int electricFought;
+    int electricBeaten;
+    int electricCaught;
+    int natureFought;
+    int natureBeaten;
+    int natureCaught;
+    int windFought;
+    int windBeaten;
+    int windCaught;
+    int iceFought;
+    int iceBeaten;
+    int iceCaught;
 
 
 
@@ -50,6 +76,14 @@ public class Player implements java.io.Serializable {
         questLimit = 3;
         monstersBeaten = 0;
         monstersCaught = 0;
+        normalFought = 0; normalBeaten = 0; normalCaught = 0;
+        fireFought = 0; fireBeaten = 0; fireCaught = 0;
+        waterFought = 0; waterBeaten = 0; waterCaught = 0;
+        earthFought = 0; earthBeaten = 0; earthCaught = 0;
+        electricFought = 0; electricBeaten = 0; electricCaught = 0;
+        natureFought = 0; natureBeaten = 0; natureCaught = 0;
+        windFought = 0; windBeaten = 0; windCaught = 0;
+        iceFought = 0; iceBeaten = 0; iceCaught = 0;
         setMoney(1000);
         setScore(0);
         setPcSizeLimit(1);
@@ -87,13 +121,67 @@ public class Player implements java.io.Serializable {
         addPcStorage();
     }
 
+    //  add monsters fought total
+    public void addMonstersFought(Type type) {
+        if (Objects.equals(type.name, "Normal")) {
+            normalFought++;
+        } else if (Objects.equals(type.name, "Fire")) {
+            fireFought++;
+        } else if (Objects.equals(type.name, "Water")) {
+            waterFought++;
+        } else if (Objects.equals(type.name, "Earth")) {
+            earthFought++;
+        } else if (Objects.equals(type.name, "Electric")) {
+            electricFought++;
+        } else if (Objects.equals(type.name, "Nature")) {
+            natureFought++;
+        } else if (Objects.equals(type.name, "Wind")) {
+            windFought++;
+        } else if (Objects.equals(type.name, "Ice")) {
+            iceFought++;
+        }
+    }
     //  add to monsters beaten total
-    public void addMonstersBeaten() {
+    public void addMonstersBeaten(Type type) {
         monstersBeaten++;
+        if (Objects.equals(type.name, "Normal")) {
+            normalBeaten++;
+        } else if (Objects.equals(type.name, "Fire")) {
+            fireBeaten++;
+        } else if (Objects.equals(type.name, "Water")) {
+            waterBeaten++;
+        } else if (Objects.equals(type.name, "Earth")) {
+            earthBeaten++;
+        } else if (Objects.equals(type.name, "Electric")) {
+            electricBeaten++;
+        } else if (Objects.equals(type.name, "Nature")) {
+            natureBeaten++;
+        } else if (Objects.equals(type.name, "Wind")) {
+            windBeaten++;
+        } else if (Objects.equals(type.name, "Ice")) {
+            iceBeaten++;
+        }
     }
     //  add to monsters caught total
-    public void addMonstersCaught() {
+    public void addMonstersCaught(Type type) {
         monstersCaught++;
+        if (Objects.equals(type.name, "Normal")) {
+            normalCaught++;
+        } else if (Objects.equals(type.name, "Fire")) {
+            fireCaught++;
+        } else if (Objects.equals(type.name, "Water")) {
+            waterCaught++;
+        } else if (Objects.equals(type.name, "Earth")) {
+            earthCaught++;
+        } else if (Objects.equals(type.name, "Electric")) {
+            electricCaught++;
+        } else if (Objects.equals(type.name, "Nature")) {
+            natureCaught++;
+        } else if (Objects.equals(type.name, "Wind")) {
+            windCaught++;
+        } else if (Objects.equals(type.name, "Ice")) {
+            iceCaught++;
+        }
     }
 
     //  set player scene

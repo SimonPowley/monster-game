@@ -11,10 +11,10 @@ import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Objects;
 
 public class InfoController {
     Player player;
-    MainController mainController;
     Scene mainScene;
     @FXML
     Circle normalCircle;
@@ -89,6 +89,92 @@ public class InfoController {
         iceCircle.setFill(ice.color);
     }
 
+    //  show type info
+    public void showTypeInfo(Type type) {
+        infoCircle.setFill(type.color);
+        infoNameLabel.setText(type.name + " Type");
+        //  show any type strengths
+        if (type.strongAgainst.size() == 0) {
+            strong1Label.setText("None");
+            strong2Label.setText("");
+            strong3Label.setText("");
+        } else {
+            if (type.strongAgainst.get(0) != null) {
+                strong1Label.setText(type.strongAgainst.get(0));
+            } else {
+                strong1Label.setText("");
+            }
+            if (type.strongAgainst.get(1) != null) {
+                strong2Label.setText(type.strongAgainst.get(1));
+            } else {
+                strong2Label.setText("");
+            }
+            if (type.strongAgainst.get(2) != null) {
+                strong3Label.setText(type.strongAgainst.get(2));
+            } else {
+                strong3Label.setText("");
+            }
+        }
+        //  show any type weaknesses
+        if (type.weakAgainst.size() == 0) {
+            weak1Label.setText("None");
+            weak2Label.setText("");
+            weak3Label.setText("");
+        } else {
+            if (type.weakAgainst.get(0) != null) {
+                weak1Label.setText(type.weakAgainst.get(0));
+            } else {
+                weak1Label.setText("");
+            }
+            if (type.weakAgainst.get(1) != null) {
+                weak2Label.setText(type.weakAgainst.get(1));
+            } else {
+                weak2Label.setText("");
+            }
+            if (type.weakAgainst.get(2) != null) {
+                weak3Label.setText(type.weakAgainst.get(2));
+            } else {
+                weak3Label.setText("");
+            }
+        }
+    }
+    //  show type fought, beaten, caught
+    public void showTypeStats(Type type) {
+        if (Objects.equals(type.name, "Normal")) {
+            foughtLabel.setText("Fought: " + player.normalFought);
+            beatenLabel.setText("Beaten: " + player.normalBeaten);
+            caughtLabel.setText("Caught: " + player.normalCaught);
+        } else if (Objects.equals(type.name, "Fire")) {
+            foughtLabel.setText("Fought: " + player.fireFought);
+            beatenLabel.setText("Beaten: " + player.fireBeaten);
+            caughtLabel.setText("Caught: " + player.fireCaught);
+        } else if (Objects.equals(type.name, "Water")) {
+            foughtLabel.setText("Fought: " + player.waterFought);
+            beatenLabel.setText("Beaten: " + player.waterBeaten);
+            caughtLabel.setText("Caught: " + player.waterCaught);
+        } else if (Objects.equals(type.name, "Earth")) {
+            foughtLabel.setText("Fought: " + player.earthFought);
+            beatenLabel.setText("Beaten: " + player.earthBeaten);
+            caughtLabel.setText("Caught: " + player.earthCaught);
+        } else if (Objects.equals(type.name, "Electric")) {
+            foughtLabel.setText("Fought: " + player.electricFought);
+            beatenLabel.setText("Beaten: " + player.electricBeaten);
+            caughtLabel.setText("Caught: " + player.electricCaught);
+        } else if (Objects.equals(type.name, "Nature")) {
+            foughtLabel.setText("Fought: " + player.natureFought);
+            beatenLabel.setText("Beaten: " + player.natureBeaten);
+            caughtLabel.setText("Caught: " + player.natureCaught);
+        } else if (Objects.equals(type.name, "Wind")) {
+            foughtLabel.setText("Fought: " + player.windFought);
+            beatenLabel.setText("Beaten: " + player.windBeaten);
+            caughtLabel.setText("Caught: " + player.windCaught);
+        } else if (Objects.equals(type.name, "Ice")) {
+            foughtLabel.setText("Fought: " + player.iceFought);
+            beatenLabel.setText("Beaten: " + player.iceBeaten);
+            caughtLabel.setText("Caught: " + player.iceCaught);
+        }
+    }
+
     //  set main scene
     public void setMainScene() throws IOException {
         mainScene = loadMainScene();
@@ -120,6 +206,63 @@ public class InfoController {
     }
 
 
+
+    @FXML
+    //  show normal type info
+    public void onNormalInfoClick() {
+        statInfoBox.setVisible(true);
+        showTypeInfo(normal);
+        showTypeStats(normal);
+    }
+    @FXML
+    //  show fire type info
+    public void onFireInfoClick() {
+        statInfoBox.setVisible(true);
+        showTypeInfo(fire);
+        showTypeStats(fire);
+    }
+    @FXML
+    //  show water type info
+    public void onWaterInfoClick() {
+        statInfoBox.setVisible(true);
+        showTypeInfo(water);
+        showTypeStats(water);
+    }
+    @FXML
+    //  show earth type info
+    public void onEarthInfoClick() {
+        statInfoBox.setVisible(true);
+        showTypeInfo(earth);
+        showTypeStats(earth);
+    }
+    @FXML
+    //  show electric type info
+    public void onElectricInfoClick() {
+        statInfoBox.setVisible(true);
+        showTypeInfo(electric);
+        showTypeStats(electric);
+    }
+    @FXML
+    //  show nature type info
+    public void onNatureInfoClick() {
+        statInfoBox.setVisible(true);
+        showTypeInfo(nature);
+        showTypeStats(nature);
+    }
+    @FXML
+    //  show wind type info
+    public void onWindInfoClick() {
+        statInfoBox.setVisible(true);
+        showTypeInfo(wind);
+        showTypeStats(wind);
+    }
+    @FXML
+    //  show ice type info
+    public void onIceInfoClick() {
+        statInfoBox.setVisible(true);
+        showTypeInfo(ice);
+        showTypeStats(ice);
+    }
 
     @FXML
     public void onBackButton() throws IOException {

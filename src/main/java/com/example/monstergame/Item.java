@@ -128,7 +128,7 @@ public class Item implements java.io.Serializable {
                     monster.playerOwned = true;
                     player.pc.add(monster.name, monster);
                     player.setScore(player.score + (monster.xpYield + (monster.xpYield / 2)));
-                    player.addMonstersCaught();
+                    player.addMonstersCaught(monster.type);
                     player.setInBattle(false);
                 }
                 //  if catch fails

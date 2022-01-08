@@ -917,6 +917,7 @@ public class TeamController {
             releaseButton.setText("Release");
             gameLogLabel.setText(player.pc.get(statIndex).name + " was released!");
             player.pc.remove(statIndex);
+            statCircle.setVisible(false);
             setTeamCircles();
             hideStatView();
             player.setLeader();

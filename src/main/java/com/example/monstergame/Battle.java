@@ -42,6 +42,7 @@ public class Battle {
         else {
             setWildMonsterStats();
         }
+        this.player.addMonstersFought(enemyMonster.type);
     }
 
     //  check player and enemy monster health
@@ -67,7 +68,7 @@ public class Battle {
             //  wild monster faints
             if (!trainerBattle) {
                 winner = player.name;
-                player.addMonstersBeaten();
+                player.addMonstersBeaten(enemyMonster.type);
                 battleController.setBattleLog(battleController.getBattleLog().getText() + "\n" +  enemyMonster.name + " was defeated!" + "\n" + player.teamLeader.name + " gained " + enemyMonster.xpYield + " xp!");
                 //  check if player made progress on any quests
                 for (int i = 0; i < player.quests.size; i++) {
@@ -90,7 +91,7 @@ public class Battle {
             else {
                 //  remove fainted monster, send out next monster or end battle
                 enemyTrainer.pc.remove(0);
-                player.addMonstersBeaten();
+                player.addMonstersBeaten(enemyMonster.type);
                 player.teamLeader.setXpCurr(enemyMonster.xpYield);
                 battleController.setBattleLog(battleController.getBattleLog().getText() + "\n" + enemyMonster.name + " fainted!" + "\n" + player.teamLeader.name + " gained " + enemyMonster.xpYield + " xp!");
                 //  enemy trainer out of monsters
@@ -108,6 +109,7 @@ public class Battle {
                 } else {
                     enemyMonster = enemyTrainer.pc.get(0);
                     battleController.setBattleLog(battleController.getBattleLog().getText() + "\n" + enemyTrainer.name + " sent out " + enemyMonster.name + "!");
+                    player.addMonstersFought(enemyMonster.type);
                     trainerSwap = true;
                 }
             }
