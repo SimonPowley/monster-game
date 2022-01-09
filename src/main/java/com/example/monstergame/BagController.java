@@ -90,13 +90,11 @@ public class BagController {
         FXMLLoader teamLoader = new FXMLLoader(getClass().getResource("team.fxml"));
         Parent team = teamLoader.load();
         TeamController teamController = teamLoader.getController();
-        if (mode == 0) {
+        if (mode == 0 || mode == 2) {
             teamController.setPlayer(player, 1);
         } else if (mode == 1) {
             teamController.setPlayer(player, 3);
             teamController.setBattleController(battleController);
-        } else if (mode == 2) {
-            teamController.setPlayer(player, 5);
         }
         return new Scene(team);
     }
