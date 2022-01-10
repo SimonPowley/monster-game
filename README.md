@@ -7,7 +7,7 @@ I don't really know how to make nice graphics yet, so graphics are done with jav
 I can see it maybe becoming some kind of idle/rouguelike monster fighting/training mobile game idk lol
 
 
-*gameplay*
+* gameplay *
 Currently the game is basically:
 start new game (or load saved game),
 enter player name,
@@ -21,8 +21,7 @@ player score goes up after defeating monsters and completing quests,
 save game, return to title screen
 
 
-*things to do/add/change*
-
+* things to do/add/change *
 Honestly the whole thing is pretty messy and needs to be redone lol
 the "StorageList" and "StorageNode" classes are from a comp sci class, and I just wanted an excuse to incorporate them lol, 
 could probably just use a built in Java structure to cut those files out
