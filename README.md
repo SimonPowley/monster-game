@@ -9,6 +9,7 @@ Intellij project for now, idk if there's a better/more convenient way to structu
 
 
 * gameplay
+* 
 Currently the game is basically:
 start new game (or load saved game),
 enter player name,
