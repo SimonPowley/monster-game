@@ -8,7 +8,6 @@ I can see it maybe becoming some kind of idle/rouguelike monster fighting/traini
 
 
 *gameplay*
-
 Currently the game is basically:
 start new game (or load saved game),
 enter player name,
