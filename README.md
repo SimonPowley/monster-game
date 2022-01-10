@@ -2,11 +2,12 @@
 Pokemon clone game Java project
 
 Intro
-* Started out as a simple text based monster fight with 2 random monsters,
-* I've been adding on to the game as I learn how to do stuff/get new ideas,
-* I don't really know how to make nice graphics yet, so graphics are done with javafx
-* I can see it maybe becoming some kind of idle/rouguelike monster fighting/training mobile game idk lol
-* Intellij project for now, idk if there's a better/more convenient way to structure/upload projects here
+Started out as a simple text based monster fight with 2 random monsters,
+I've been adding on to the game as I learn how to do stuff/get new ideas,
+I don't really know how to make nice graphics yet, so graphics are done with javafx
+I can see it maybe becoming some kind of idle/rouguelike monster fighting/training mobile game idk lol
+
+Intellij project for now, idk if there's a better/more convenient way to structure/upload projects here
 
 
 * Gameplay
