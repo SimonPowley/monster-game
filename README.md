@@ -27,7 +27,7 @@ save game, return to title screen
 * Things to do/add/change
 
 Honestly the whole thing is pretty messy and needs to be redone lol
-the "StorageList" and "StorageNode" classes are from a comp sci class, and I just wanted an excuse to incorporate them lol, 
+the "StorageList" and "StorageNode" classes are from a comp sci class, and I just wanted an excuse to incorporate them, 
 could probably just use a built in Java structure to cut those files out
 I'm thinking of making it so you can combine/breed monsters to control/customize their stats and types
 adding more types: poison (purple), ??, idk
