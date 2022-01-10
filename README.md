@@ -1,6 +1,6 @@
 # MonsterGame
 Pokemon clone game Java project
-
+* Intro
 started out as a simple text based monster fight with 2 random monsters,
 I've been adding on to the game as I learn how to do stuff/get new ideas,
 I don't really know how to make nice graphics yet, so graphics are done with javafx
@@ -8,8 +8,7 @@ I can see it maybe becoming some kind of idle/rouguelike monster fighting/traini
 Intellij project for now, idk if there's a better/more convenient way to structure/upload projects here
 
 
-* gameplay
-
+* Gameplay
 Currently the game is basically:
 start new game (or load saved game),
 enter player name,
@@ -23,7 +22,7 @@ player score goes up after defeating monsters and completing quests,
 save game, return to title screen
 
 
-* things to do/add/change
+* Things to do/add/change
 Honestly the whole thing is pretty messy and needs to be redone lol
 the "StorageList" and "StorageNode" classes are from a comp sci class, and I just wanted an excuse to incorporate them lol, 
 could probably just use a built in Java structure to cut those files out
