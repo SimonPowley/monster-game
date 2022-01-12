@@ -111,7 +111,7 @@ public class StarterController {
     //  create random fire monster
     public void randomFireMonster() {
         Type fire = new Type("Fire", 1);
-        int hp = randomStat(10, 15);
+        int hp = randomStat(15, 20);
         int att = randomStat(10, 15);
         int def = randomStat(10, 15);
         int spe = randomStat(10, 15);
@@ -129,7 +129,7 @@ public class StarterController {
     //  create random water monster
     public void randomWaterMonster() {
         Type water = new Type("Water", 2);
-        int hp = randomStat(10, 15);
+        int hp = randomStat(15, 20);
         int att = randomStat(10, 15);
         int def = randomStat(10, 15);
         int spe = randomStat(10, 15);
@@ -147,7 +147,7 @@ public class StarterController {
     //  create random nature monster
     public void randomNatureMonster() {
         Type nature = new Type("Nature", 5);
-        int hp = randomStat(10, 15);
+        int hp = randomStat(15, 20);
         int att = randomStat(10, 15);
         int def = randomStat(10, 15);
         int spe = randomStat(10, 15);

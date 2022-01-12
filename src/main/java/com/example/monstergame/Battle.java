@@ -157,7 +157,7 @@ public class Battle {
         //  random level
         int level = randomStats(2, player.teamLeader.level + 1);
         //  random stats
-        int health = randomStats(10, 15);
+        int health = randomStats(15, 20);
         int attack = randomStats(10, 15);
         int defense = randomStats(10, 15);
         int speed = randomStats(10, 15);

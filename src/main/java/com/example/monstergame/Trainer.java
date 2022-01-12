@@ -115,7 +115,7 @@ public class Trainer implements java.io.Serializable {
         //  random level
         int level = randomStats(2, levelCap+1);
         //  random stats
-        int hp = randomStats(10, 15);
+        int hp = randomStats(15, 20);
         int att = randomStats(10, 15);
         int def = randomStats(10, 15);
         int spe = randomStats(10, 15);
