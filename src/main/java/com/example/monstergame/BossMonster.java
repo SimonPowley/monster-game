@@ -70,11 +70,11 @@ public class BossMonster extends Monster {
                 setLevel(1);
             }
         } else if (tier == 1) {
-            for (int i = 0; i < baseLevel+10; i++) {
+            for (int i = 0; i < baseLevel+7; i++) {
                 setLevel(1);
             }
         } else if (tier == 2) {
-            for (int i = 0; i < baseLevel+15; i++) {
+            for (int i = 0; i < baseLevel+10; i++) {
                 setLevel(1);
             }
         }
@@ -99,38 +99,38 @@ public class BossMonster extends Monster {
         //  set hp stat growth
         int growth = rand.nextInt(3);
         if (growth == 0) {
-            hpGrowth = 1.03;
+            hpGrowth = 1.02;
         } else if (growth == 1) {
-            hpGrowth = 1.04;
+            hpGrowth = 1.03;
         } else {
-            hpGrowth = 1.05;
+            hpGrowth = 1.04;
         }
         //  set attack stat growth
         growth = rand.nextInt(3);
         if (growth == 0) {
-            attGrowth = 1.03;
+            attGrowth = 1.02;
         } else if (growth == 1) {
-            attGrowth = 1.04;
+            attGrowth = 1.03;
         } else {
-            attGrowth = 1.05;
+            attGrowth = 1.04;
         }
         //  set defense stat growth
         growth = rand.nextInt(3);
         if (growth == 0) {
-            defGrowth = 1.03;
+            defGrowth = 1.02;
         } else if (growth == 1) {
-            defGrowth = 1.04;
+            defGrowth = 1.03;
         } else {
             defGrowth = 1.04;
         }
         //  set speed stat growth
         growth = rand.nextInt(3);
         if (growth == 0) {
-            speGrowth = 1.03;
+            speGrowth = 1.02;
         } else if (growth == 1) {
-            speGrowth = 1.04;
+            speGrowth = 1.03;
         } else {
-            speGrowth = 1.05;
+            speGrowth = 1.04;
         }
     }
 
