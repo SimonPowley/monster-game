@@ -10,6 +10,7 @@ public class Monster implements java.io.Serializable {
     int catchRate;
     int xpYield;
     boolean playerOwned;
+    boolean bossMonster;
     //  monster stats
     int level;
     int xpCurr;
@@ -65,6 +66,14 @@ public class Monster implements java.io.Serializable {
         this.playerOwned = playerOwned;
         this.fainted = false;
         this.hpCurr = this.hpMax;
+        this.bossMonster = false;
+    }
+    //  create a new boss monster
+    public Monster() {
+        this.xpCurr = 0;
+        this.playerOwned = false;
+        this.fainted = false;
+        this.bossMonster = true;
     }
 
     //  set monster name

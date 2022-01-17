@@ -71,7 +71,12 @@ public class BattleController {
         }
         //  wild monster battle
         else {
-            setBattleLog("Wild " + this.battle.enemyMonster.type.name + " Monster appeared!");
+            //  if boss battle
+            if (this.battle.enemyMonster.bossMonster) {
+                setBattleLog("Strong looking " + this.battle.enemyMonster.name + " appeared!");
+            } else {
+                setBattleLog("Wild " + this.battle.enemyMonster.type.name + " Monster appeared!");
+            }
         }
         setMonsterCircles();
         setTrainerCircles();

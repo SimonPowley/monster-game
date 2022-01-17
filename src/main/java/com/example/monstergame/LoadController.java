@@ -560,12 +560,55 @@ public class LoadController {
             }
         }
     }
+    //  load boss monster types for quests
+    public void loadBossMonsterTypes(int questIndex) {
+        if (player.quests.get(questIndex).bossMonster != null) {
+            BossMonster boss = player.quests.get(questIndex).bossMonster;
+            //  set normal types
+            if (Objects.equals(boss.typeName, "Normal")) {
+                boss.setType(normal);
+            }
+            //  set fire types
+            if (Objects.equals(boss.typeName, "Fire")) {
+                boss.setType(fire);
+            }
+            //  set water types
+            if (Objects.equals(boss.typeName, "Water")) {
+                boss.setType(water);
+            }
+            //  set earth types
+            if (Objects.equals(boss.typeName, "Earth")) {
+                boss.setType(earth);
+            }
+            //  set electric types
+            if (Objects.equals(boss.typeName, "Electric")) {
+                boss.setType(electric);
+            }
+            //  set nature types
+            if (Objects.equals(boss.typeName, "Nature")) {
+                boss.setType(nature);
+            }
+            //  set wind types
+            if (Objects.equals(boss.typeName, "Wind")) {
+                boss.setType(wind);
+            }
+            //  set ice types
+            if (Objects.equals(boss.typeName, "Ice")) {
+                boss.setType(ice);
+            }
+            player.quests.get(questIndex).bossMonster = boss;
+        }
+    }
     //  load enemy trainer teams for battle quests
     public void loadQuestMonsterTypes() {
         for (int i = 0; i < player.quests.size; i++) {
             //  if quest is a trainer battle
-            if (player.quests.get(i).type == 0 || player.quests.get(i).type == 3) {
+            if (player.quests.get(i).type == 0 || player.quests.get(i).type == 4) {
                 loadTrainerMonsterTypes(i);
+            }
+            //  if quest is a boss battle
+            else if (player.quests.get(i).type == 3) {
+                loadBossMonsterTypes(i);
             }
         }
     }

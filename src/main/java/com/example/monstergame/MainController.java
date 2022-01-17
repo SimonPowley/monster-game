@@ -13,7 +13,8 @@ import java.util.Objects;
 
 public class MainController {
     Player player;
-    int mode;   //  1 = lose, 2=battle quest
+    BossMonster bossMonster; // for boss quests
+    int mode;   //  1 = lose, 2=trainer quest, 3=boss quest
     private Scene battleScene;
     private Scene bagScene;
     private Scene teamScene;
@@ -87,11 +88,7 @@ public class MainController {
             if (player.quests.get(0).completed) {
                 quest1Button.setText("Reward");
             }
-            //  show battle button
-            else if (player.quests.get(0).type == 0 || player.quests.get(0).type == 3) {
-                quest1Button.setText("Battle");
-            }
-            //  show info button
+            //  show quest 1 info
             else {
                 quest1Button.setText("Quest Info");
             }
@@ -107,11 +104,7 @@ public class MainController {
             if (player.quests.get(1).completed) {
                 quest2Button.setText("Reward");
             }
-            //  show battle button
-            else if (player.quests.get(1).type == 0 || player.quests.get(1).type == 3) {
-                quest2Button.setText("Battle");
-            }
-            //  show info button
+            //  show quest 2 info
             else {
                 quest2Button.setText("Quest Info");
             }
@@ -127,11 +120,7 @@ public class MainController {
             if (player.quests.get(2).completed) {
                 quest3Button.setText("Reward");
             }
-            //  show battle button
-            else if (player.quests.get(2).type == 0 || player.quests.get(2).type == 3) {
-                quest3Button.setText("Battle");
-            }
-            //  show info button
+            //  show quest 3 info
             else {
                 quest3Button.setText("Quest Info");
             }
@@ -171,6 +160,12 @@ public class MainController {
         //  battle trainer for quest
         if (mode == 2) {
             battleController.setPlayer(player, new Battle(player, true, questInfo));
+        }
+        //  boss battle
+        else if (mode == 3) {
+            Battle bossBattle = new Battle(player, false, "A strong looking " + bossMonster.name + " appeared!");
+            bossBattle.enemyMonster = bossMonster;
+            battleController.setPlayer(player, bossBattle);
         }
         //  wild battle
         else {
@@ -331,20 +326,51 @@ public class MainController {
             player.quests.remove(0);
             setQuestLog();
         }
-        //  battle quest, start battle
-        else if (player.quests.get(0).type == 0 || player.quests.get(0).type == 3) {
-            if (!player.teamLeader.fainted) {
-                player.quests.get(0).trainer.resetTeam();
-                player.trainer = player.quests.get(0).trainer;
-                questInfo = player.quests.get(0).info;
-                mode = 2;
-                setBattleScene();
-                getBattleScene();
+        //  show quest info
+        else if (Objects.equals(quest1Button.getText(), "Quest Info")) {
+            if (player.quests.get(1) != null) {
+                if (player.quests.get(1).completed) {
+                    quest2Button.setText("Reward");
+                } else {
+                    quest2Button.setText("Quest Info");
+                }
+            }
+            if (player.quests.get(2) != null) {
+                if (player.quests.get(2).completed) {
+                    quest3Button.setText("Reward");
+                } else {
+                    quest3Button.setText("Quest Info");
+                }
+            }
+            questLabel.setText(player.quests.get(0).info);
+            //  show battle option if trainer or boss quest
+            if (player.quests.get(0).type == 0 || player.quests.get(0).type == 3 || player.quests.get(0).type == 4) {
+                quest1Button.setText("Battle");
             }
         }
-        //  quest incomplete, show info
-        else {
-            questLabel.setText(player.quests.get(0).info);
+        //  start trainer or boss battle
+        else if (Objects.equals(quest1Button.getText(), "Battle")) {
+            quest1Button.setText("Quest Info");
+            //  start trainer battle
+            if (player.quests.get(0).type == 0 || player.quests.get(0).type == 4) {
+                if (!player.teamLeader.fainted) {
+                    player.quests.get(0).trainer.resetTeam();
+                    player.trainer = player.quests.get(0).trainer;
+                    questInfo = player.quests.get(0).info;
+                    mode = 2;
+                    setBattleScene();
+                    getBattleScene();
+                }
+            }
+            //  start boss battle
+            else if (player.quests.get(0).type == 3) {
+                if (!player.teamLeader.fainted) {
+                    bossMonster = player.quests.get(0).bossMonster;
+                    mode = 3;
+                    setBattleScene();
+                    getBattleScene();
+                }
+            }
         }
     }
 
@@ -366,20 +392,51 @@ public class MainController {
             player.quests.remove(1);
             setQuestLog();
         }
-        //  battle quest, start battle
-        else if (player.quests.get(1).type == 0 || player.quests.get(1).type == 3) {
-            if (!player.teamLeader.fainted) {
-                player.quests.get(1).trainer.resetTeam();
-                player.trainer = player.quests.get(1).trainer;
-                questInfo = player.quests.get(1).info;
-                mode = 2;
-                setBattleScene();
-                getBattleScene();
+        //  show quest info
+        else if (Objects.equals(quest2Button.getText(), "Quest Info")) {
+            if (player.quests.get(0) != null) {
+                if (player.quests.get(0).completed) {
+                    quest1Button.setText("Reward");
+                } else {
+                    quest1Button.setText("Quest Info");
+                }
+            }
+            if (player.quests.get(2) != null) {
+                if (player.quests.get(2).completed) {
+                    quest3Button.setText("Reward");
+                } else {
+                    quest3Button.setText("Quest Info");
+                }
+            }
+            questLabel.setText(player.quests.get(1).info);
+            //  show battle option if trainer or boss quest
+            if (player.quests.get(1).type == 0 || player.quests.get(1).type == 3 || player.quests.get(1).type == 4) {
+                quest2Button.setText("Battle");
             }
         }
-        //  quest incomplete, show info
-        else {
-            questLabel.setText(player.quests.get(1).info);
+        //  start trainer or boss battle
+        else if (Objects.equals(quest2Button.getText(), "Battle")) {
+            quest2Button.setText("Quest Info");
+            //  start trainer battle
+            if (player.quests.get(1).type == 0 || player.quests.get(1).type == 4) {
+                if (!player.teamLeader.fainted) {
+                    player.quests.get(1).trainer.resetTeam();
+                    player.trainer = player.quests.get(1).trainer;
+                    questInfo = player.quests.get(1).info;
+                    mode = 2;
+                    setBattleScene();
+                    getBattleScene();
+                }
+            }
+            //  start boss battle
+            else if (player.quests.get(1).type == 3) {
+                if (!player.teamLeader.fainted) {
+                    bossMonster = player.quests.get(1).bossMonster;
+                    mode = 3;
+                    setBattleScene();
+                    getBattleScene();
+                }
+            }
         }
     }
 
@@ -401,20 +458,51 @@ public class MainController {
             player.quests.remove(2);
             setQuestLog();
         }
-        //  battle quest, start battle
-        else if (player.quests.get(2).type == 0 || player.quests.get(2).type == 3) {
-            if (!player.teamLeader.fainted) {
-                player.quests.get(2).trainer.resetTeam();
-                player.trainer = player.quests.get(2).trainer;
-                questInfo = player.quests.get(2).info;
-                mode = 2;
-                setBattleScene();
-                getBattleScene();
+        //  show quest info
+        else if (Objects.equals(quest3Button.getText(), "Quest Info")) {
+            if (player.quests.get(0) != null) {
+                if (player.quests.get(0).completed) {
+                    quest1Button.setText("Reward");
+                } else {
+                    quest1Button.setText("Quest Info");
+                }
+            }
+            if (player.quests.get(1) != null) {
+                if (player.quests.get(1).completed) {
+                    quest2Button.setText("Reward");
+                } else {
+                    quest2Button.setText("Quest Info");
+                }
+            }
+            questLabel.setText(player.quests.get(2).info);
+            //  show battle option if trainer or boss quest
+            if (player.quests.get(2).type == 0 || player.quests.get(2).type == 3 || player.quests.get(2).type == 4) {
+                quest3Button.setText("Battle");
             }
         }
-        //  quest incomplete, show info
-        else {
-            questLabel.setText(player.quests.get(2).info);
+        //  start trainer or boss battle
+        else if (Objects.equals(quest3Button.getText(), "Battle")) {
+            quest3Button.setText("Quest Info");
+            //  start trainer battle
+            if (player.quests.get(2).type == 0 || player.quests.get(2).type == 4) {
+                if (!player.teamLeader.fainted) {
+                    player.quests.get(2).trainer.resetTeam();
+                    player.trainer = player.quests.get(2).trainer;
+                    questInfo = player.quests.get(2).info;
+                    mode = 2;
+                    setBattleScene();
+                    getBattleScene();
+                }
+            }
+            //  start boss battle
+            else if (player.quests.get(2).type == 3) {
+                if (!player.teamLeader.fainted) {
+                    bossMonster = player.quests.get(2).bossMonster;
+                    mode = 3;
+                    setBattleScene();
+                    getBattleScene();
+                }
+            }
         }
     }
 

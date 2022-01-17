@@ -114,9 +114,16 @@ public class Item implements java.io.Serializable {
                 if ((monster.hpMax / monster.hpCurr >= 5) || monster.hpCurr <= 3) {
                     catchRate += power;
                 }
+                //  lower catch rate for bosses
+                if (monster.bossMonster) {
+                    catchRate -= 100;
+                }
                 //  limit catch rate to 100%
                 if (catchRate > 100) {
                     catchRate = 100;
+                }
+                if (catchRate < 0) {
+                    catchRate = 0;
                 }
                 removeItem(1);
                 player.ballsInBag--;

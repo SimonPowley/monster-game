@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class Quest implements java.io.Serializable {
     //  quest attributes
-    int type; // 0=trainer battle, 1=x wild battles, 2=x wild type battles
+    int type; // 0=trainer battle, 1=x wild battles, 2=x wild type battles, 3=boss battle
     int skillCap; // 0=novice, 1=intermediate, 2=expert, 3=master
     int levelCap; // based on player's highest level in party
     int originalTotal;
@@ -12,6 +12,7 @@ public class Quest implements java.io.Serializable {
     String info; // quest's description
     String typeInfo; // wild type to battle
     Trainer trainer; // trainer for battle quests/all quest rewards
+    BossMonster bossMonster; // boss monster for boss battle
     boolean completed;
 
 
@@ -29,14 +30,14 @@ public class Quest implements java.io.Serializable {
     //  set quest type
     public void setQuestType() {
         Random rand = new Random();
-        type = rand.nextInt(4);
+        type = rand.nextInt(5);
     }
 
     //  generate quest info/requirements
     public void generateInfo() {
         Random rand = new Random();
         //  trainer battle quest
-        if (type == 0 || type == 3) {
+        if (type == 0 || type == 4) {
             String[] challengeLines = {" wants to battle!", " challenged you to a battle!",
                     " asked you to battle!", " wants to battle you!", " is looking to battle!"};
             info = trainer.name + challengeLines[rand.nextInt(5)];
@@ -57,6 +58,14 @@ public class Quest implements java.io.Serializable {
             remaining = originalTotal;
             typeInfo = type[rand.nextInt(8)];
             info = trainer.name + " wants you to battle:\n" + remaining + " wild " + typeInfo + " monsters";
+        }
+        //  boss battle quest
+        else if (type == 3) {
+            bossMonster = new BossMonster(rand.nextInt(3), levelCap);
+            originalTotal = 1;
+            remaining = originalTotal;
+            info = "A strong looking\n" + bossMonster.name + " is close by...";
+            trainer.name = "BOSS";
         }
     }
     //  set quest info

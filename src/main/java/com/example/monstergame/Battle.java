@@ -40,7 +40,14 @@ public class Battle {
         }
         //  fighting wild monster
         else {
-            setWildMonsterStats();
+            Random rand = new Random();
+            int bossChance = rand.nextInt(100);
+            //  1% chance for boss monster to appear in wild
+            if (bossChance == 0) {
+                enemyMonster = new BossMonster(rand.nextInt(3), player.highestLevel);
+            } else {
+                setWildMonsterStats();
+            }
         }
         this.player.addMonstersFought(enemyMonster.type);
     }
@@ -82,6 +89,12 @@ public class Battle {
                             player.quests.get(i).decreaseRemaining();
                         }
                     }
+                    //  boss battle
+                    else if (player.quests.get(i).type == 3 && enemyMonster.bossMonster) {
+                        if (Objects.equals(player.quests.get(i).bossMonster.name, enemyMonster.name)) {
+                            player.quests.get(i).decreaseRemaining();
+                        }
+                    }
                 }
                 //  roll for new quest
                 player.questRoll();
@@ -100,7 +113,7 @@ public class Battle {
                     //  complete battle quest
                     for (int i = 0; i < player.quests.size; i++) {
                         //  complete trainer battle quest
-                        if (player.quests.get(i).type == 0 || player.quests.get(i).type == 3) {
+                        if (player.quests.get(i).type == 0 || player.quests.get(i).type == 4) {
                             if (Objects.equals(player.quests.get(i).trainer.name, enemyTrainer.name)) {
                                 player.quests.get(i).decreaseRemaining();
                             }
