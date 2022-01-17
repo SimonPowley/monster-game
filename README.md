@@ -29,7 +29,7 @@ Currently the game is basically:
 Monsters are randomly generated to make each one unique, and to give each one different utility in battle (hopefully)
 - Random stats (within a range) that grow at different rates (slow, medium, fast)
 - Potential affinities for certain stats (+/- x%)
-- Random type, some are more common than others (normal is more common than fire, etc)
+- Random type, some are more common than others
 
 Monsters currently have four stats: health, attack, defense, speed
 - Health (HP): total health in battle, when health reaches 0 the monster faints and cannot battle until revived
