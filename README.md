@@ -20,7 +20,7 @@ Currently the game is basically:
 - Buy items from the shop
 - Capture wild monsters
 - Check your monster team and their stats, change team leader, change monster names, release monsters
-- Get quests randomly after defeating wild monsters, quests can currently be: fight x wild monsters(specific or unspecific type) or battle a trainer
+- Get quests randomly after defeating wild monsters, quests can currently be: fight x wild monsters(specific or unspecific type), battle a trainer, or battle a boss monster
 - Player score goes up after defeating monsters and completing quests
 - Save game, return to title screen
 
