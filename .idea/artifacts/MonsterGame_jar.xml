@@ -1,0 +1,18 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="MonsterGame:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/MonsterGame_jar</output-path>
+    <root id="archive" name="MonsterGame_jar.jar">
+      <element id="archive" name="MonsterGame.jar">
+        <element id="module-output" name="MonsterGame" />
+      </element>
+      <element id="library" level="project" name="Maven: org.openjfx:javafx-controls:16" />
+      <element id="library" level="project" name="Maven: org.openjfx:javafx-controls:win:16" />
+      <element id="library" level="project" name="Maven: org.openjfx:javafx-fxml:win:16" />
+      <element id="library" level="project" name="Maven: org.openjfx:javafx-fxml:16" />
+      <element id="library" level="project" name="Maven: org.openjfx:javafx-base:win:16" />
+      <element id="library" level="project" name="Maven: org.openjfx:javafx-graphics:win:16" />
+      <element id="library" level="project" name="Maven: org.openjfx:javafx-base:16" />
+      <element id="library" level="project" name="Maven: org.openjfx:javafx-graphics:16" />
+    </root>
+  </artifact>
+</component>

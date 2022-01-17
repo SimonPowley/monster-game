@@ -183,20 +183,19 @@ public class BattleController {
     public void catchMonster() {
         //  if player uses ball on monster: if successful: player chooses name, battle ends
         //  else: battle resumes
-        if (player.itemInUse == player.bag.get(1)) {
-            if (player.useBall(battle.enemyMonster, battleLogLabel)) {
-                fightButton.setVisible(false);
-                teamButton.setVisible(false);
-                bagButton.setVisible(false);
-                runButton.setVisible(false);
-                nameMonsterTextField.setVisible(true);
-                setBattleLog(battleLogLabel.getText() + "\nEnter name for monster");
-                mode = 1;
-            } else {
-                enableButtonsCatch();
-                mode = 2;
-            }
+        if (player.useBall(battle.enemyMonster, battleLogLabel)) {
+            fightButton.setVisible(false);
+            teamButton.setVisible(false);
+            bagButton.setVisible(false);
+            runButton.setVisible(false);
+            nameMonsterTextField.setVisible(true);
+            setBattleLog(battleLogLabel.getText() + "\nEnter name for monster");
+            mode = 1;
+        } else {
+            enableButtonsCatch();
+            mode = 2;
         }
+        player.itemInUse = null;
     }
     //  change battle buttons to catch buttons
     public void disableButtonsCatch() {
@@ -289,12 +288,13 @@ public class BattleController {
     @FXML
     //  player chooses to attack enemy monster
     public void onFightButtonClicked() {
-        catchMonster();
+        if (player.itemInUse == player.bag.get(1)) {
+            catchMonster();
+        }
         if (mode == 1 || mode == 2) {
             mode = 9;
             return;
         }
-        int leaderLevel = player.teamLeader.level;
         int pcSize = player.pcSizeLimit;
         player.itemInUse = null;
         battle.checkSpeed(this);
