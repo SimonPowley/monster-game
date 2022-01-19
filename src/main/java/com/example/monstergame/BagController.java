@@ -62,7 +62,7 @@ public class BagController {
         mainController.setPlayer(player);
         //  check for fainted monsters
         int eligibleCount = 0;
-        for (int i = 0; i < player.pc.size; i++) {
+        for (int i = 0; i < player.pc.size(); i++) {
             if (!player.pc.get(i).fainted) {
                 eligibleCount++;
             }
@@ -161,7 +161,7 @@ public class BagController {
             shopLogLabel.setText("No balls to use!");
             return;
         }
-        else if (player.pc.size >= player.pcSizeLimit) {
+        else if (player.pc.size() >= player.pcSizeLimit) {
             shopLogLabel.setText("Monster storage is full!");
             return;
         }

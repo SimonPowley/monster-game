@@ -9,6 +9,7 @@ import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Objects;
 
 public class BattleController {
     Player player;
@@ -55,6 +56,14 @@ public class BattleController {
     private Circle trainerCircle5;
     @FXML
     private Circle trainerCircle6;
+    @FXML
+    private Button move1Button;
+    @FXML
+    private Button move2Button;
+    @FXML
+    private Button move3Button;
+    @FXML
+    private Button move4Button;
 
 
     //  set player
@@ -124,37 +133,35 @@ public class BattleController {
     public void setTrainerCircles() {
         if (player.trainer != null) {
             //  team circle 1
-            if (player.trainer.pc.get(0) != null) {
+            if (player.trainer.pc.size() > 0) {
                 trainerCircle1.setFill(player.trainer.pc.get(0).type.color);
-            } else {
-                trainerCircle1.setVisible(false);
             }
             //  team circle 2
-            if (player.trainer.pc.get(1) != null) {
+            if (player.trainer.pc.size() > 1) {
                 trainerCircle2.setFill(player.trainer.pc.get(1).type.color);
             } else {
                 trainerCircle2.setVisible(false);
             }
             //  team circle 3
-            if (player.trainer.pc.get(2) != null) {
+            if (player.trainer.pc.size() > 2) {
                 trainerCircle3.setFill(player.trainer.pc.get(2).type.color);
             } else {
                 trainerCircle3.setVisible(false);
             }
             //  team circle 4
-            if (player.trainer.pc.get(3) != null) {
+            if (player.trainer.pc.size() > 3) {
                 trainerCircle4.setFill(player.trainer.pc.get(3).type.color);
             } else {
                 trainerCircle4.setVisible(false);
             }
             //  team circle 5
-            if (player.trainer.pc.get(4) != null) {
+            if (player.trainer.pc.size() > 4) {
                 trainerCircle5.setFill(player.trainer.pc.get(4).type.color);
             } else {
                 trainerCircle5.setVisible(false);
             }
             //  team circle 6
-            if (player.trainer.pc.get(5) != null) {
+            if (player.trainer.pc.size() > 5) {
                 trainerCircle6.setFill(player.trainer.pc.get(5).type.color);
             } else {
                 trainerCircle6.setVisible(false);
@@ -179,6 +186,7 @@ public class BattleController {
         enemyCircle.setFill(battle.enemyMonster.type.color);
         enemyHealthLabel.setText(battle.enemyMonster.name + "    Lvl: " +battle.enemyMonster.level + "   HP: " + battle.enemyMonster.hpCurr + "/" + battle.enemyMonster.hpMax);
         setBars();
+        hideMoves();
     }
 
 
@@ -195,6 +203,14 @@ public class BattleController {
             runButton.setVisible(false);
             nameMonsterTextField.setVisible(true);
             setBattleLog(battleLogLabel.getText() + "\nEnter name for monster");
+            //  complete quest if boss monster
+            if (battle.enemyMonster.bossMonster) {
+                for (Quest quest : player.quests) {
+                    if (quest.bossMonster != null && Objects.equals(quest.bossMonster.name, battle.enemyMonster.name)) {
+                        quest.decreaseRemaining();
+                    }
+                }
+            }
             mode = 1;
         } else {
             enableButtonsCatch();
@@ -216,6 +232,32 @@ public class BattleController {
         teamButton.setVisible(true);
         bagButton.setText("Bag");
         runButton.setVisible(true);
+    }
+
+    //  show moves
+    public void showMoves() {
+        hideMoves();
+        move1Button.setVisible(true);
+        move1Button.setText(player.teamLeader.learnedMoves.get(0).name);
+        if (player.teamLeader.learnedMoves.size() > 1) {
+            move2Button.setVisible(true);
+            move2Button.setText(player.teamLeader.learnedMoves.get(1).name);
+        }
+        if (player.teamLeader.learnedMoves.size() > 2) {
+            move3Button.setVisible(true);
+            move3Button.setText(player.teamLeader.learnedMoves.get(2).name);
+        }
+        if (player.teamLeader.learnedMoves.size() > 3) {
+            move4Button.setVisible(true);
+            move4Button.setText(player.teamLeader.learnedMoves.get(3).name);
+        }
+    }
+    //  hide moves
+    public void hideMoves() {
+        move1Button.setVisible(false);
+        move2Button.setVisible(false);
+        move3Button.setVisible(false);
+        move4Button.setVisible(false);
     }
 
     @FXML
@@ -291,18 +333,38 @@ public class BattleController {
 
 
     @FXML
+    //  player uses move 1
+    public void onMove1() {
+        battle.setMove(player.teamLeader.learnedMoves.get(0));
+        battle.checkSpeed(this);
+        endBattleTurn();
+    }
+    @FXML
+    //  player uses move 2
+    public void onMove2() {
+        battle.setMove(player.teamLeader.learnedMoves.get(1));
+        battle.checkSpeed(this);
+        endBattleTurn();
+    }
+    @FXML
+    //  player uses move 3
+    public void onMove3() {
+        battle.setMove(player.teamLeader.learnedMoves.get(2));
+        battle.checkSpeed(this);
+        endBattleTurn();
+    }
+    @FXML
+    //  player uses move 4
+    public void onMove4() {
+        battle.setMove(player.teamLeader.learnedMoves.get(3));
+        battle.checkSpeed(this);
+        endBattleTurn();
+    }
+    @FXML
     //  player chooses to attack enemy monster
-    public void onFightButtonClicked() {
-        if (player.itemInUse == player.bag.get(1)) {
-            catchMonster();
-        }
-        if (mode == 1 || mode == 2) {
-            mode = 9;
-            return;
-        }
+    public void endBattleTurn() {
         int pcSize = player.pcSizeLimit;
         player.itemInUse = null;
-        battle.checkSpeed(this);
         setMonsterCircles();
         setBars();
         setTrainerCircles();
@@ -326,6 +388,20 @@ public class BattleController {
             runButton.setText("Back");
         }
         player.setLeader();
+    }
+
+    @FXML
+    //  player views moves, or catch monster
+    public void onFightButton() {
+        if (player.itemInUse == player.bag.get(1)) {
+            catchMonster();
+            player.itemInUse = null;
+        }
+        if (mode == 1 || mode == 2) {
+            mode = 9;
+            return;
+        }
+        showMoves();
     }
 
     @FXML

@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.paint.Paint;
@@ -43,6 +44,14 @@ public class StarterController {
     Label fireDefenseBoostLabel;
     @FXML
     Label fireSpeedBoostLabel;
+    @FXML
+    Label fireMove1Label;
+    @FXML
+    Label fireMove2Label;
+    @FXML
+    Label fireMove3Label;
+    @FXML
+    Label fireMove4Label;
     //  water monster stuff
     @FXML
     Circle waterMonsterCircle;
@@ -64,6 +73,14 @@ public class StarterController {
     Label waterDefenseBoostLabel;
     @FXML
     Label waterSpeedBoostLabel;
+    @FXML
+    Label waterMove1Label;
+    @FXML
+    Label waterMove2Label;
+    @FXML
+    Label waterMove3Label;
+    @FXML
+    Label waterMove4Label;
     //  nature monster stuff
     @FXML
     Circle natureMonsterCircle;
@@ -85,11 +102,21 @@ public class StarterController {
     Label natureDefenseBoostLabel;
     @FXML
     Label natureSpeedBoostLabel;
+    @FXML
+    Label natureMove1Label;
+    @FXML
+    Label natureMove2Label;
+    @FXML
+    Label natureMove3Label;
+    @FXML
+    Label natureMove4Label;
     //  other stuff
     @FXML
     TextField monsterNameTextField;
     @FXML
     Label gameLogLabel;
+    @FXML
+    Button rerollButton;
 
 
 
@@ -125,6 +152,7 @@ public class StarterController {
         fireDefenseLabel.setText("Def: " + fireMonster.defense);
         fireSpeedLabel.setText("Spe: " + fireMonster.speed);
         showFireStatAffinities();
+        showFireMoves();
     }
     //  create random water monster
     public void randomWaterMonster() {
@@ -143,6 +171,7 @@ public class StarterController {
         waterDefenseLabel.setText("Def: " + waterMonster.defense);
         waterSpeedLabel.setText("Spe: " + waterMonster.speed);
         showWaterStatAffinities();
+        showWaterMoves();
     }
     //  create random nature monster
     public void randomNatureMonster() {
@@ -161,6 +190,7 @@ public class StarterController {
         natureDefenseLabel.setText("Def: " + natureMonster.defense);
         natureSpeedLabel.setText("Spe: " + natureMonster.speed);
         showNatureStatAffinities();
+        showNatureMoves();
     }
 
     //  generate random stats within range
@@ -300,6 +330,106 @@ public class StarterController {
         }
     }
 
+    //  show fire monster moves
+    public void showFireMoves() {
+        if (fireMonster.learnedMoves.size() == 0) {
+            fireMove1Label.setVisible(false);
+            fireMove2Label.setVisible(false);
+            fireMove3Label.setVisible(false);
+            fireMove4Label.setVisible(false);
+        } else {
+            //  show move 1
+            fireMove1Label.setText(fireMonster.learnedMoves.get(0).name);
+            //  show move 2
+            if (fireMonster.learnedMoves.size() > 1) {
+                fireMove2Label.setVisible(true);
+                fireMove2Label.setText(fireMonster.learnedMoves.get(1).name);
+            } else {
+                fireMove2Label.setVisible(false);
+            }
+            //  show move 3
+            if (fireMonster.learnedMoves.size() > 2) {
+                fireMove3Label.setVisible(true);
+                fireMove3Label.setText(fireMonster.learnedMoves.get(2).name);
+            } else {
+                fireMove3Label.setVisible(false);
+            }
+            //  show move 4
+            if (fireMonster.learnedMoves.size() > 3) {
+                fireMove4Label.setVisible(true);
+                fireMove4Label.setText(fireMonster.learnedMoves.get(3).name);
+            } else {
+                fireMove4Label.setVisible(false);
+            }
+        }
+    }
+    //  show water monster moves
+    public void showWaterMoves() {
+        if (waterMonster.learnedMoves.size() == 0) {
+            waterMove1Label.setVisible(false);
+            waterMove2Label.setVisible(false);
+            waterMove3Label.setVisible(false);
+            waterMove4Label.setVisible(false);
+        } else {
+            //  show move 1
+            waterMove1Label.setText(waterMonster.learnedMoves.get(0).name);
+            //  show move 2
+            if (waterMonster.learnedMoves.size() > 1) {
+                waterMove2Label.setVisible(true);
+                waterMove2Label.setText(waterMonster.learnedMoves.get(1).name);
+            } else {
+                waterMove2Label.setVisible(false);
+            }
+            //  show move 3
+            if (waterMonster.learnedMoves.size() > 2) {
+                waterMove3Label.setVisible(true);
+                waterMove3Label.setText(waterMonster.learnedMoves.get(2).name);
+            } else {
+                waterMove3Label.setVisible(false);
+            }
+            //  show move 4
+            if (waterMonster.learnedMoves.size() > 3) {
+                waterMove4Label.setVisible(true);
+                waterMove4Label.setText(waterMonster.learnedMoves.get(3).name);
+            } else {
+                waterMove4Label.setVisible(false);
+            }
+        }
+    }
+    //  show nature monster moves
+    public void showNatureMoves() {
+        if (natureMonster.learnedMoves.size() == 0) {
+            natureMove1Label.setVisible(false);
+            natureMove2Label.setVisible(false);
+            natureMove3Label.setVisible(false);
+            natureMove4Label.setVisible(false);
+        } else {
+            //  show move 1
+            natureMove1Label.setText(natureMonster.learnedMoves.get(0).name);
+            //  show move 2
+            if (natureMonster.learnedMoves.size() > 1) {
+                natureMove2Label.setVisible(true);
+                natureMove2Label.setText(natureMonster.learnedMoves.get(1).name);
+            } else {
+                natureMove2Label.setVisible(false);
+            }
+            //  show move 3
+            if (natureMonster.learnedMoves.size() > 2) {
+                natureMove3Label.setVisible(true);
+                natureMove3Label.setText(natureMonster.learnedMoves.get(2).name);
+            } else {
+                natureMove3Label.setVisible(false);
+            }
+            //  show move 4
+            if (natureMonster.learnedMoves.size() > 3) {
+                natureMove4Label.setVisible(true);
+                natureMove4Label.setText(natureMonster.learnedMoves.get(3).name);
+            } else {
+                natureMove4Label.setVisible(false);
+            }
+        }
+    }
+
     //  set main menu scene
     public void setMainScene() throws IOException {
         mainScene = loadMainScene();
@@ -357,19 +487,19 @@ public class StarterController {
     public void onMonsterChosen() throws IOException {
         if (fireChosen) {
             fireMonster.setName(monsterNameTextField.getText());
-            player.pc.add(fireMonster.name, fireMonster);
+            player.pc.add(fireMonster);
             player.setLeader();
             setMainScene();
             getMainScene();
         } else if (waterChosen) {
             waterMonster.setName(monsterNameTextField.getText());
-            player.pc.add(waterMonster.name, waterMonster);
+            player.pc.add(waterMonster);
             player.setLeader();
             setMainScene();
             getMainScene();
         } else if (natureChosen) {
             natureMonster.setName(monsterNameTextField.getText());
-            player.pc.add(natureMonster.name, natureMonster);
+            player.pc.add(natureMonster);
             player.setLeader();
             setMainScene();
             getMainScene();

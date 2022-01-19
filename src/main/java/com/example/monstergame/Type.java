@@ -2,6 +2,7 @@ package com.example.monstergame;
 
 import javafx.scene.paint.Paint;
 
+import java.util.LinkedList;
 import java.util.Objects;
 
 public class Type implements java.io.Serializable {
@@ -11,9 +12,9 @@ public class Type implements java.io.Serializable {
     transient Paint color;
 
     //  type match-ups while attacking
-    StorageList<String> strongAgainst = new StorageList<>(); // super effective
-    StorageList<String> weakAgainst = new StorageList<>(); // not very effective
-    StorageList<String> neutralAgainst = new StorageList<>(); // neutral damage
+    LinkedList<String> strongAgainst = new LinkedList<>(); // super effective
+    LinkedList<String> weakAgainst = new LinkedList<>(); // not very effective
+    LinkedList<String> neutralAgainst = new LinkedList<>(); // neutral damage
 
     //  type names
     String normal = "Normal";
@@ -54,111 +55,111 @@ public class Type implements java.io.Serializable {
         //  if type is normal
         if (Objects.equals(name, "Normal")) {
             //  neutral damage
-            neutralAgainst.add(normal, normal);
-            neutralAgainst.add(fire, fire);
-            neutralAgainst.add(water, water);
-            neutralAgainst.add(earth, earth);
-            neutralAgainst.add(electric, electric);
-            neutralAgainst.add(nature, nature);
-            neutralAgainst.add(wind, wind);
-            neutralAgainst.add(ice, ice);
+            neutralAgainst.add(normal);
+            neutralAgainst.add(fire);
+            neutralAgainst.add(water);
+            neutralAgainst.add(earth);
+            neutralAgainst.add(electric);
+            neutralAgainst.add(nature);
+            neutralAgainst.add(wind);
+            neutralAgainst.add(ice);
         }
         //  if type is fire
         else if (Objects.equals(name, "Fire")) {
             //  super effective damage
-            strongAgainst.add(nature, nature);
-            strongAgainst.add(wind, wind);
-            strongAgainst.add(ice, ice);
+            strongAgainst.add(nature);
+            strongAgainst.add(wind);
+            strongAgainst.add(ice);
             //  not very effective damage
-            weakAgainst.add(fire, fire);
-            weakAgainst.add(water, water);
+            weakAgainst.add(fire);
+            weakAgainst.add(water);
             //  neutral damage
-            neutralAgainst.add(normal, normal);
-            neutralAgainst.add(earth, earth);
-            neutralAgainst.add(electric, electric);
+            neutralAgainst.add(normal);
+            neutralAgainst.add(earth);
+            neutralAgainst.add(electric);
         }
         //  if type is water
         else if (Objects.equals(name, "Water")) {
             //  super effective damage
-            strongAgainst.add(fire, fire);
-            strongAgainst.add(earth, earth);
+            strongAgainst.add(fire);
+            strongAgainst.add(earth);
             //  not very effective damage
-            weakAgainst.add(nature, nature);
-            weakAgainst.add(ice, ice);
+            weakAgainst.add(nature);
+            weakAgainst.add(ice);
             //  neutral damage
-            neutralAgainst.add(normal, normal);
-            neutralAgainst.add(water, water);
-            neutralAgainst.add(electric, electric);
-            neutralAgainst.add(wind, wind);
+            neutralAgainst.add(normal);
+            neutralAgainst.add(water);
+            neutralAgainst.add(electric);
+            neutralAgainst.add(wind);
         }
         //  if type is earth
         else if (Objects.equals(name, "Earth")) {
             //  super effective damage
-            strongAgainst.add(fire, fire);
-            strongAgainst.add(electric, electric);
+            strongAgainst.add(fire);
+            strongAgainst.add(electric);
             //  not very effective damage
-            weakAgainst.add(nature, nature);
+            weakAgainst.add(nature);
             //  neutral damage
-            neutralAgainst.add(normal, normal);
-            neutralAgainst.add(water, water);
-            neutralAgainst.add(wind, wind);
-            neutralAgainst.add(ice, ice);
+            neutralAgainst.add(normal);
+            neutralAgainst.add(water);
+            neutralAgainst.add(wind);
+            neutralAgainst.add(ice);
         }
         //  if type is electric
         else if (Objects.equals(name, "Electric")) {
             //  super effective damage
-            strongAgainst.add(water, water);
-            strongAgainst.add(wind, wind);
+            strongAgainst.add(water);
+            strongAgainst.add(wind);
             //  not very effective against
-            weakAgainst.add(earth, earth);
-            weakAgainst.add(electric, electric);
+            weakAgainst.add(earth);
+            weakAgainst.add(electric);
             //  neutral against
-            neutralAgainst.add(normal, normal);
-            neutralAgainst.add(fire, fire);
-            neutralAgainst.add(nature, nature);
-            neutralAgainst.add(ice, ice);
+            neutralAgainst.add(normal);
+            neutralAgainst.add(fire);
+            neutralAgainst.add(nature);
+            neutralAgainst.add(ice);
         }
         //  if type is nature
         else if (Objects.equals(name, "Nature")) {
             //  super effective damage
-            strongAgainst.add(water ,water);
-            strongAgainst.add(earth, earth);
+            strongAgainst.add(water);
+            strongAgainst.add(earth);
             //  not very effective damage
-            weakAgainst.add(fire, fire);
-            weakAgainst.add(wind, wind);
+            weakAgainst.add(fire);
+            weakAgainst.add(wind);
             //  neutral damage
-            neutralAgainst.add(normal, normal);
-            neutralAgainst.add(electric, electric);
-            neutralAgainst.add(nature, nature);
-            neutralAgainst.add(ice, ice);
+            neutralAgainst.add(normal);
+            neutralAgainst.add(electric);
+            neutralAgainst.add(nature);
+            neutralAgainst.add(ice);
         }
         //  if type is wind
         else if (Objects.equals(name, "Wind")) {
             //  super effective damage
-            strongAgainst.add(nature, nature);
+            strongAgainst.add(nature);
             //  not very effective damage
-            weakAgainst.add(electric, electric);
-            weakAgainst.add(ice, ice);
+            weakAgainst.add(electric);
+            weakAgainst.add(ice);
             //  neutral damage
-            neutralAgainst.add(normal, normal);
-            neutralAgainst.add(fire, fire);
-            neutralAgainst.add(water ,water);
-            neutralAgainst.add(earth, earth);
-            neutralAgainst.add(wind, wind);
+            neutralAgainst.add(normal);
+            neutralAgainst.add(fire);
+            neutralAgainst.add(water);
+            neutralAgainst.add(earth);
+            neutralAgainst.add(wind);
         }
         //  if type is ice
         else if (Objects.equals(name, "Ice")) {
             //  super effective damage
-            strongAgainst.add(nature, nature);
-            strongAgainst.add(wind, wind);
+            strongAgainst.add(nature);
+            strongAgainst.add(wind);
             //  not very effective damage
-            weakAgainst.add(fire, fire);
-            weakAgainst.add(ice, ice);
+            weakAgainst.add(fire);
+            weakAgainst.add(ice);
             //  neutral damage
-            neutralAgainst.add(normal, normal);
-            neutralAgainst.add(water, water);
-            neutralAgainst.add(electric, electric);
-            neutralAgainst.add(earth, earth);
+            neutralAgainst.add(normal);
+            neutralAgainst.add(water);
+            neutralAgainst.add(electric);
+            neutralAgainst.add(earth);
 
         }
     }

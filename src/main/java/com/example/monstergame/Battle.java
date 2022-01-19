@@ -23,6 +23,8 @@ public class Battle {
     Monster enemyMonster;
     String winner = "";
     String questInfo;
+    Move playerMove;
+    Move enemyMove;
 
 
 
@@ -78,7 +80,7 @@ public class Battle {
                 player.addMonstersBeaten(enemyMonster.type);
                 battleController.setBattleLog(battleController.getBattleLog().getText() + "\n" +  enemyMonster.name + " was defeated!" + "\n" + player.teamLeader.name + " gained " + enemyMonster.xpYield + " xp!");
                 //  check if player made progress on any quests
-                for (int i = 0; i < player.quests.size; i++) {
+                for (int i = 0; i < player.quests.size(); i++) {
                     //  x wild battles quest
                     if (player.quests.get(i).type == 1) {
                         player.quests.get(i).decreaseRemaining();
@@ -108,10 +110,10 @@ public class Battle {
                 player.teamLeader.setXpCurr(enemyMonster.xpYield);
                 battleController.setBattleLog(battleController.getBattleLog().getText() + "\n" + enemyMonster.name + " fainted!" + "\n" + player.teamLeader.name + " gained " + enemyMonster.xpYield + " xp!");
                 //  enemy trainer out of monsters
-                if (enemyTrainer.pc.size <= 0) {
+                if (enemyTrainer.pc.size() <= 0) {
                     winner = player.name;
                     //  complete battle quest
-                    for (int i = 0; i < player.quests.size; i++) {
+                    for (int i = 0; i < player.quests.size(); i++) {
                         //  complete trainer battle quest
                         if (player.quests.get(i).type == 0 || player.quests.get(i).type == 4) {
                             if (Objects.equals(player.quests.get(i).trainer.name, enemyTrainer.name)) {
@@ -192,8 +194,21 @@ public class Battle {
     }
 
     //  set damage amount to be done
-    public int checkDamage(Monster attacker, Monster defender) {
-        return -((((2 * attacker.level / 5) + 2) * attacker.attack / defender.defense) + 2);
+    public int checkDamage(Move move, Monster attacker, Monster defender) {
+        int attPower = move.damage;
+        double levelRatio = (double) (2 * attacker.level + 10) / 100;
+        double attDefRatio = (double) attacker.attack / defender.defense;
+        int damage = (int) (attPower * levelRatio * attDefRatio);
+        return -damage;
+    }
+
+    //  set player and enemy move for turn
+    public void setMove(Move move) {
+        Random rand = new Random();
+        //  set player move for turn
+        playerMove = move;
+        //  set enemy move for turn
+        enemyMove = enemyMonster.learnedMoves.get(rand.nextInt(enemyMonster.learnedMoves.size()));
     }
 
     //  set move priority
@@ -212,7 +227,11 @@ public class Battle {
                 player.setMoney(player.money + (enemyMonster.xpYield + 20));
                 this.player.setScore(player.score + (enemyMonster.xpYield / 2));
                 if (player.teamLeader.level > prevLevel) {
-                    battleController.getBattleLog().setText(battleController.getBattleLog().getText() + " " + player.teamLeader.name + " leveled up!");
+                    battleController.getBattleLog().setText(battleController.getBattleLog().getText() + " Leveled up!");
+                    int size = player.teamLeader.learnedMoves.size();
+                    if (player.teamLeader.learnedMoves.get(size-1).level == player.teamLeader.level) {
+                        battleController.getBattleLog().setText(battleController.getBattleLog().getText() + " Learned " + player.teamLeader.learnedMoves.get(size-1).name + "!");
+                    }
                 }
                 return;
             }
@@ -283,7 +302,7 @@ public class Battle {
 
     //  player monster attacks enemy monster
     public void playerAttacks(BattleController battleController) {
-        double damage;
+        double damageMod = 1;
         //  if enemy dodges
         if (checkDodge() == 0) {
             battleController.setBattleLog(battleController.getBattleLog().getText() + player.teamLeader.name + " missed!");
@@ -291,25 +310,29 @@ public class Battle {
             return;
         }
         //  set player leader type damage mod
-        damage = checkTypeMatchUp(player.teamLeader, enemyMonster);
-        if (damage == .5) {
-            battleController.setBattleLog(battleController.getBattleLog().getText() + player.teamLeader.name + " attacked! Not very effective...");
-        } else if (damage == 2) {
-            battleController.setBattleLog(battleController.getBattleLog().getText() + player.teamLeader.name + " attacked! Super effective!");
+        double typeDamage = checkTypeMatchUp(playerMove, enemyMonster);
+        if (typeDamage == .5) {
+            battleController.setBattleLog(battleController.getBattleLog().getText() + player.teamLeader.name + " used " + playerMove.name + "! Not very effective...");
+        } else if (typeDamage == 1.5) {
+            battleController.setBattleLog(battleController.getBattleLog().getText() + player.teamLeader.name + " used " + playerMove.name + "! Super effective!");
         } else {
-            battleController.setBattleLog(battleController.getBattleLog().getText() + player.teamLeader.name + " attacked!");
+            battleController.setBattleLog(battleController.getBattleLog().getText() + player.teamLeader.name + " used " + playerMove.name + "!");
         }
+        //  set player stab damage mod
+        double stabDamage = checkStab(player.teamLeader.type, playerMove.type);
         //  if player leader critical hits
         if (checkCritical() == 0) {
             battleController.setBattleLog(battleController.getBattleLog().getText() + " Critical hit!");
-            damage *= 2;
+            damageMod = 2;
         }
-        enemyMonster.setHpCurr((int) ((checkDamage(player.teamLeader, enemyMonster)) * damage));
+        damageMod *= typeDamage * stabDamage;
+        int damage = (int) (checkDamage(playerMove, player.teamLeader, enemyMonster) * damageMod);
+        enemyMonster.setHpCurr(damage);
         checkHealth(battleController);
     }
     //  enemy monster attacks player monster
     public void enemyAttacks(BattleController battleController) {
-        double damage;
+        double damageMod = 1;
         //  if player leader dodges
         if (checkDodge() == 0) {
             battleController.setBattleLog(battleController.getBattleLog().getText() + enemyMonster.name + " missed!");
@@ -317,20 +340,24 @@ public class Battle {
             return;
         }
         //  set enemy type damage mod
-        damage = checkTypeMatchUp(enemyMonster, player.teamLeader);
-        if (damage == .5) {
-            battleController.setBattleLog(battleController.getBattleLog().getText() + enemyMonster.name + " attacked! Not very effective...");
-        } else if (damage == 2) {
-            battleController.setBattleLog(battleController.getBattleLog().getText() + enemyMonster.name + " attacked! Super effective!");
+        double typeDamage = checkTypeMatchUp(enemyMove, player.teamLeader);
+        if (typeDamage == .5) {
+            battleController.setBattleLog(battleController.getBattleLog().getText() + enemyMonster.name + " used " + enemyMove.name + "! Not very effective...");
+        } else if (typeDamage == 1.5) {
+            battleController.setBattleLog(battleController.getBattleLog().getText() + enemyMonster.name + " used " + enemyMove.name + "! Super effective!");
         } else {
-            battleController.setBattleLog(battleController.getBattleLog().getText() + enemyMonster.name + " attacked!");
+            battleController.setBattleLog(battleController.getBattleLog().getText() + enemyMonster.name + " used " + enemyMove.name + "!");
         }
+        //  set enemy stab damage mod
+        double stabDamage = checkStab(enemyMonster.type, enemyMove.type);
         //  if enemy critical hits
         if (checkCritical() == 0) {
             battleController.setBattleLog(battleController.getBattleLog().getText() + " Critical hit!");
-            damage *= 2;
+            damageMod = 2;
         }
-        player.teamLeader.setHpCurr((int) ((checkDamage(enemyMonster, player.teamLeader)) * damage));
+        damageMod *= typeDamage * stabDamage;
+        int damage = (int) (checkDamage(enemyMove, enemyMonster, player.teamLeader) * damageMod);
+        player.teamLeader.setHpCurr(damage);
         checkHealth(battleController);
     }
 
@@ -344,27 +371,29 @@ public class Battle {
         Random rand = new Random();
         return rand.nextInt(95);
     }
-    //  check type match up,
-    public double checkTypeMatchUp(Monster attacker, Monster defender) {
+    //  check type match up
+    public double checkTypeMatchUp(Move attacker, Monster defender) {
         //  if neutral attack
-        for (int i = 0; i < attacker.type.neutralAgainst.size(); i++) {
-            if (Objects.equals(attacker.type.neutralAgainst.get(i), defender.type.name)) {
-                return 1;
-            }
+        if (attacker.type.neutralAgainst.contains(defender.typeName)) {
+            return 1;
         }
         //  if super effective attack
-        for (int i = 0; i < attacker.type.strongAgainst.size(); i++) {
-            if (Objects.equals(attacker.type.strongAgainst.get(i), defender.type.name)) {
-                return 2;
-            }
+        if (attacker.type.strongAgainst.contains(defender.typeName)) {
+            return 1.5;
         }
         //  if not very effective
-        for (int i = 0; i < attacker.type.weakAgainst.size(); i++) {
-            if (Objects.equals(attacker.type.weakAgainst.get(i), defender.type.name)) {
-                return .5;
-            }
+        if (attacker.type.weakAgainst.contains(defender.typeName)) {
+            return .5;
         }
         //  default
         return 1;
+    }
+    //  check same type attack bonus
+    public double checkStab(Type monsterType, Type moveType) {
+        if (Objects.equals(monsterType.name, moveType.name)) {
+            return 1.5;
+        } else {
+            return 1;
+        }
     }
 }

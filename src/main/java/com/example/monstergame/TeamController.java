@@ -112,6 +112,24 @@ public class TeamController {
     @FXML
     private Label statSpeedLabel;
     @FXML
+    private Label statMoveLabel;
+    @FXML
+    private Label statMove1Label;
+    @FXML
+    private Label statMove2Label;
+    @FXML
+    private Label statMove3Label;
+    @FXML
+    private Label statMove4Label;
+    @FXML
+    private Label moveNameLabel;
+    @FXML
+    private Label moveTypeLabel;
+    @FXML
+    private Label moveDamageLabel;
+    @FXML
+    private Label moveInfoLabel;
+    @FXML
     private ProgressBar statHpBar;
     @FXML
     private ProgressBar statXpBar;
@@ -231,167 +249,185 @@ public class TeamController {
             }
         }
     }
-    //  set empty team circles
-    public void setEmptyTeamCircles() {
-        //  if slot is unlocked and unoccupied
-        for (int i = player.pc.size(); i < 6; i++) {
-            //  slot 1
-            if (i == 0 && player.pc.get(0) == null) {
-                team1Circle.setFill(Paint.valueOf("#ffffff"));
-                if (player.pcSizeLimit < i) {
-                    team1Circle.setVisible(false);
-                    team1NameLabel.setVisible(false);
-                } else {
-                    team1NameLabel.setText("Slot empty");
-                }
-                team1LevelLabel.setVisible(false);
-                team1HpBar.setVisible(false);
-                team1XpBar.setVisible(false);
-            }
-            //  slot 2
-            if (i == 1 && player.pc.get(1) == null) {
-                team2Circle.setFill(Paint.valueOf("#ffffff"));
-                if (player.pcSizeLimit <= i) {
-                    team2Circle.setVisible(false);
-                    team2NameLabel.setVisible(false);
-                } else {
-                    team2NameLabel.setText("Slot empty!");
-                }
-                team2LevelLabel.setVisible(false);
-                team2HpBar.setVisible(false);
-                team2XpBar.setVisible(false);
-            }
-            //  slot 3
-            if (i == 2 && player.pc.get(2) == null) {
-                team3Circle.setFill(Paint.valueOf("#ffffff"));
-                if (player.pcSizeLimit <= i) {
-                    team3Circle.setVisible(false);
-                    team3NameLabel.setVisible(false);
-                } else {
-                    team3NameLabel.setText("Slot empty!");
-                }
-                team3LevelLabel.setVisible(false);
-                team3HpBar.setVisible(false);
-                team3XpBar.setVisible(false);
-            }
-            //  slot 4
-            if (i == 3 && player.pc.get(3) == null) {
-                team4Circle.setFill(Paint.valueOf("#ffffff"));
-                if (player.pcSizeLimit <= i) {
-                    team4Circle.setVisible(false);
-                    team4NameLabel.setVisible(false);
-                } else {
-                    team4NameLabel.setText("Slot empty!");
-                }
-                team4LevelLabel.setVisible(false);
-                team4HpBar.setVisible(false);
-                team4XpBar.setVisible(false);
-            }
-            //  slot 5
-            if (i == 4 && player.pc.get(4) == null) {
-                team5Circle.setFill(Paint.valueOf("#ffffff"));
-                if (player.pcSizeLimit <= i) {
-                    team5Circle.setVisible(false);
-                    team5NameLabel.setVisible(false);
-                } else {
-                    team5NameLabel.setText("Slot empty!");
-                }
-                team5LevelLabel.setVisible(false);
-                team5HpBar.setVisible(false);
-                team5XpBar.setVisible(false);
-            }
-            //  slot 6
-            if (i == 5 && player.pc.get(5) == null) {
-                team6Circle.setFill(Paint.valueOf("#ffffff"));
-                if (player.pcSizeLimit <= i) {
-                    team6Circle.setVisible(false);
-                    team6NameLabel.setVisible(false);
-                } else {
-                    team6NameLabel.setText("Slot empty!");
-                }
-                team6LevelLabel.setVisible(false);
-                team6HpBar.setVisible(false);
-                team6XpBar.setVisible(false);
-            }
-        }
-    }
     //  set each team circle color and stats
     public void setTeamCircles() {
-        for (int i = 0; i < player.pc.size(); i++) {
-            //  team 1
-            if (i == 0) {
-                team1Circle.setFill(player.pc.get(i).type.color);
-                team1LevelLabel.setText("Lvl: " + player.pc.get(i).level);
-                if (player.pc.get(i).hpCurr <= 0) {
-                    team1LevelLabel.setText(team1LevelLabel.getText() + " Fainted!");
-                } else {
-                    team1LevelLabel.setText(team1LevelLabel.getText() + " Hp: " + player.pc.get(i).hpCurr + "/" + player.pc.get(i).hpMax);
-                }
-                team1NameLabel.setText(player.pc.get(0).name);
-                setBars(0);
+        if (player.pc.size() == 0) {
+            hideTeamSlot1();
+            hideTeamSlot2();
+            hideTeamSlot3();
+            hideTeamSlot4();
+            hideTeamSlot5();
+            hideTeamSlot6();
+        } else {
+            //  slot 1
+            team1Circle.setFill(player.pc.get(0).type.color);
+            team1LevelLabel.setText("Lvl: " + player.pc.get(0).level);
+            if (player.pc.get(0).hpCurr <= 0) {
+                team1LevelLabel.setText(team1LevelLabel.getText() + " Fainted!");
+            } else {
+                team1LevelLabel.setText(team1LevelLabel.getText() + " Hp: " + player.pc.get(0).hpCurr + "/" + player.pc.get(0).hpMax);
             }
-            //  team 2
-            else if (i == 1) {
-                team2Circle.setFill(player.pc.get(i).type.color);
-                team2LevelLabel.setText("Lvl: " + player.pc.get(i).level);
-                if (player.pc.get(i).hpCurr <= 0) {
+            team1NameLabel.setText(player.pc.get(0).name);
+            setBars(0);
+            // slot 2
+            if (player.pc.size() > 1) {
+                team2Circle.setFill(player.pc.get(1).type.color);
+                team2LevelLabel.setText("Lvl: " + player.pc.get(1).level);
+                if (player.pc.get(1).hpCurr <= 0) {
                     team2LevelLabel.setText(team2LevelLabel.getText() + " Fainted!");
                 } else {
-                    team2LevelLabel.setText(team2LevelLabel.getText() + " Hp: " + player.pc.get(i).hpCurr + "/" + player.pc.get(i).hpMax);
+                    team2LevelLabel.setText(team2LevelLabel.getText() + " Hp: " + player.pc.get(1).hpCurr + "/" + player.pc.get(1).hpMax);
                 }
                 team2NameLabel.setText(player.pc.get(1).name);
                 setBars(1);
+            } else {
+                hideTeamSlot2();
+                hideTeamSlot3();
+                hideTeamSlot4();
+                hideTeamSlot5();
+                hideTeamSlot6();
             }
-            //  team 3
-            else if (i == 2) {
-                team3Circle.setFill(player.pc.get(i).type.color);
-                team3LevelLabel.setText("Lvl: " + player.pc.get(i).level);
-                if (player.pc.get(i).hpCurr <= 0) {
+            //  slot 3
+            if (player.pc.size() > 2) {
+                team3Circle.setFill(player.pc.get(2).type.color);
+                team3LevelLabel.setText("Lvl: " + player.pc.get(2).level);
+                if (player.pc.get(2).hpCurr <= 0) {
                     team3LevelLabel.setText(team3LevelLabel.getText() + " Fainted!");
                 } else {
-                    team3LevelLabel.setText(team3LevelLabel.getText() + " Hp: " + player.pc.get(i).hpCurr + "/" + player.pc.get(i).hpMax);
+                    team3LevelLabel.setText(team3LevelLabel.getText() + " Hp: " + player.pc.get(2).hpCurr + "/" + player.pc.get(2).hpMax);
                 }
                 team3NameLabel.setText(player.pc.get(2).name);
                 setBars(2);
+            } else {
+                hideTeamSlot3();
+                hideTeamSlot4();
+                hideTeamSlot5();
+                hideTeamSlot6();
             }
-            //  team 4
-            else if (i == 3) {
-                team4Circle.setFill(player.pc.get(i).type.color);
-                team4LevelLabel.setText("Lvl: " + player.pc.get(i).level);
-                if (player.pc.get(i).hpCurr <= 0) {
+            //  slot 4
+            if (player.pc.size() > 3) {
+                team4Circle.setFill(player.pc.get(3).type.color);
+                team4LevelLabel.setText("Lvl: " + player.pc.get(3).level);
+                if (player.pc.get(3).hpCurr <= 0) {
                     team4LevelLabel.setText(team4LevelLabel.getText() + " Fainted!");
                 } else {
-                    team4LevelLabel.setText(team4LevelLabel.getText() + " Hp: " + player.pc.get(i).hpCurr + "/" + player.pc.get(i).hpMax);
+                    team4LevelLabel.setText(team4LevelLabel.getText() + " Hp: " + player.pc.get(3).hpCurr + "/" + player.pc.get(3).hpMax);
                 }
                 team4NameLabel.setText(player.pc.get(3).name);
                 setBars(3);
+            } else {
+                hideTeamSlot4();
+                hideTeamSlot5();
+                hideTeamSlot6();
             }
-            //  team 5
-            else if (i == 4) {
-                team5Circle.setFill(player.pc.get(i).type.color);
-                team5LevelLabel.setText("Lvl: " + player.pc.get(i).level);
-                if (player.pc.get(i).hpCurr <= 0) {
+            //  slot 5
+            if (player.pc.size() > 4) {
+                team5Circle.setFill(player.pc.get(4).type.color);
+                team5LevelLabel.setText("Lvl: " + player.pc.get(4).level);
+                if (player.pc.get(4).hpCurr <= 0) {
                     team5LevelLabel.setText(team5LevelLabel.getText() + " Fainted!");
                 } else {
-                    team5LevelLabel.setText(team5LevelLabel.getText() + " Hp: " + player.pc.get(i).hpCurr + "/" + player.pc.get(i).hpMax);
+                    team5LevelLabel.setText(team5LevelLabel.getText() + " Hp: " + player.pc.get(4).hpCurr + "/" + player.pc.get(4).hpMax);
                 }
                 team5NameLabel.setText(player.pc.get(4).name);
                 setBars(4);
+            } else {
+                hideTeamSlot5();
+                hideTeamSlot6();
             }
-            //  team6
-            else if (i == 5) {
-                team6Circle.setFill(player.pc.get(i).type.color);
-                team6LevelLabel.setText("Lvl: " + player.pc.get(i).level);
-                if (player.pc.get(i).hpCurr <= 0) {
+            //  slot 6
+            if (player.pc.size() > 5) {
+                team6Circle.setFill(player.pc.get(5).type.color);
+                team6LevelLabel.setText("Lvl: " + player.pc.get(5).level);
+                if (player.pc.get(5).hpCurr <= 0) {
                     team6LevelLabel.setText(team6LevelLabel.getText() + " Fainted!");
                 } else {
-                    team6LevelLabel.setText(team6LevelLabel.getText() + " Hp: " + player.pc.get(i).hpCurr + "/" + player.pc.get(i).hpMax);
+                    team6LevelLabel.setText(team6LevelLabel.getText() + " Hp: " + player.pc.get(5).hpCurr + "/" + player.pc.get(5).hpMax);
                 }
                 team6NameLabel.setText(player.pc.get(5).name);
                 setBars(5);
+            } else {
+                hideTeamSlot6();
             }
         }
-        setEmptyTeamCircles();
+    }
+    public void hideTeamSlot1() {
+        if (player.pcSizeLimit > 0) {
+            team1Circle.setFill(Paint.valueOf("#ffffff"));
+            team1NameLabel.setText("Slot empty!");
+        } else {
+            //  hide slot 1
+            team1Circle.setVisible(false);
+            team1NameLabel.setVisible(false);
+        }
+        team1LevelLabel.setVisible(false);
+        team1HpBar.setVisible(false);
+        team1XpBar.setVisible(false);
+    }
+    public void hideTeamSlot2() {
+        if (player.pcSizeLimit > 1) {
+            team2Circle.setFill(Paint.valueOf("#ffffff"));
+            team2NameLabel.setText("Slot empty!");
+        } else {
+            //  hide slot 2
+            team2Circle.setVisible(false);
+            team2NameLabel.setVisible(false);
+        }
+        team2LevelLabel.setVisible(false);
+        team2HpBar.setVisible(false);
+        team2XpBar.setVisible(false);
+    }
+    public void hideTeamSlot3() {
+        if (player.pcSizeLimit > 2) {
+            team3Circle.setFill(Paint.valueOf("#ffffff"));
+            team3NameLabel.setText("Slot empty!");
+        } else {
+            //  hide slot 3
+            team3Circle.setVisible(false);
+            team3NameLabel.setVisible(false);
+        }
+        team3LevelLabel.setVisible(false);
+        team3HpBar.setVisible(false);
+        team3XpBar.setVisible(false);
+    }
+    public void hideTeamSlot4() {
+        if (player.pcSizeLimit > 3) {
+            team4Circle.setFill(Paint.valueOf("#ffffff"));
+            team4NameLabel.setText("Slot empty!");
+        } else {
+            //  hide slot 4
+            team4Circle.setVisible(false);
+            team4NameLabel.setVisible(false);
+        }
+        team4LevelLabel.setVisible(false);
+        team4HpBar.setVisible(false);
+        team4XpBar.setVisible(false);
+    }
+    public void hideTeamSlot5() {
+        if (player.pcSizeLimit > 4) {
+            team5Circle.setFill(Paint.valueOf("#ffffff"));
+            team5NameLabel.setText("Slot empty!");
+        } else {
+            //  hide slot 5
+            team5Circle.setVisible(false);
+            team5NameLabel.setVisible(false);
+        }
+        team5LevelLabel.setVisible(false);
+        team5HpBar.setVisible(false);
+        team5XpBar.setVisible(false);
+    }
+    public void hideTeamSlot6() {
+        if (player.pcSizeLimit > 5) {
+            team6Circle.setFill(Paint.valueOf("#ffffff"));
+            team6NameLabel.setText("Slot empty!");
+        } else {
+            //  hide slot 6
+            team6Circle.setVisible(false);
+            team6NameLabel.setVisible(false);
+        }
+        team6LevelLabel.setVisible(false);
+        team6HpBar.setVisible(false);
+        team6XpBar.setVisible(false);
     }
 
     //  set team organization message log
@@ -415,6 +451,15 @@ public class TeamController {
         statAttackLabel.setVisible(false);
         statDefenseLabel.setVisible(false);
         statSpeedLabel.setVisible(false);
+        statMoveLabel.setVisible(false);
+        statMove1Label.setVisible(false);
+        statMove2Label.setVisible(false);
+        statMove3Label.setVisible(false);
+        statMove4Label.setVisible(false);
+        moveNameLabel.setVisible(false);
+        moveTypeLabel.setVisible(false);
+        moveDamageLabel.setVisible(false);
+        moveInfoLabel.setVisible(false);
         statHpBar.setVisible(false);
         statXpBar.setVisible(false);
         makeLeaderButton.setVisible(false);
@@ -456,6 +501,7 @@ public class TeamController {
         statIndex = index;
         gameLogLabel.setText("Viewing " + player.pc.get(statIndex).name + "'s stats");
         showStatAffinities(monster);
+        showMoves(monster);
     }
     //  show stat affinities
     public void showStatAffinities(Monster monster) {
@@ -484,6 +530,54 @@ public class TeamController {
             statSpeedLabel.setText(statSpeedLabel.getText() + "   " + monster.speedStatBoost + "%");
         }
     }
+    //  show moves
+    public void showMoves(Monster monster) {
+        statMoveLabel.setVisible(true);
+        if (monster.learnedMoves.size() == 0) {
+            statMoveLabel.setVisible(false);
+            statMove1Label.setVisible(false);
+            statMove2Label.setVisible(false);
+            statMove3Label.setVisible(false);
+            statMove4Label.setVisible(false);
+        } else {
+            //  show move 1
+            statMove1Label.setVisible(true);
+            statMove1Label.setText(monster.learnedMoves.get(0).name);
+            //  show move 2
+            if (monster.learnedMoves.size() > 1) {
+                statMove2Label.setVisible(true);
+                statMove2Label.setText(monster.learnedMoves.get(1).name);
+            } else {
+                statMove2Label.setVisible(false);
+            }
+            //  show move 3
+            if (monster.learnedMoves.size() > 2) {
+                statMove3Label.setVisible(true);
+                statMove3Label.setText(monster.learnedMoves.get(2).name);
+            } else {
+                statMove3Label.setVisible(false);
+            }
+            //  show move 4
+            if (monster.learnedMoves.size() > 3) {
+                statMove4Label.setVisible(true);
+                statMove4Label.setText(monster.learnedMoves.get(3).name);
+            } else {
+                statMove4Label.setVisible(false);
+            }
+        }
+    }
+    //  show move info
+    public void showMoveInfo(Monster monster, int moveIndex) {
+        moveNameLabel.setVisible(true);
+        moveNameLabel.setText(monster.learnedMoves.get(moveIndex).name);
+        moveTypeLabel.setVisible(true);
+        moveTypeLabel.setText("Type: " + monster.learnedMoves.get(moveIndex).type.name);
+        moveDamageLabel.setVisible(true);
+        moveDamageLabel.setText("Power: " + monster.learnedMoves.get(moveIndex).damage);
+        moveInfoLabel.setVisible(true);
+        moveInfoLabel.setWrapText(true);
+        moveInfoLabel.setText(monster.learnedMoves.get(moveIndex).info);
+    }
 
     //  stat hp and xp if viewing
     public void setStatBars(int index) {
@@ -503,8 +597,9 @@ public class TeamController {
 
     //  show stats or use item on selected circle
     public void onTeamCircle1Click() {
+        hideStatView();
         //  if in heal mode
-        if ((mode == 1 || mode == 3) && player.pc.get(0) != null) {
+        if ((mode == 1 || mode == 3) && player.pc.size() > 0) {
             //  using potion
             if (player.itemInUse == player.bag.get(0)) {
                 player.usePotion(player.pc.get(0), gameLogLabel);
@@ -516,33 +611,17 @@ public class TeamController {
             setTeamCircles();
         }
         //  if in team mode
-        else if ((mode == 0 || mode == 2 || mode == 5) && player.pc.get(0) != null) {
+        else if ((mode == 0 || mode == 2 || mode == 5) && player.pc.size() > 0) {
             gameLogLabel.setText("Viewing " + player.pc.get(0).name + "'s stats");
             showStatView(0);
             changeNameField.setVisible(false);
             changeNameButton.setText("Change Name");
         }
-        //  if in swap mode
-        else if (mode == 4 && player.pc.get(0) != null) {
-            if (swapIndex != 0) {
-                gameLogLabel.setText("Swapped " + player.pc.get(swapIndex).name + " with " + player.pc.get(0).name);
-                if (prevMode == 2) {
-                    battleController.setBattleLog(gameLogLabel.getText());
-                }
-                Monster temp = player.pc.get(0);
-                player.pc.set(0, swapTemp);
-                player.pc.set(swapIndex, temp);
-            } else {
-                gameLogLabel.setText("Select monster to view stats");
-            }
-            player.setLeader();
-            mode = prevMode;
-            setTeamCircles();
-        }
     }
     public void onTeamCircle2Click() {
+        hideStatView();
         //  if in heal mode
-        if ((mode == 1 || mode == 3) && player.pc.get(1) != null) {
+        if ((mode == 1 || mode == 3) && player.pc.size() > 1) {
             //  using potion
             if (player.itemInUse == player.bag.get(0)) {
                 player.usePotion(player.pc.get(1), gameLogLabel);
@@ -554,39 +633,17 @@ public class TeamController {
             setTeamCircles();
         }
         //  if in team mode
-        else if ((mode == 0 || mode == 2 || mode == 5) && player.pc.get(1) != null) {
+        else if ((mode == 0 || mode == 2 || mode == 5) && player.pc.size() > 1) {
             gameLogLabel.setText("Viewing " + player.pc.get(1).name + "'s stats");
             showStatView(1);
             changeNameField.setVisible(false);
             changeNameButton.setText("Change Name");
         }
-        //  if in swap mode
-        else if (mode == 4 && player.pc.get(1) != null) {
-            if (swapIndex != 1) {
-                gameLogLabel.setText("Swapped " + player.pc.get(swapIndex).name + " with " + this.player.pc.get(1).name);
-                if (prevMode == 2) {
-                    battleController.setBattleLog(gameLogLabel.getText());
-                }
-                Monster temp = player.pc.get(1);
-                player.pc.set(1, swapTemp);
-                player.pc.set(swapIndex, temp);
-            } else {
-                gameLogLabel.setText("Swapped " + player.pc.get(swapIndex).name + " with " + player.pc.get(0).name);
-                if (prevMode == 2) {
-                    battleController.setBattleLog(gameLogLabel.getText());
-                }
-                Monster temp = player.pc.get(0);
-                player.pc.set(0, swapTemp);
-                player.pc.set(swapIndex, temp);
-            }
-            player.setLeader();
-            mode = prevMode;
-            setTeamCircles();
-        }
     }
     public void onTeamCircle3Click() {
+        hideStatView();
         //  if in heal mode
-        if ((mode == 1 || mode == 3) && player.pc.get(2) != null) {
+        if ((mode == 1 || mode == 3) && player.pc.size() > 2) {
             //  using potion
             if (player.itemInUse == player.bag.get(0)) {
                 player.usePotion(player.pc.get(2), gameLogLabel);
@@ -598,39 +655,17 @@ public class TeamController {
             setTeamCircles();
         }
         //  if in team mode
-        else if ((mode == 0 || mode == 2 || mode == 5) && player.pc.get(2) != null) {
+        else if ((mode == 0 || mode == 2 || mode == 5) && player.pc.size() > 2) {
             gameLogLabel.setText("Viewing " + player.pc.get(2).name + "'s stats");
             showStatView(2);
             changeNameField.setVisible(false);
             changeNameButton.setText("Change Name");
         }
-        //  if in swap mode
-        else if (mode == 4 && player.pc.get(2) != null) {
-            if (swapIndex != 2) {
-                gameLogLabel.setText("Swapped " + player.pc.get(swapIndex).name + " with " + player.pc.get(2).name);
-                if (prevMode == 2) {
-                    battleController.setBattleLog(gameLogLabel.getText());
-                }
-                Monster temp = player.pc.get(2);
-                player.pc.set(2, swapTemp);
-                player.pc.set(swapIndex, temp);
-            } else {
-                gameLogLabel.setText("Swapped " + player.pc.get(swapIndex).name + " with " + player.pc.get(0).name);
-                if (prevMode == 2) {
-                    battleController.setBattleLog(gameLogLabel.getText());
-                }
-                Monster temp = player.pc.get(0);
-                player.pc.set(0, swapTemp);
-                player.pc.set(swapIndex, temp);
-            }
-            player.setLeader();
-            mode = prevMode;
-            setTeamCircles();
-        }
     }
     public void onTeamCircle4Click() {
+        hideStatView();
         //  if in heal mode
-        if ((mode == 1 || mode == 3) && player.pc.get(3) != null) {
+        if ((mode == 1 || mode == 3) && player.pc.size() > 3) {
             //  using potion
             if (player.itemInUse == player.bag.get(0)) {
                 player.usePotion(player.pc.get(3), gameLogLabel);
@@ -642,39 +677,17 @@ public class TeamController {
             setTeamCircles();
         }
         //  if in team mode
-        else if ((mode == 0 || mode == 2 || mode == 5) &&player.pc.get(3) != null) {
+        else if ((mode == 0 || mode == 2 || mode == 5) &&player.pc.size() > 3) {
             gameLogLabel.setText("Viewing " + player.pc.get(3).name + "'s stats");
             showStatView(3);
             changeNameField.setVisible(false);
             changeNameButton.setText("Change Name");
         }
-        //  if in swap mode
-        else if (mode == 4 && player.pc.get(3) != null) {
-            if (swapIndex != 3) {
-                gameLogLabel.setText("Swapped " + player.pc.get(swapIndex).name + " with " + player.pc.get(3).name);
-                if (prevMode == 2) {
-                    battleController.setBattleLog(gameLogLabel.getText());
-                }
-                Monster temp = player.pc.get(3);
-                player.pc.set(3, swapTemp);
-                player.pc.set(swapIndex, temp);
-            } else {
-                gameLogLabel.setText("Swapped " + player.pc.get(swapIndex).name + " with " + player.pc.get(0).name);
-                if (prevMode == 2) {
-                    battleController.setBattleLog(gameLogLabel.getText());
-                }
-                Monster temp = player.pc.get(0);
-                player.pc.set(0, swapTemp);
-                player.pc.set(swapIndex, temp);
-            }
-            player.setLeader();
-            mode = prevMode;
-            setTeamCircles();
-        }
     }
     public void onTeamCircle5Click() {
+        hideStatView();
         //  if in heal mode
-        if ((mode == 1 || mode == 3) && player.pc.get(4) != null) {
+        if ((mode == 1 || mode == 3) && player.pc.size() > 4) {
             //  using potion
             if (player.itemInUse == player.bag.get(0)) {
                 player.usePotion(player.pc.get(4), gameLogLabel);
@@ -686,39 +699,17 @@ public class TeamController {
             setTeamCircles();
         }
         //  if in team mode
-        else if ((mode == 0 || mode == 2 || mode == 5) && player.pc.get(4) != null) {
+        else if ((mode == 0 || mode == 2 || mode == 5) && player.pc.size() > 4) {
             gameLogLabel.setText("Viewing " + player.pc.get(4).name + "'s stats");
             showStatView(4);
             changeNameField.setVisible(false);
             changeNameButton.setText("Change Name");
         }
-        //  if in swap mode
-        else if (mode == 4 && player.pc.get(4) != null) {
-            if (swapIndex != 4) {
-                gameLogLabel.setText("Swapped " + player.pc.get(swapIndex).name + " with " + player.pc.get(4).name);
-                if (prevMode == 2) {
-                    battleController.setBattleLog(gameLogLabel.getText());
-                }
-                Monster temp = player.pc.get(4);
-                player.pc.set(4, swapTemp);
-                player.pc.set(swapIndex, temp);
-            } else {
-                gameLogLabel.setText("Swapped " + player.pc.get(swapIndex).name + " with " + player.pc.get(0).name);
-                if (prevMode == 2) {
-                    battleController.setBattleLog(gameLogLabel.getText());
-                }
-                Monster temp = player.pc.get(0);
-                player.pc.set(0, swapTemp);
-                player.pc.set(swapIndex, temp);
-            }
-            player.setLeader();
-            mode = prevMode;
-            setTeamCircles();
-        }
     }
     public void onTeamCircle6Click() {
+        hideStatView();
         //  if in heal mode
-        if ((mode == 1 || mode == 3) && player.pc.get(5) != null) {
+        if ((mode == 1 || mode == 3) && player.pc.size() > 5) {
             //  using potion
             if (player.itemInUse == player.bag.get(0)) {
                 player.usePotion(player.pc.get(5), gameLogLabel);
@@ -730,34 +721,11 @@ public class TeamController {
             setTeamCircles();
         }
         //  if in team mode
-        else if ((mode == 0 || mode == 2 || mode == 5) && player.pc.get(5) != null) {
+        else if ((mode == 0 || mode == 2 || mode == 5) && player.pc.size() > 5) {
             gameLogLabel.setText("Viewing " + player.pc.get(5).name + "'s stats");
             showStatView(5);
             changeNameField.setVisible(false);
             changeNameButton.setText("Change Name");
-        }
-        //  if in swap mode
-        else if (mode == 4 && player.pc.get(5) != null) {
-            if (swapIndex != 5) {
-                gameLogLabel.setText("Swapped " + player.pc.get(swapIndex).name + " with " + player.pc.get(5).name);
-                if (prevMode == 2) {
-                    battleController.setBattleLog(gameLogLabel.getText());
-                }
-                Monster temp = player.pc.get(5);
-                player.pc.set(5, swapTemp);
-                player.pc.set(swapIndex, temp);
-            } else {
-                gameLogLabel.setText("Swapped " + player.pc.get(swapIndex).name + " with " + player.pc.get(0).name);
-                if (prevMode == 2) {
-                    battleController.setBattleLog(gameLogLabel.getText());
-                }
-                Monster temp = player.pc.get(0);
-                player.pc.set(0, swapTemp);
-                player.pc.set(swapIndex, temp);
-            }
-            player.setLeader();
-            mode = prevMode;
-            setTeamCircles();
         }
     }
 
@@ -778,7 +746,7 @@ public class TeamController {
         MainController mainController = mainLoader.getController();
         mainController.setPlayer(player);
         int eligibleCount = 0;
-        for (int i = 0; i < player.pc.size; i++) {
+        for (int i = 0; i < player.pc.size(); i++) {
             if (!player.pc.get(i).fainted) {
                 eligibleCount++;
             }
@@ -924,5 +892,22 @@ public class TeamController {
         } else {
             releaseButton.setText("Confirm");
         }
+    }
+
+    @FXML
+    public void onMove1View() {
+        showMoveInfo(player.pc.get(statIndex), 0);
+    }
+    @FXML
+    public void onMove2View() {
+        showMoveInfo(player.pc.get(statIndex), 1);
+    }
+    @FXML
+    public void onMove3View() {
+        showMoveInfo(player.pc.get(statIndex), 2);
+    }
+    @FXML
+    public void onMove4View() {
+        showMoveInfo(player.pc.get(statIndex), 3);
     }
 }

@@ -99,17 +99,16 @@ public class InfoController {
             strong2Label.setText("");
             strong3Label.setText("");
         } else {
-            if (type.strongAgainst.get(0) != null) {
-                strong1Label.setText(type.strongAgainst.get(0));
-            } else {
-                strong1Label.setText("");
-            }
-            if (type.strongAgainst.get(1) != null) {
+            //  strength 1
+            strong1Label.setText(type.strongAgainst.get(0));
+            //  strength 2
+            if (type.strongAgainst.size() > 1) {
                 strong2Label.setText(type.strongAgainst.get(1));
             } else {
                 strong2Label.setText("");
             }
-            if (type.strongAgainst.get(2) != null) {
+            //  strength 3
+            if (type.strongAgainst.size() > 2) {
                 strong3Label.setText(type.strongAgainst.get(2));
             } else {
                 strong3Label.setText("");
@@ -121,17 +120,16 @@ public class InfoController {
             weak2Label.setText("");
             weak3Label.setText("");
         } else {
-            if (type.weakAgainst.get(0) != null) {
-                weak1Label.setText(type.weakAgainst.get(0));
-            } else {
-                weak1Label.setText("");
-            }
-            if (type.weakAgainst.get(1) != null) {
+            //  weakness 1
+            weak1Label.setText(type.weakAgainst.get(0));
+            //  weakness 2
+            if (type.weakAgainst.size() > 1) {
                 weak2Label.setText(type.weakAgainst.get(1));
             } else {
                 weak2Label.setText("");
             }
-            if (type.weakAgainst.get(2) != null) {
+            //  weakness 3
+            if (type.weakAgainst.size() > 2) {
                 weak3Label.setText(type.weakAgainst.get(2));
             } else {
                 weak3Label.setText("");
@@ -192,7 +190,7 @@ public class InfoController {
         MainController mainController = mainLoader.getController();
         mainController.setPlayer(player);
         int eligibleCount = 0;
-        for (int i = 0; i < player.pc.size; i++) {
+        for (int i = 0; i < player.pc.size(); i++) {
             if (!player.pc.get(i).fainted) {
                 eligibleCount++;
             }

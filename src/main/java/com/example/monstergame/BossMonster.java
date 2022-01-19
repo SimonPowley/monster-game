@@ -21,6 +21,7 @@ public class BossMonster extends Monster {
         this.tier = tier;
         setBossType();
         setName(typeName + " Monster");
+        setMoveList();
         setBossStats();
         setBossGrowthRates();
         setBossLevel(baseLevel);
@@ -65,16 +66,22 @@ public class BossMonster extends Monster {
     }
     public void setBossLevel(int baseLevel) {
         level = 1;
+        learnMove();
+        //  + 2 levels
         if (tier == 0) {
+            for (int i = 0; i < baseLevel+2; i++) {
+                setLevel(1);
+            }
+        }
+        //  + 3 levels
+        else if (tier == 1) {
+            for (int i = 0; i < baseLevel+3; i++) {
+                setLevel(1);
+            }
+        }
+        //  + 5 levels
+        else if (tier == 2) {
             for (int i = 0; i < baseLevel+5; i++) {
-                setLevel(1);
-            }
-        } else if (tier == 1) {
-            for (int i = 0; i < baseLevel+7; i++) {
-                setLevel(1);
-            }
-        } else if (tier == 2) {
-            for (int i = 0; i < baseLevel+10; i++) {
                 setLevel(1);
             }
         }

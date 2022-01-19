@@ -125,168 +125,212 @@ public class LoadController {
     }
     //  set circles for save slot teams
     public void setSaveCircles() {
+        setSave1Circles();
+        setSave2Circles();
+        setSave3Circles();
+    }
+    public void setSave1Circles() {
         //  show save 1's team
-        if (playerSave1 != null) {
-            //  monster in slot 1
-            if (playerSave1.pc.get(0) != null) {
-                save1Circle1.setVisible(true);
-                save1Circle1.setFill(playerSave1.pc.get(0).type.color);
-            } else {
-                save1Circle1.setVisible(false);
-            }
-            //  monster in slot 2
-            if (playerSave1.pc.get(1) != null) {
-                save1Circle2.setVisible(true);
-                save1Circle2.setFill(playerSave1.pc.get(1).type.color);
-            } else {
-                save1Circle2.setVisible(false);
-            }
-            //  monster in slot 3
-            if (playerSave1.pc.get(2) != null) {
-                save1Circle3.setVisible(true);
-                save1Circle3.setFill(playerSave1.pc.get(2).type.color);
-            } else {
-                save1Circle3.setVisible(false);
-            }
-            //  monster in slot 4
-            if (playerSave1.pc.get(3) != null) {
-                save1Circle4.setVisible(true);
-                save1Circle4.setFill(playerSave1.pc.get(3).type.color);
-            } else {
-                save1Circle4.setVisible(false);
-            }
-            //  monster in slot 5
-            if (playerSave1.pc.get(4) != null) {
-                save1Circle5.setVisible(true);
-                save1Circle5.setFill(playerSave1.pc.get(4).type.color);
-            } else {
-                save1Circle5.setVisible(false);
-            }
-            //  monster in slot 6
-            if (playerSave1.pc.get(5) != null) {
-                save1Circle6.setVisible(true);
-                save1Circle6.setFill(playerSave1.pc.get(5).type.color);
-            } else {
-                save1Circle6.setVisible(false);
-            }
-        } else {
+        if (playerSave1 == null) {
             save1Circle1.setVisible(false);
             save1Circle2.setVisible(false);
             save1Circle3.setVisible(false);
             save1Circle4.setVisible(false);
             save1Circle5.setVisible(false);
             save1Circle6.setVisible(false);
-        }
-        //  show save 2's team
-        if (playerSave2 != null) {
+        } else {
             //  monster in slot 1
-            if (playerSave2.pc.get(0) != null) {
-                save2Circle1.setVisible(true);
-                save2Circle1.setFill(playerSave2.pc.get(0).type.color);
-            } else {
-                save2Circle1.setVisible(false);
-            }
+            save1Circle1.setVisible(true);
+            save1Circle1.setFill(playerSave1.pc.get(0).type.color);
+            playerSave1.pc.get(0).moves.reloadTypes();
             //  monster in slot 2
-            if (playerSave2.pc.get(1) != null) {
-                save2Circle2.setVisible(true);
-                save2Circle2.setFill(playerSave2.pc.get(1).type.color);
+            if (playerSave1.pc.size() > 1) {
+                save1Circle2.setVisible(true);
+                save1Circle2.setFill(playerSave1.pc.get(1).type.color);
+                playerSave1.pc.get(1).moves.reloadTypes();
             } else {
-                save2Circle2.setVisible(false);
+                save1Circle2.setVisible(false);
+                save1Circle3.setVisible(false);
+                save1Circle4.setVisible(false);
+                save1Circle5.setVisible(false);
+                save1Circle6.setVisible(false);
             }
             //  monster in slot 3
-            if (playerSave2.pc.get(2) != null) {
-                save2Circle3.setVisible(true);
-                save2Circle3.setFill(playerSave2.pc.get(2).type.color);
+            if (playerSave1.pc.size() > 2) {
+                save1Circle3.setVisible(true);
+                save1Circle3.setFill(playerSave1.pc.get(2).type.color);
+                playerSave1.pc.get(2).moves.reloadTypes();
             } else {
-                save2Circle3.setVisible(false);
+                save1Circle3.setVisible(false);
+                save1Circle4.setVisible(false);
+                save1Circle5.setVisible(false);
+                save1Circle6.setVisible(false);
             }
             //  monster in slot 4
-            if (playerSave2.pc.get(3) != null) {
-                save2Circle4.setVisible(true);
-                save2Circle4.setFill(playerSave2.pc.get(3).type.color);
+            if (playerSave1.pc.size() > 3) {
+                save1Circle4.setVisible(true);
+                save1Circle4.setFill(playerSave1.pc.get(3).type.color);
+                playerSave1.pc.get(3).moves.reloadTypes();
             } else {
-                save2Circle4.setVisible(false);
+                save1Circle4.setVisible(false);
+                save1Circle5.setVisible(false);
+                save1Circle6.setVisible(false);
             }
             //  monster in slot 5
-            if (playerSave2.pc.get(4) != null) {
-                save2Circle5.setVisible(true);
-                save2Circle5.setFill(playerSave2.pc.get(4).type.color);
+            if (playerSave1.pc.size() > 4) {
+                save1Circle5.setVisible(true);
+                save1Circle5.setFill(playerSave1.pc.get(4).type.color);
+                playerSave1.pc.get(4).moves.reloadTypes();
             } else {
-                save2Circle5.setVisible(false);
+                save1Circle5.setVisible(false);
+                save1Circle6.setVisible(false);
             }
             //  monster in slot 6
-            if (playerSave2.pc.get(5) != null) {
-                save2Circle6.setVisible(true);
-                save2Circle6.setFill(playerSave2.pc.get(5).type.color);
+            if (playerSave1.pc.size() > 5) {
+                save1Circle6.setVisible(true);
+                save1Circle6.setFill(playerSave1.pc.get(5).type.color);
+                playerSave1.pc.get(5).moves.reloadTypes();
             } else {
-                save2Circle6.setVisible(false);
+                save1Circle6.setVisible(false);
             }
-        } else {
+        }
+    }
+    public void setSave2Circles() {
+        //  show save 2's team
+        if (playerSave2 == null) {
             save2Circle1.setVisible(false);
             save2Circle2.setVisible(false);
             save2Circle3.setVisible(false);
             save2Circle4.setVisible(false);
             save2Circle5.setVisible(false);
             save2Circle6.setVisible(false);
-        }
-        //  show save 3's team
-        if (playerSave3 != null) {
+        } else {
             //  monster in slot 1
-            if (playerSave3.pc.get(0) != null) {
-                save3Circle1.setVisible(true);
-                save3Circle1.setFill(playerSave3.pc.get(0).type.color);
-            } else {
-                save3Circle1.setVisible(false);
-            }
+            save2Circle1.setVisible(true);
+            save2Circle1.setFill(playerSave2.pc.get(0).type.color);
+            playerSave1.pc.get(0).moves.reloadTypes();
             //  monster in slot 2
-            if (playerSave3.pc.get(1) != null) {
-                save3Circle2.setVisible(true);
-                save3Circle2.setFill(playerSave3.pc.get(1).type.color);
+            if (playerSave2.pc.size() > 1) {
+                save2Circle2.setVisible(true);
+                save2Circle2.setFill(playerSave2.pc.get(1).type.color);
+                playerSave1.pc.get(1).moves.reloadTypes();
             } else {
-                save3Circle2.setVisible(false);
+                save2Circle2.setVisible(false);
+                save2Circle3.setVisible(false);
+                save2Circle4.setVisible(false);
+                save2Circle5.setVisible(false);
+                save2Circle6.setVisible(false);
             }
             //  monster in slot 3
-            if (playerSave3.pc.get(2) != null) {
-                save3Circle3.setVisible(true);
-                save3Circle3.setFill(playerSave3.pc.get(2).type.color);
+            if (playerSave2.pc.size() > 2) {
+                save2Circle3.setVisible(true);
+                save2Circle3.setFill(playerSave2.pc.get(2).type.color);
+                playerSave1.pc.get(2).moves.reloadTypes();
             } else {
-                save3Circle3.setVisible(false);
+                save2Circle3.setVisible(false);
+                save2Circle4.setVisible(false);
+                save2Circle5.setVisible(false);
+                save2Circle6.setVisible(false);
             }
             //  monster in slot 4
-            if (playerSave3.pc.get(3) != null) {
-                save3Circle4.setVisible(true);
-                save3Circle4.setFill(playerSave3.pc.get(3).type.color);
+            if (playerSave2.pc.size() > 3) {
+                save2Circle4.setVisible(true);
+                save2Circle4.setFill(playerSave2.pc.get(3).type.color);
+                playerSave1.pc.get(3).moves.reloadTypes();
             } else {
-                save3Circle4.setVisible(false);
+                save2Circle4.setVisible(false);
+                save2Circle5.setVisible(false);
+                save2Circle6.setVisible(false);
             }
             //  monster in slot 5
-            if (playerSave3.pc.get(4) != null) {
-                save3Circle5.setVisible(true);
-                save3Circle5.setFill(playerSave3.pc.get(4).type.color);
+            if (playerSave2.pc.size() > 4) {
+                save2Circle5.setVisible(true);
+                save2Circle5.setFill(playerSave2.pc.get(4).type.color);
+                playerSave1.pc.get(4).moves.reloadTypes();
             } else {
-                save3Circle5.setVisible(false);
+                save2Circle5.setVisible(false);
+                save2Circle6.setVisible(false);
             }
             //  monster in slot 6
-            if (playerSave3.pc.get(5) != null) {
-                save3Circle6.setVisible(true);
-                save3Circle6.setFill(playerSave3.pc.get(5).type.color);
+            if (playerSave2.pc.size() > 5) {
+                save2Circle6.setVisible(true);
+                save2Circle6.setFill(playerSave2.pc.get(5).type.color);
+                playerSave1.pc.get(5).moves.reloadTypes();
             } else {
-                save3Circle6.setVisible(false);
+                save2Circle6.setVisible(false);
             }
-        } else {
+        }
+    }
+    public void setSave3Circles() {
+        //  show save 3's team
+        if (playerSave3 == null) {
             save3Circle1.setVisible(false);
             save3Circle2.setVisible(false);
             save3Circle3.setVisible(false);
             save3Circle4.setVisible(false);
             save3Circle5.setVisible(false);
             save3Circle6.setVisible(false);
+        } else {
+            //  monster in slot 1
+            save3Circle1.setVisible(true);
+            save3Circle1.setFill(playerSave3.pc.get(0).type.color);
+            playerSave1.pc.get(0).moves.reloadTypes();
+            //  monster in slot 2
+            if (playerSave3.pc.size() > 1) {
+                save3Circle2.setVisible(true);
+                save3Circle2.setFill(playerSave3.pc.get(1).type.color);
+                playerSave1.pc.get(1).moves.reloadTypes();
+            } else {
+                save3Circle2.setVisible(false);
+                save3Circle3.setVisible(false);
+                save3Circle4.setVisible(false);
+                save3Circle5.setVisible(false);
+                save3Circle6.setVisible(false);
+            }
+            //  monster in slot 3
+            if (playerSave3.pc.size() > 2) {
+                save3Circle3.setVisible(true);
+                save3Circle3.setFill(playerSave3.pc.get(2).type.color);
+                playerSave1.pc.get(2).moves.reloadTypes();
+            } else {
+                save3Circle3.setVisible(false);
+                save3Circle4.setVisible(false);
+                save3Circle5.setVisible(false);
+                save3Circle6.setVisible(false);
+            }
+            //  monster in slot 4
+            if (playerSave3.pc.size() > 3) {
+                save3Circle4.setVisible(true);
+                save3Circle4.setFill(playerSave3.pc.get(3).type.color);
+                playerSave1.pc.get(3).moves.reloadTypes();
+            } else {
+                save3Circle4.setVisible(false);
+                save3Circle5.setVisible(false);
+                save3Circle6.setVisible(false);
+            }
+            //  monster in slot 5
+            if (playerSave3.pc.size() > 4) {
+                save3Circle5.setVisible(true);
+                save3Circle5.setFill(playerSave3.pc.get(4).type.color);
+                playerSave1.pc.get(4).moves.reloadTypes();
+            } else {
+                save3Circle5.setVisible(false);
+                save3Circle6.setVisible(false);
+            }
+            //  monster in slot 6
+            if (playerSave3.pc.size() > 5) {
+                save3Circle6.setVisible(true);
+                save3Circle6.setFill(playerSave3.pc.get(5).type.color);
+                playerSave1.pc.get(5).moves.reloadTypes();
+            } else {
+                save3Circle6.setVisible(false);
+            }
         }
     }
     //  hide save slot if empty
     public void hideSaveSlot(int slot) {
         //  hide save slot 1
         if (slot == 1) {
-            saveFile1Label.setVisible(false);
             save1Circle1.setVisible(false);
             save1Circle2.setVisible(false);
             save1Circle3.setVisible(false);
@@ -296,7 +340,6 @@ public class LoadController {
             loadSave1Button.setVisible(false);
             deleteSave1Button.setVisible(false);
         } else if (slot == 2) {
-            saveFile2Label.setVisible(false);
             save2Circle1.setVisible(false);
             save2Circle2.setVisible(false);
             save2Circle3.setVisible(false);
@@ -306,7 +349,6 @@ public class LoadController {
             loadSave2Button.setVisible(false);
             deleteSave2Button.setVisible(false);
         } else if (slot == 3) {
-            saveFile3Label.setVisible(false);
             save3Circle1.setVisible(false);
             save3Circle2.setVisible(false);
             save3Circle3.setVisible(false);
@@ -412,7 +454,10 @@ public class LoadController {
     public void loadPlayerMonsterTypes() {
         if (playerSave1 != null) {
             //  set player save 1 monster types
-            for (int i = 0; i < playerSave1.pc.size; i++) {
+            for (int i = 0; i < playerSave1.pc.size(); i++) {
+                //  set move types
+                playerSave1.pc.get(i).moveList = playerSave1.pc.get(i).moves.reloadMove(playerSave1.pc.get(i).moveList);
+                playerSave1.pc.get(i).learnedMoves = playerSave1.pc.get(i).moves.reloadMove(playerSave1.pc.get(i).learnedMoves);
                 //  set normal types
                 if (Objects.equals(playerSave1.pc.get(i).typeName, "Normal")) {
                     playerSave1.pc.get(i).setType(normal);
@@ -449,7 +494,10 @@ public class LoadController {
         }
         if (playerSave2 != null) {
             //  set player save 2 monster types
-            for (int i = 0; i < playerSave2.pc.size; i++) {
+            for (int i = 0; i < playerSave2.pc.size(); i++) {
+                //  set move types
+                playerSave2.pc.get(i).moveList = playerSave2.pc.get(i).moves.reloadMove(playerSave2.pc.get(i).moveList);
+                playerSave2.pc.get(i).learnedMoves = playerSave2.pc.get(i).moves.reloadMove(playerSave2.pc.get(i).learnedMoves);
                 //  set normal types
                 if (Objects.equals(playerSave2.pc.get(i).typeName, "Normal")) {
                     playerSave2.pc.get(i).setType(normal);
@@ -486,7 +534,10 @@ public class LoadController {
         }
         if (playerSave3 != null) {
             //  set player save 3 monster types
-            for (int i = 0; i < playerSave3.pc.size; i++) {
+            for (int i = 0; i < playerSave3.pc.size(); i++) {
+                //  set move types
+                playerSave3.pc.get(i).moveList = playerSave3.pc.get(i).moves.reloadMove(playerSave3.pc.get(i).moveList);
+                playerSave3.pc.get(i).learnedMoves = playerSave3.pc.get(i).moves.reloadMove(playerSave3.pc.get(i).learnedMoves);
                 //  set normal types
                 if (Objects.equals(playerSave3.pc.get(i).typeName, "Normal")) {
                     playerSave3.pc.get(i).setType(normal);
@@ -524,46 +575,52 @@ public class LoadController {
     }
     //  load trainer's monster types for quests
     public void loadTrainerMonsterTypes(int questIndex) {
-        for (int i = 0; i < player.quests.get(questIndex).trainer.pc.size; i++) {
+        for (int i = 0; i < player.quests.get(questIndex).trainer.pc.size(); i++) {
+            //  set move types
             Monster monster = player.quests.get(questIndex).trainer.pc.get(i);
+            monster.moveList = monster.moves.reloadMove(monster.moveList);
+            monster.learnedMoves = monster.moves.reloadMove(monster.learnedMoves);
             //  set normal types
             if (Objects.equals(monster.typeName, "Normal")) {
-                player.quests.get(questIndex).trainer.pc.get(i).setType(normal);
+                monster.setType(normal);
             }
             //  set fire types
             if (Objects.equals(monster.typeName, "Fire")) {
-                player.quests.get(questIndex).trainer.pc.get(i).setType(fire);
+                monster.setType(fire);
             }
             //  set water types
             if (Objects.equals(monster.typeName, "Water")) {
-                player.quests.get(questIndex).trainer.pc.get(i).setType(water);
+                monster.setType(water);
             }
             //  set earth types
             if (Objects.equals(monster.typeName, "Earth")) {
-                player.quests.get(questIndex).trainer.pc.get(i).setType(earth);
+                monster.setType(earth);
             }
             //  set electric types
             if (Objects.equals(monster.typeName, "Electric")) {
-                player.quests.get(questIndex).trainer.pc.get(i).setType(electric);
+                monster.setType(electric);
             }
             //  set nature types
             if (Objects.equals(monster.typeName, "Nature")) {
-                player.quests.get(questIndex).trainer.pc.get(i).setType(nature);
+                monster.setType(nature);
             }
             //  set wind types
             if (Objects.equals(monster.typeName, "Wind")) {
-                player.quests.get(questIndex).trainer.pc.get(i).setType(wind);
+                monster.setType(wind);
             }
             //  set ice types
             if (Objects.equals(monster.typeName, "Ice")) {
-                player.quests.get(questIndex).trainer.pc.get(i).setType(ice);
+                monster.setType(ice);
             }
+            player.quests.get(questIndex).trainer.pc.set(i, monster);
         }
     }
     //  load boss monster types for quests
     public void loadBossMonsterTypes(int questIndex) {
         if (player.quests.get(questIndex).bossMonster != null) {
-            BossMonster boss = player.quests.get(questIndex).bossMonster;
+            //  set move types
+            player.quests.get(questIndex).bossMonster.moveList = player.quests.get(questIndex).bossMonster.moves.reloadMove(player.quests.get(questIndex).bossMonster.moveList);
+            player.quests.get(questIndex).bossMonster.learnedMoves = player.quests.get(questIndex).bossMonster.moves.reloadMove(player.quests.get(questIndex).bossMonster.learnedMoves);            BossMonster boss = player.quests.get(questIndex).bossMonster;
             //  set normal types
             if (Objects.equals(boss.typeName, "Normal")) {
                 boss.setType(normal);
@@ -601,7 +658,7 @@ public class LoadController {
     }
     //  load enemy trainer teams for battle quests
     public void loadQuestMonsterTypes() {
-        for (int i = 0; i < player.quests.size; i++) {
+        for (int i = 0; i < player.quests.size(); i++) {
             //  if quest is a trainer battle
             if (player.quests.get(i).type == 0 || player.quests.get(i).type == 4) {
                 loadTrainerMonsterTypes(i);

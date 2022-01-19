@@ -3,6 +3,7 @@ package com.example.monstergame;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 
+import java.util.LinkedList;
 import java.util.Objects;
 import java.util.Random;
 
@@ -16,18 +17,18 @@ public class Player implements java.io.Serializable {
     boolean inGame;
     boolean inBattle;
     //  player monster storage
-    StorageList<Monster> pc = new StorageList<>();
+    LinkedList<Monster> pc = new LinkedList<>();
     Monster teamLeader; // first monster sent into battle
     int pcSizeLimit;
     int highestLevel;
     //  player item storage
-    StorageList<Item> bag = new StorageList<>();
+    LinkedList<Item> bag = new LinkedList<>();
     Item itemInUse;
     int potionsInBag;
     int ballsInBag;
     int revivesInBag;
     //  player quest storage
-    StorageList<Quest> quests = new StorageList<>();
+    LinkedList<Quest> quests = new LinkedList<>();
     Trainer trainer;
     int questLimit;
     int monstersBeaten;
@@ -66,9 +67,9 @@ public class Player implements java.io.Serializable {
         Item potion = new Item("Potion", true, false, false, 0, 300, 150, 5);
         Item ball = new Item("Ball", false, true, false, 0, 200, 100, 0);
         Item revive = new Item("Revive", false, false, true, 0, 1000, 500, 0);
-        bag.add(potion.name, potion);
-        bag.add(ball.name, ball);
-        bag.add(revive.name, revive);
+        bag.add(potion);
+        bag.add(ball);
+        bag.add(revive);
         potionsInBag = potion.amount;
         ballsInBag = ball.amount;
         revivesInBag = revive.amount;
@@ -113,9 +114,9 @@ public class Player implements java.io.Serializable {
     //  set player's highest level
     public void setHighestLevel() {
         highestLevel = 0;
-        for (int i = 0; i < pc.size(); i++) {
-            if (pc.get(i).level > highestLevel) {
-                highestLevel = pc.get(i).level;
+        for (Monster monster : pc) {
+            if (monster.level > highestLevel) {
+                highestLevel = monster.level;
             }
         }
         addPcStorage();
@@ -199,16 +200,16 @@ public class Player implements java.io.Serializable {
     }
     //  add quest to quest list if there is space
     public void addQuest() {
-        if (!(quests.size >= questLimit)) {
-            quests.add("Quest", new Quest(highestLevel));
+        if (!(quests.size() >= questLimit)) {
+            quests.add(new Quest(highestLevel));
         }
     }
 
     //  set if player is in game or not (game over)
     public void setInGame() {
         int healthyCount = 0;
-        for (int i = 0; i < pc.size(); i++) {
-            if (!pc.get(i).fainted) {
+        for (Monster monster : pc) {
+            if (!monster.fainted) {
                 healthyCount++;
             }
         }
@@ -224,9 +225,9 @@ public class Player implements java.io.Serializable {
     }
     //  set monster team leader
     public void setLeader() {
-        for (int i = 0; i < pc.size(); i++) {
-            if (!pc.get(i).fainted) {
-                teamLeader = pc.get(i);
+        for (Monster monster : pc) {
+            if (!monster.fainted) {
+                teamLeader = monster;
                 return;
             }
         }

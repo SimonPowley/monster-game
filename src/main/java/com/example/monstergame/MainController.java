@@ -62,15 +62,14 @@ public class MainController {
         this.player.setLeader();
         this.player.itemInUse = null;
         int eligibleCount = 0;
-        for (int i = 0; i < this.player.pc.size; i++) {
+        for (int i = 0; i < this.player.pc.size(); i++) {
             if (!this.player.pc.get(i).fainted) {
                 eligibleCount++;
             }
         }
         if (eligibleCount == 0) {
             setLoseButtons();
-        }
-        else {
+        } else {
             resetLoseButtons();
         }
         questLabel.setText("");
@@ -81,52 +80,53 @@ public class MainController {
     //  set quests
     public void setQuestLog() {
         //  quest 1
-        if (player.quests.get(0) != null) {
-            quest1Label.setText(player.quests.get(0).trainer.name);
-            quest1Button.setVisible(true);
-            //  show reward button
-            if (player.quests.get(0).completed) {
-                quest1Button.setText("Reward");
-            }
-            //  show quest 1 info
-            else {
-                quest1Button.setText("Quest Info");
-            }
-        } else {
+        if (player.quests.size() == 0) {
             quest1Label.setVisible(false);
             quest1Button.setVisible(false);
-        }
-        //  quest 2
-        if (player.quests.get(1) != null) {
-            quest2Label.setText(player.quests.get(1).trainer.name);
-            quest2Button.setVisible(true);
-            //  show reward button
-            if (player.quests.get(1).completed) {
-                quest2Button.setText("Reward");
-            }
-            //  show quest 2 info
-            else {
-                quest2Button.setText("Quest Info");
-            }
-        } else {
             quest2Label.setVisible(false);
             quest2Button.setVisible(false);
-        }
-        //  quest 3
-        if (player.quests.get(2) != null) {
-            quest3Label.setText(player.quests.get(2).trainer.name);
-            quest3Button.setVisible(true);
-            //  show reward button
-            if (player.quests.get(2).completed) {
-                quest3Button.setText("Reward");
-            }
-            //  show quest 3 info
-            else {
-                quest3Button.setText("Quest Info");
-            }
-        } else {
             quest3Label.setVisible(false);
             quest3Button.setVisible(false);
+        } else {
+            //  quest 1
+            quest1Label.setText(player.quests.get(0).trainer.name);
+            quest1Button.setVisible(true);
+            //  set quest 1 button text
+            if (player.quests.get(0).completed) {
+                quest1Button.setText("Reward");
+            } else {
+                quest1Button.setText("Quest Info");
+            }
+            //  quest 2
+            if (player.quests.size() > 1) {
+                quest2Label.setText(player.quests.get(1).trainer.name);
+                quest2Button.setVisible(true);
+                //  set quest 2 button text
+                if (player.quests.get(1).completed) {
+                    quest2Button.setText("Reward");
+                } else {
+                    quest2Button.setText("Quest Info");
+                }
+            } else {
+                quest2Label.setVisible(false);
+                quest2Button.setVisible(false);
+                quest3Label.setVisible(false);
+                quest3Button.setVisible(false);
+            }
+            //  quest 3
+            if (player.quests.size() > 2) {
+                quest3Label.setText(player.quests.get(2).trainer.name);
+                quest3Button.setVisible(true);
+                //  set quest 3 button text
+                if (player.quests.get(2).completed) {
+                    quest3Button.setText("Reward");
+                } else {
+                    quest3Button.setText("Quest Info");
+                }
+            } else {
+                quest3Label.setVisible(false);
+                quest3Button.setVisible(false);
+            }
         }
     }
 
@@ -310,37 +310,33 @@ public class MainController {
     }
 
     @FXML
-    //  quest complete, reward item
+    //  quest info, start battle, collect reward
     protected void onQuest1Click() throws IOException {
         player.setLeader();
         if (player.quests.get(0).completed) {
-            int reward = (player.quests.get(0).trainer.levelCap + player.quests.get(0).trainer.pc.size + player.quests.get(0).originalTotal) * 8;
-            //  bonus reward for trainer battles
-            if (player.quests.get(0).type == 0) {
-                reward *= 3;
-            }
-            player.setMoney(player.money + reward);
-            player.setScore(player.score + reward);
-            setPlayer(player);
-            questLabel.setText(player.quests.get(0).trainer.name + " rewarded " + player.name + " $" + reward + "!");
-            player.quests.remove(0);
-            setQuestLog();
+            quest1Reward();
         }
         //  show quest info
         else if (Objects.equals(quest1Button.getText(), "Quest Info")) {
-            if (player.quests.get(1) != null) {
+            //  update quest 2
+            if (player.quests.size() > 1) {
                 if (player.quests.get(1).completed) {
                     quest2Button.setText("Reward");
                 } else {
                     quest2Button.setText("Quest Info");
                 }
+            } else {
+                quest2Button.setVisible(false);
             }
-            if (player.quests.get(2) != null) {
+            //  update quest 3
+            if (player.quests.size() > 2) {
                 if (player.quests.get(2).completed) {
                     quest3Button.setText("Reward");
                 } else {
                     quest3Button.setText("Quest Info");
                 }
+            } else {
+                quest3Button.setVisible(false);
             }
             questLabel.setText(player.quests.get(0).info);
             //  show battle option if trainer or boss quest
@@ -373,40 +369,46 @@ public class MainController {
             }
         }
     }
+    public void quest1Reward() {
+        int reward = (player.quests.get(0).trainer.levelCap + player.quests.get(0).trainer.pc.size() + player.quests.get(0).originalTotal) * 8;
+        //  bonus reward for trainer and boss battles
+        if (player.quests.get(0).type == 0 || player.quests.get(0).type == 4) {
+            reward *= 3;
+        } else if (player.quests.get(0).type == 3) {
+            reward *= 10;
+        }
+        player.setMoney(player.money + reward);
+        player.setScore(player.score + reward);
+        setPlayer(player);
+        questLabel.setText(player.quests.get(0).trainer.name + " rewarded " + player.name + " $" + reward + "!");
+        player.quests.remove(0);
+        setQuestLog();
+    }
 
     @FXML
     //  quest complete, reward item
     protected void onQuest2Click() throws IOException {
         player.setLeader();
         if (player.quests.get(1).completed) {
-            int reward = (player.quests.get(1).trainer.levelCap + player.quests.get(0).trainer.pc.size + player.quests.get(1).originalTotal) * 8;
-            //  bonus reward for trainer battles
-            if (player.quests.get(1).type == 0) {
-                reward *= 3;
-            }
-            player.setMoney(player.money + reward);
-            player.setScore(player.score + reward);
-            setPlayer(player);
-            questLabel.setVisible(true);
-            questLabel.setText(player.quests.get(1).trainer.name + " rewarded " + player.name + " $" + reward + "!");
-            player.quests.remove(1);
-            setQuestLog();
+            quest2Reward();
         }
         //  show quest info
         else if (Objects.equals(quest2Button.getText(), "Quest Info")) {
-            if (player.quests.get(0) != null) {
-                if (player.quests.get(0).completed) {
-                    quest1Button.setText("Reward");
-                } else {
-                    quest1Button.setText("Quest Info");
-                }
+            //  update quest 1
+            if (player.quests.get(0).completed) {
+                quest1Button.setText("Reward");
+            } else {
+                quest1Button.setText("Quest Info");
             }
-            if (player.quests.get(2) != null) {
+            //  update quest 3
+            if (player.quests.size() > 2) {
                 if (player.quests.get(2).completed) {
                     quest3Button.setText("Reward");
                 } else {
                     quest3Button.setText("Quest Info");
                 }
+            } else {
+                quest3Button.setVisible(false);
             }
             questLabel.setText(player.quests.get(1).info);
             //  show battle option if trainer or boss quest
@@ -439,40 +441,42 @@ public class MainController {
             }
         }
     }
+    public void quest2Reward() {
+        int reward = (player.quests.get(1).trainer.levelCap + player.quests.get(1).trainer.pc.size() + player.quests.get(1).originalTotal) * 8;
+        //  bonus reward for trainer and boss battles
+        if (player.quests.get(1).type == 0 || player.quests.get(1).type == 4) {
+            reward *= 3;
+        } else if (player.quests.get(1).type == 3) {
+            reward *= 10;
+        }
+        player.setMoney(player.money + reward);
+        player.setScore(player.score + reward);
+        setPlayer(player);
+        questLabel.setText(player.quests.get(1).trainer.name + " rewarded " + player.name + " $" + reward + "!");
+        player.quests.remove(1);
+        setQuestLog();
+    }
 
     @FXML
     //  quest complete, reward item
     protected void onQuest3Click() throws IOException {
         player.setLeader();
         if (player.quests.get(2).completed) {
-            int reward = (player.quests.get(2).trainer.levelCap + player.quests.get(0).trainer.pc.size + player.quests.get(2).originalTotal) * 8;
-            //  bonus reward for trainer battles
-            if (player.quests.get(2).type == 0) {
-                reward *= 3;
-            }
-            player.setMoney(player.money + reward);
-            player.setScore(player.score + reward);
-            setPlayer(player);
-            questLabel.setVisible(true);
-            questLabel.setText(player.quests.get(2).trainer.name + " rewarded " + player.name + " $" + reward + "!");
-            player.quests.remove(2);
-            setQuestLog();
+            quest3Reward();
         }
         //  show quest info
         else if (Objects.equals(quest3Button.getText(), "Quest Info")) {
-            if (player.quests.get(0) != null) {
-                if (player.quests.get(0).completed) {
-                    quest1Button.setText("Reward");
-                } else {
-                    quest1Button.setText("Quest Info");
-                }
+            //  update quest 1
+            if (player.quests.get(0).completed) {
+                quest1Button.setText("Reward");
+            } else {
+                quest1Button.setText("Quest Info");
             }
-            if (player.quests.get(1) != null) {
-                if (player.quests.get(1).completed) {
-                    quest2Button.setText("Reward");
-                } else {
-                    quest2Button.setText("Quest Info");
-                }
+            //  update quest 2
+            if (player.quests.get(1).completed) {
+                quest2Button.setText("Reward");
+            } else {
+                quest2Button.setText("Quest Info");
             }
             questLabel.setText(player.quests.get(2).info);
             //  show battle option if trainer or boss quest
@@ -504,6 +508,21 @@ public class MainController {
                 }
             }
         }
+    }
+    public void quest3Reward() {
+        int reward = (player.quests.get(2).trainer.levelCap + player.quests.get(2).trainer.pc.size() + player.quests.get(2).originalTotal) * 8;
+        //  bonus reward for trainer and boss battles
+        if (player.quests.get(2).type == 0 || player.quests.get(2).type == 4) {
+            reward *= 3;
+        } else if (player.quests.get(2).type == 3) {
+            reward *= 10;
+        }
+        player.setMoney(player.money + reward);
+        player.setScore(player.score + reward);
+        setPlayer(player);
+        questLabel.setText(player.quests.get(2).trainer.name + " rewarded " + player.name + " $" + reward + "!");
+        player.quests.remove(2);
+        setQuestLog();
     }
 
     @FXML

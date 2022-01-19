@@ -1,5 +1,6 @@
 package com.example.monstergame;
 
+import java.util.LinkedList;
 import java.util.Random;
 
 public class Trainer implements java.io.Serializable {
@@ -10,18 +11,8 @@ public class Trainer implements java.io.Serializable {
     int levelCap;
     boolean beaten;
     //  trainer monster storage
-    StorageList<Monster> pc = new StorageList<>();
-    StorageList<Monster> backupPc = new StorageList<>(); // used to reset team health after battle
-
-    //  create types for trainer monster creation
-    transient Type normal = new Type("Normal", 0);
-    transient Type fire = new Type("Fire", 1);
-    transient Type water = new Type("Water", 2);
-    transient Type earth = new Type("Earth", 3);
-    transient Type electric = new Type("Electric", 4);
-    transient Type nature = new Type("Nature", 5);
-    transient Type wind = new Type("Wind", 6);
-    transient Type ice = new Type("Ice", 7);
+    LinkedList<Monster> pc = new LinkedList<>();
+    LinkedList<Monster> backupPc = new LinkedList<>(); // used to reset team health after battle
 
 
 
@@ -81,11 +72,11 @@ public class Trainer implements java.io.Serializable {
         Monster monster;
         for (int i = 0; i < teamSize; i++) {
             monster = setRandomMonster();
-            pc.add(monster.name, monster);
+            pc.add(monster);
         }
         //  create backup pc to restore team to after running from battle
         for (int i = 0; i < teamSize; i++) {
-            backupPc.add(pc.get(i).name, pc.get(i));
+            backupPc.add(pc.get(i));
         }
     }
 
@@ -96,21 +87,21 @@ public class Trainer implements java.io.Serializable {
         int typeChance = rand.nextInt(8);
         Type randType;
         if (typeChance == 0) {
-            randType = normal;
+            randType = new Type("Normal", 0);
         } else if (typeChance == 1) {
-            randType = fire;
+            randType = new Type("Fire", 1);
         } else if (typeChance == 2) {
-            randType = water;
+            randType = new Type("Water", 2);
         } else if (typeChance == 3) {
-            randType = earth;
+            randType = new Type("Earth", 3);
         } else if (typeChance == 4) {
-            randType = electric;
+            randType = new Type("Electric", 4);
         } else if (typeChance == 5) {
-            randType = nature;
+            randType = new Type("Nature", 5);
         } else if (typeChance == 6) {
-            randType = wind;
+            randType = new Type("Wind", 6);
         } else {
-            randType = ice;
+            randType = new Type("Ice", 7);
         }
         //  random level
         int level = randomStats(2, levelCap+1);
@@ -139,13 +130,13 @@ public class Trainer implements java.io.Serializable {
 
     //  reset trainer team to pc backup after battle
     public void resetTeam() {
-        pc = new StorageList<>();
+        pc = new LinkedList<>();
         for (int i = 0; i < teamSize; i++) {
-            pc.add(backupPc.get(i).name, backupPc.get(i));
+            pc.add(backupPc.get(i));
         }
-        for (int i = 0; i < pc.size; i++) {
-            pc.get(i).setHpCurr(pc.get(i).hpMax);
+        for (Monster monster : pc) {
+            monster.setHpCurr(monster.hpMax);
         }
-        teamSize = pc.size;
+        teamSize = pc.size();
     }
 }

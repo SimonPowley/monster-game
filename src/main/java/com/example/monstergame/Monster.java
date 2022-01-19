@@ -1,5 +1,6 @@
 package com.example.monstergame;
 
+import java.util.LinkedList;
 import java.util.Random;
 
 public class Monster implements java.io.Serializable {
@@ -43,6 +44,10 @@ public class Monster implements java.io.Serializable {
     int attackStatBoost;
     int defenseStatBoost;
     int speedStatBoost;
+    //  monster move list <move, level learnt>
+    LinkedList<Move> moveList = new LinkedList<>();
+    LinkedList<Move> learnedMoves = new LinkedList<>();
+    Move moves; // all moves, pull individual moves from here
 
 
 
@@ -51,7 +56,9 @@ public class Monster implements java.io.Serializable {
         //  set monster attributes
         setName(name);
         setType(type);
+        setMoveList();
         this.level = level;
+        learnMove();
         this.xpCurr = 0;
         this.hpMax = hp;
         this.hpCurr = this.hpMax;
@@ -124,6 +131,7 @@ public class Monster implements java.io.Serializable {
     //  set monster level
     public void setLevel(int level) {
         this.level += level;
+        learnMove();
         setHp();
         setAttack();
         setDefense();
@@ -187,14 +195,33 @@ public class Monster implements java.io.Serializable {
         if (hpStatBoost != 0) {
             hpBoost = hpBoost * (1 + (hpStatBoost / 10));
         }
+        if (hpBoost <= 0) {
+            hpBoost = 1;
+        }
         hpCurr += hpBoost;
         hpMax += hpBoost;
+    }
+    //  set monster current health
+    public void setHpCurr(int hp) {
+        hpCurr += hp;
+        if (hpCurr > hpMax) {
+            hpCurr = hpMax;
+        }
+        if (hpCurr <= 0) {
+            hpCurr = 0;
+            fainted = true;
+        } else {
+            fainted = false;
+        }
     }
     //  set monster attack
     public void setAttack() {
         int attBoost = (int) (1 + (Math.pow(attack, attGrowth)) / 20);
         if (attackStatBoost != 0) {
             attBoost = attBoost * (1 + (attackStatBoost / 10));
+        }
+        if (attBoost <= 0) {
+            attBoost = 1;
         }
         attack += attBoost;
     }
@@ -204,6 +231,9 @@ public class Monster implements java.io.Serializable {
         if (defenseStatBoost != 0) {
             defBoost = defBoost * (1 + (defenseStatBoost / 10));
         }
+        if (defBoost <= 0) {
+            defBoost = 1;
+        }
         defense += defBoost;
     }
     //  set monster speed
@@ -211,6 +241,9 @@ public class Monster implements java.io.Serializable {
         int speBoost = (int) (1 + (Math.pow(speed, speGrowth)) / 20);
         if (speedStatBoost != 0) {
             speBoost = speBoost * (1 + (speedStatBoost / 10));
+        }
+        if (speBoost <= 0) {
+            speBoost = 1;
         }
         speed += speBoost;
     }
@@ -356,17 +389,17 @@ public class Monster implements java.io.Serializable {
         }
     }
 
-    //  set monster current health
-    public void setHpCurr(int hp) {
-        hpCurr += hp;
-        if (hpCurr > hpMax) {
-            hpCurr = hpMax;
-        }
-        if (hpCurr <= 0) {
-            hpCurr = 0;
-            fainted = true;
-        } else {
-            fainted = false;
+    //  set monster move list
+    public void setMoveList() {
+        moves = new Move();
+        moveList = moves.createMoveList(type);
+    }
+    //  learn new move after needed level reached
+    public void learnMove() {
+        for (Move move : moveList) {
+            if (level >= move.level && !learnedMoves.contains(move)) {
+                learnedMoves.add(move);
+            }
         }
     }
 }

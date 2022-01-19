@@ -175,7 +175,7 @@ public class SaveController {
     public void loadPlayerMonsterTypes() {
         if (playerSave1 != null) {
             //  set player save 1 monster types
-            for (int i = 0; i < playerSave1.pc.size; i++) {
+            for (int i = 0; i < playerSave1.pc.size(); i++) {
                 //  set normal types
                 if (Objects.equals(playerSave1.pc.get(i).typeName, "Normal")) {
                     playerSave1.pc.get(i).setType(normal);
@@ -212,7 +212,7 @@ public class SaveController {
         }
         if (playerSave2 != null) {
             //  set player save 2 monster types
-            for (int i = 0; i < playerSave2.pc.size; i++) {
+            for (int i = 0; i < playerSave2.pc.size(); i++) {
                 //  set normal types
                 if (Objects.equals(playerSave2.pc.get(i).typeName, "Normal")) {
                     playerSave2.pc.get(i).setType(normal);
@@ -249,7 +249,7 @@ public class SaveController {
         }
         if (playerSave3 != null) {
             //  set player save 3 monster types
-            for (int i = 0; i < playerSave3.pc.size; i++) {
+            for (int i = 0; i < playerSave3.pc.size(); i++) {
                 //  set normal types
                 if (Objects.equals(playerSave3.pc.get(i).typeName, "Normal")) {
                     playerSave3.pc.get(i).setType(normal);
@@ -287,161 +287,188 @@ public class SaveController {
     }
     //  set circles for save slot teams
     public void setSaveCircles() {
-        //  show save 1's team
-        if (playerSave1 != null) {
-            //  monster in slot 1
-            if (playerSave1.pc.get(0) != null) {
-                save1Circle1.setVisible(true);
-                save1Circle1.setFill(playerSave1.pc.get(0).type.color);
-            } else {
-                save1Circle1.setVisible(false);
-            }
-            //  monster in slot 2
-            if (playerSave1.pc.get(1) != null) {
-                save1Circle2.setVisible(true);
-                save1Circle2.setFill(playerSave1.pc.get(1).type.color);
-            } else {
-                save1Circle2.setVisible(false);
-            }
-            //  monster in slot 3
-            if (playerSave1.pc.get(2) != null) {
-                save1Circle3.setVisible(true);
-                save1Circle3.setFill(playerSave1.pc.get(2).type.color);
-            } else {
-                save1Circle3.setVisible(false);
-            }
-            //  monster in slot 4
-            if (playerSave1.pc.get(3) != null) {
-                save1Circle4.setVisible(true);
-                save1Circle4.setFill(playerSave1.pc.get(3).type.color);
-            } else {
-                save1Circle4.setVisible(false);
-            }
-            //  monster in slot 5
-            if (playerSave1.pc.get(4) != null) {
-                save1Circle5.setVisible(true);
-                save1Circle5.setFill(playerSave1.pc.get(4).type.color);
-            } else {
-                save1Circle5.setVisible(false);
-            }
-            //  monster in slot 6
-            if (playerSave1.pc.get(5) != null) {
-                save1Circle6.setVisible(true);
-                save1Circle6.setFill(playerSave1.pc.get(5).type.color);
-            } else {
-                save1Circle6.setVisible(false);
-            }
-        } else {
+        setSave1Circles();
+        setSave2Circles();
+        setSave3Circles();
+    }
+    public void setSave1Circles() {
+        //  player save 1
+        if (playerSave1 == null) {
             save1Circle1.setVisible(false);
             save1Circle2.setVisible(false);
             save1Circle3.setVisible(false);
             save1Circle4.setVisible(false);
             save1Circle5.setVisible(false);
             save1Circle6.setVisible(false);
-        }
-        //  show save 2's team
-        if (playerSave2 != null) {
+        } else {
             //  monster in slot 1
-            if (playerSave2.pc.get(0) != null) {
-                save2Circle1.setVisible(true);
-                save2Circle1.setFill(playerSave2.pc.get(0).type.color);
-            } else {
-                save2Circle1.setVisible(false);
-            }
+            save1Circle1.setVisible(true);
+            save1Circle1.setFill(playerSave1.pc.get(0).type.color);
             //  monster in slot 2
-            if (playerSave2.pc.get(1) != null) {
-                save2Circle2.setVisible(true);
-                save2Circle2.setFill(playerSave2.pc.get(1).type.color);
+            if (playerSave1.pc.size() > 1) {
+                save1Circle2.setVisible(true);
+                save1Circle2.setFill(playerSave1.pc.get(1).type.color);
             } else {
-                save2Circle2.setVisible(false);
+                save1Circle2.setVisible(false);
+                save1Circle3.setVisible(false);
+                save1Circle4.setVisible(false);
+                save1Circle5.setVisible(false);
+                save1Circle6.setVisible(false);
             }
             //  monster in slot 3
-            if (playerSave2.pc.get(2) != null) {
-                save2Circle3.setVisible(true);
-                save2Circle3.setFill(playerSave2.pc.get(2).type.color);
+            if (playerSave1.pc.size() > 2) {
+                save1Circle3.setVisible(true);
+                save1Circle3.setFill(playerSave1.pc.get(2).type.color);
             } else {
-                save2Circle3.setVisible(false);
+                save1Circle3.setVisible(false);
+                save1Circle4.setVisible(false);
+                save1Circle5.setVisible(false);
+                save1Circle6.setVisible(false);
             }
             //  monster in slot 4
-            if (playerSave2.pc.get(3) != null) {
-                save2Circle4.setVisible(true);
-                save2Circle4.setFill(playerSave2.pc.get(3).type.color);
+            if (playerSave1.pc.size() > 3) {
+                save1Circle4.setVisible(true);
+                save1Circle4.setFill(playerSave1.pc.get(3).type.color);
             } else {
-                save2Circle4.setVisible(false);
+                save1Circle4.setVisible(false);
+                save1Circle5.setVisible(false);
+                save1Circle6.setVisible(false);
             }
             //  monster in slot 5
-            if (playerSave2.pc.get(4) != null) {
-                save2Circle5.setVisible(true);
-                save2Circle5.setFill(playerSave2.pc.get(4).type.color);
+            if (playerSave1.pc.size() > 4) {
+                save1Circle5.setVisible(true);
+                save1Circle5.setFill(playerSave1.pc.get(4).type.color);
             } else {
-                save2Circle5.setVisible(false);
+                save1Circle5.setVisible(false);
+                save1Circle6.setVisible(false);
             }
             //  monster in slot 6
-            if (playerSave2.pc.get(5) != null) {
-                save2Circle6.setVisible(true);
-                save2Circle6.setFill(playerSave2.pc.get(5).type.color);
+            if (playerSave1.pc.size() > 5) {
+                save1Circle6.setVisible(true);
+                save1Circle6.setFill(playerSave1.pc.get(5).type.color);
             } else {
-                save2Circle6.setVisible(false);
+                save1Circle6.setVisible(false);
             }
-        } else {
+        }
+    }
+    public void setSave2Circles() {
+        //  player save 2
+        if (playerSave2 == null) {
             save2Circle1.setVisible(false);
             save2Circle2.setVisible(false);
             save2Circle3.setVisible(false);
             save2Circle4.setVisible(false);
             save2Circle5.setVisible(false);
             save2Circle6.setVisible(false);
-        }
-        //  show save 3's team
-        if (playerSave3 != null) {
+        } else {
             //  monster in slot 1
-            if (playerSave3.pc.get(0) != null) {
-                save3Circle1.setVisible(true);
-                save3Circle1.setFill(playerSave3.pc.get(0).type.color);
-            } else {
-                save3Circle1.setVisible(false);
-            }
+            save2Circle1.setVisible(true);
+            save2Circle1.setFill(playerSave2.pc.get(0).type.color);
             //  monster in slot 2
-            if (playerSave3.pc.get(1) != null) {
-                save3Circle2.setVisible(true);
-                save3Circle2.setFill(playerSave3.pc.get(1).type.color);
+            if (playerSave2.pc.size() > 1) {
+                save2Circle2.setVisible(true);
+                save2Circle2.setFill(playerSave2.pc.get(1).type.color);
             } else {
-                save3Circle2.setVisible(false);
+                save2Circle2.setVisible(false);
+                save2Circle3.setVisible(false);
+                save2Circle4.setVisible(false);
+                save2Circle5.setVisible(false);
+                save2Circle6.setVisible(false);
             }
             //  monster in slot 3
-            if (playerSave3.pc.get(2) != null) {
-                save3Circle3.setVisible(true);
-                save3Circle3.setFill(playerSave3.pc.get(2).type.color);
+            if (playerSave2.pc.size() > 2) {
+                save2Circle3.setVisible(true);
+                save2Circle3.setFill(playerSave2.pc.get(2).type.color);
             } else {
-                save3Circle3.setVisible(false);
+                save2Circle3.setVisible(false);
+                save2Circle4.setVisible(false);
+                save2Circle5.setVisible(false);
+                save2Circle6.setVisible(false);
             }
             //  monster in slot 4
-            if (playerSave3.pc.get(3) != null) {
-                save3Circle4.setVisible(true);
-                save3Circle4.setFill(playerSave3.pc.get(3).type.color);
+            if (playerSave2.pc.size() > 3) {
+                save2Circle4.setVisible(true);
+                save2Circle4.setFill(playerSave2.pc.get(3).type.color);
             } else {
-                save3Circle4.setVisible(false);
+                save2Circle4.setVisible(false);
+                save2Circle5.setVisible(false);
+                save2Circle6.setVisible(false);
             }
             //  monster in slot 5
-            if (playerSave3.pc.get(4) != null) {
-                save3Circle5.setVisible(true);
-                save3Circle5.setFill(playerSave3.pc.get(4).type.color);
+            if (playerSave2.pc.size() > 4) {
+                save2Circle5.setVisible(true);
+                save2Circle5.setFill(playerSave2.pc.get(4).type.color);
             } else {
-                save3Circle5.setVisible(false);
+                save2Circle5.setVisible(false);
+                save2Circle6.setVisible(false);
             }
             //  monster in slot 6
-            if (playerSave3.pc.get(5) != null) {
-                save3Circle6.setVisible(true);
-                save3Circle6.setFill(playerSave3.pc.get(5).type.color);
+            if (playerSave2.pc.size() > 5) {
+                save2Circle6.setVisible(true);
+                save2Circle6.setFill(playerSave2.pc.get(5).type.color);
             } else {
-                save3Circle6.setVisible(false);
+                save2Circle6.setVisible(false);
             }
-        } else {
+        }
+    }
+    public void setSave3Circles() {
+        //  player save 3
+        if (playerSave3 == null) {
             save3Circle1.setVisible(false);
             save3Circle2.setVisible(false);
             save3Circle3.setVisible(false);
             save3Circle4.setVisible(false);
             save3Circle5.setVisible(false);
             save3Circle6.setVisible(false);
+        } else {
+            //  monster in slot 1
+            save3Circle1.setVisible(true);
+            save3Circle1.setFill(playerSave3.pc.get(0).type.color);
+            //  monster in slot 2
+            if (playerSave3.pc.size() > 1) {
+                save3Circle2.setVisible(true);
+                save3Circle2.setFill(playerSave3.pc.get(1).type.color);
+            } else {
+                save3Circle2.setVisible(false);
+                save3Circle3.setVisible(false);
+                save3Circle4.setVisible(false);
+                save3Circle5.setVisible(false);
+                save3Circle6.setVisible(false);
+            }
+            //  monster in slot 3
+            if (playerSave3.pc.size() > 2) {
+                save3Circle3.setVisible(true);
+                save3Circle3.setFill(playerSave3.pc.get(2).type.color);
+            } else {
+                save3Circle3.setVisible(false);
+                save3Circle4.setVisible(false);
+                save3Circle5.setVisible(false);
+                save3Circle6.setVisible(false);
+            }
+            //  monster in slot 4
+            if (playerSave3.pc.size() > 3) {
+                save3Circle4.setVisible(true);
+                save3Circle4.setFill(playerSave3.pc.get(3).type.color);
+            } else {
+                save3Circle4.setVisible(false);
+                save3Circle5.setVisible(false);
+                save3Circle6.setVisible(false);
+            }
+            //  monster in slot 5
+            if (playerSave3.pc.size() > 4) {
+                save3Circle5.setVisible(true);
+                save3Circle5.setFill(playerSave3.pc.get(4).type.color);
+            } else {
+                save3Circle5.setVisible(false);
+                save3Circle6.setVisible(false);
+            }
+            //  monster in slot 6
+            if (playerSave3.pc.size() > 5) {
+                save3Circle6.setVisible(true);
+                save3Circle6.setFill(playerSave3.pc.get(5).type.color);
+            } else {
+                save3Circle6.setVisible(false);
+            }
         }
     }
 

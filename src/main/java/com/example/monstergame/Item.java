@@ -116,7 +116,7 @@ public class Item implements java.io.Serializable {
                 }
                 //  lower catch rate for bosses
                 if (monster.bossMonster) {
-                    catchRate -= 100;
+                    catchRate -= 50;
                 }
                 //  limit catch rate to 100%
                 if (catchRate > 100) {
@@ -133,7 +133,7 @@ public class Item implements java.io.Serializable {
                     gameLogLabel.setText(gameLogLabel.getText() + "\nCapture successful!");
                     monster.setHpCurr(monster.hpMax);
                     monster.playerOwned = true;
-                    player.pc.add(monster.name, monster);
+                    player.pc.add(monster);
                     player.setScore(player.score + (monster.xpYield + (monster.xpYield / 2)));
                     player.addMonstersCaught(monster.type);
                     player.setInBattle(false);
