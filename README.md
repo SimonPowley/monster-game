@@ -30,6 +30,7 @@ Monsters are randomly generated to make each one unique, and to give each one di
 - Random stats (within a range) that grow at different rates (slow, medium, fast)
 - Potential affinities for certain stats (+/- x%)
 - Random type, some are more common than others
+- Random moves to be used in battle
 
 Monsters currently have four stats: health, attack, defense, speed
 - Health (HP): total health in battle, when health reaches 0 the monster faints and cannot battle until revived
@@ -40,16 +41,13 @@ Monsters currently have four stats: health, attack, defense, speed
 # Possible things to do/add/change
 
 Honestly the whole thing is pretty messy and needs to be redone lol
-- The "StorageList" and "StorageNode" classes are from a comp sci class, and I just wanted an excuse to incorporate them,
-   could probably just use a built in Java structure to cut those files out
 - I'm thinking of making it so you can combine/breed monsters to control/customize their stats and types
 - Add more types: poison (purple), dark (dark grey), ??, idk
-- If there's an easy way to blend color shades in Javafx, I could make each mosnter have unique(ish) colors, maybe affected by breeding/merging?
-   They'd probably all end up a muddy color eventually though lol, maybe just a set variance of shades for each type/type combo?
+- If there's an easy way to blend color shades in Javafx, I could make each mosnter have unique(ish) colors, maybe affected by breeding/merging? They'd probably all end up a muddy color eventually though lol, maybe just a set variance of shades for each type/type combo?
 - Need to add some kind of boss/progression system, more item types (equipable?), more (convenient) monster storage space
 - Need ways to add personality/uniqueness/utility to each monster, actual unique attack moves with different power/effects, etc
 - More balancing for monster stat progression/battling, item stats
 - Different areas? Some areas have more of a certain type, some are higher leveled, different bosses, etc
 - Maybe change how speed stat affects battle flow? (instead of > speed moving first each turn, if speed is 2* opponent's you move twice, etc?)
 - The "modes" I use in the scene controllers are kind of dumb and confusing lol (a lot of the scene switching stuff is tbh)
-- Maybe a better way to save the game, because it seems "flimsy" the way it is now (just messy and kind of simple idk, maybe it's not)
+- Maybe a better way to save the game, because it seems "flimsy" the way it is now (just messy and kind of simple, idk maybe it's not)
