@@ -20,7 +20,7 @@ Currently the game is basically:
 - Buy items from the shop
 - Capture wild monsters
 - Check your monster team and their stats, change team leader, change monster names, release monsters
-- Get quests randomly after defeating wild monsters, quests can currently be: fight x wild monsters(specific or unspecific type) or battle a trainer
+- Get quests randomly after defeating wild monsters, quests can currently be: fight x wild monsters(specific or unspecific type), battle a trainer, or battle a boss monster
 - Player score goes up after defeating monsters and completing quests
 - Save game, return to title screen
 
@@ -29,7 +29,7 @@ Currently the game is basically:
 Monsters are randomly generated to make each one unique, and to give each one different utility in battle (hopefully)
 - Random stats (within a range) that grow at different rates (slow, medium, fast)
 - Potential affinities for certain stats (+/- x%)
-- Random type, some are more common than others (normal is more common than fire, etc)
+- Random type, some are more common than others
 
 Monsters currently have four stats: health, attack, defense, speed
 - Health (HP): total health in battle, when health reaches 0 the monster faints and cannot battle until revived
