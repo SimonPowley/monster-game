@@ -9,6 +9,7 @@ import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Objects;
 
 public class BagController {
     Player player;
@@ -72,6 +73,7 @@ public class BagController {
         } else {
             mainController.resetLoseButtons();
         }
+        main.getStylesheets().add(Objects.requireNonNull(getClass().getResource("button.css")).toExternalForm());
         return new Scene(main);
     }
 
@@ -96,6 +98,7 @@ public class BagController {
             teamController.setPlayer(player, 3);
             teamController.setBattleController(battleController);
         }
+        team.getStylesheets().add(Objects.requireNonNull(getClass().getResource("button.css")).toExternalForm());
         return new Scene(team);
     }
 
@@ -123,6 +126,7 @@ public class BagController {
             battleController.enableButtonsCatch();
         }
         battleController.mode = 4;
+        battle.getStylesheets().add(Objects.requireNonNull(getClass().getResource("button.css")).toExternalForm());
         return new Scene(battle);
     }
 

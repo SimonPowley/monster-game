@@ -52,36 +52,45 @@ public class Monster implements java.io.Serializable {
 
 
     //  create a new monster
-    public Monster(String name, Type type, int level, int hp, int att, int def, int spe, boolean playerOwned) {
-        //  set monster attributes
-        setName(name);
-        setType(type);
+    public Monster(Boolean bossMonster) {
+        setRandType();
+        setName(type.name + " Monster");
+        this.bossMonster = bossMonster;
         setMoveList();
-        this.level = level;
+        level = 1;
         learnMove();
-        this.xpCurr = 0;
-        this.hpMax = hp;
-        this.hpCurr = this.hpMax;
-        this.attack = att;
-        this.defense = def;
-        this.speed = spe;
+        xpCurr = 0;
+        setStats();
         setGrowthRates();
         setXpToLevelUp();
         setXpYield();
         setCatchRate();
         setStatAffinity();
-        this.playerOwned = playerOwned;
-        this.fainted = false;
-        this.hpCurr = this.hpMax;
-        this.bossMonster = false;
+        hpCurr = hpMax;
+        playerOwned = false;
+        fainted = false;
     }
-    //  create a new boss monster
-    public Monster() {
-        this.xpCurr = 0;
-        this.playerOwned = false;
-        this.fainted = false;
-        this.bossMonster = true;
+    //  create a new monster with specific type
+    public Monster(Type type, Boolean bossMonster) {
+        setType(type);
+        setName(type.name + " Monster");
+        this.bossMonster = bossMonster;
+        setMoveList();
+        level = 1;
+        learnMove();
+        xpCurr = 0;
+        setStats();
+        setGrowthRates();
+        setXpToLevelUp();
+        setXpYield();
+        setCatchRate();
+        setStatAffinity();
+        hpCurr = hpMax;
+        playerOwned = true;
+        fainted = false;
     }
+
+
 
     //  set monster name
     public void setName(String name) {
@@ -90,19 +99,57 @@ public class Monster implements java.io.Serializable {
     //  set monster type
     public void setType(Type type) {
         this.type = type;
-        typeName = this.type.name;
+        typeName = type.name;
+    }
+    //  set random type
+    public void setRandType() {
+        Random rand = new Random();
+        //  random type
+        int typeChance = rand.nextInt(160);
+        //  normal type, 10%
+        if (typeChance >= 144) {
+            setType(new Type("Normal", 0));
+        }
+        //  fire type, 12%
+        else if (typeChance >= 125) {
+            setType(new Type("Fire", 1));
+        }
+        //  water type, 15%
+        else if (typeChance >= 101) {
+            setType(new Type("Water", 2));
+        }
+        //  earth type, 15%
+        else if (typeChance >= 77) {
+            setType(new Type("Earth", 3));
+        }
+        //  electric type, 10%
+        else if (typeChance >= 61) {
+            setType(new Type("Electric", 4));
+        }
+        //  nature type, 15%
+        else if (typeChance >= 37) {
+            setType(new Type("Nature", 5));
+        }
+        //  wind type, 13%
+        else if (typeChance >= 16){
+            setType(new Type("Wind", 6));
+        }
+        //  ice type, 10%
+        else {
+            setType(new Type("Ice", 7));
+        }
     }
     //  set xp needed to level up
     public void setXpToLevelUp() {
-        this.xpToLevelUp = (int) (4 * Math.pow(level, 3)) / 5;
+        xpToLevelUp = (int) (4 * Math.pow(level, 3)) / 5;
     }
     //  set monster xp yield
     public void setXpYield() {
-        this.xpYield = 1 + (int) Math.pow(level + hpMax, 2) / 10;
+        xpYield = 1 + (int) Math.pow(level + hpMax, 2) / 10;
     }
     //  set monster catch rate
     public void setCatchRate() {
-        this.catchRate = 100 - level - (hpCurr + ((attack + defense + speed) / 3));
+        catchRate = 100 - level - (hpCurr + ((attack + defense + speed) / 3));
     }
     //  set monster stat affinities (1 stat +/-15%, or 2 stats +/-10%)
     public void setStatAffinity() {
@@ -127,6 +174,34 @@ public class Monster implements java.io.Serializable {
             boostStats(2, false, .95);
         }
     }
+    //  generate random stats within range for wild monster
+    public void setStats() {
+        //  set wild and trainer monster stats
+        if (!bossMonster) {
+            hpMax = randomStats(15, 25);
+            hpCurr = hpMax;
+            attack = randomStats(10, 20);
+            defense = randomStats(10, 20);
+            speed = randomStats(10, 20);
+        }
+        //  set boss monster stats
+        else {
+            hpMax = randomStats(20, 25);
+            hpCurr = hpMax;
+            attack = randomStats(15, 20);
+            defense = randomStats(15, 20);
+            speed = randomStats(15, 20);
+        }
+    }
+    public int randomStats(int min, int max) {
+        Random rand = new Random();
+        int stat = rand.nextInt(max);
+        //  return stat if in range
+        if (stat >= min && stat <= max) {
+            return stat;
+        }
+        return randomStats(min, max);
+    }
 
     //  set monster level
     public void setLevel(int level) {
@@ -150,56 +225,104 @@ public class Monster implements java.io.Serializable {
     }
     //  set monster stat growth rates
     public void setGrowthRates() {
+        //  set higher growth rates for boss monsters
+        if (bossMonster) {
+            setBossGrowthRates();
+        } else {
+            Random rand = new Random();
+            //  set hp stat growth
+            int growth = rand.nextInt(3);
+            if (growth == 0) {
+                hpGrowth = 1.01;
+            } else if (growth == 1) {
+                hpGrowth = 1.015;
+            } else {
+                hpGrowth = 1.02;
+            }
+            //  set attack stat growth
+            growth = rand.nextInt(3);
+            if (growth == 0) {
+                attGrowth = 1.01;
+            } else if (growth == 1) {
+                attGrowth = 1.015;
+            } else {
+                attGrowth = 1.02;
+            }
+            //  set defense stat growth
+            growth = rand.nextInt(3);
+            if (growth == 0) {
+                defGrowth = 1.01;
+            } else if (growth == 1) {
+                defGrowth = 1.015;
+            } else {
+                defGrowth = 1.02;
+            }
+            //  set speed stat growth
+            growth = rand.nextInt(3);
+            if (growth == 0) {
+                speGrowth = 1.01;
+            } else if (growth == 1) {
+                speGrowth = 1.015;
+            } else {
+                speGrowth = 1.02;
+            }
+        }
+    }
+    public void setBossGrowthRates() {
         Random rand = new Random();
         //  set hp stat growth
         int growth = rand.nextInt(3);
         if (growth == 0) {
-            hpGrowth = 1.01;
-        } else if (growth == 1) {
-            hpGrowth = 1.015;
-        } else {
             hpGrowth = 1.02;
+        } else if (growth == 1) {
+            hpGrowth = 1.025;
+        } else {
+            hpGrowth = 1.03;
         }
         //  set attack stat growth
         growth = rand.nextInt(3);
         if (growth == 0) {
-            attGrowth = 1.01;
-        } else if (growth == 1) {
-            attGrowth = 1.015;
-        } else {
             attGrowth = 1.02;
+        } else if (growth == 1) {
+            attGrowth = 1.025;
+        } else {
+            attGrowth = 1.03;
         }
         //  set defense stat growth
         growth = rand.nextInt(3);
         if (growth == 0) {
-            defGrowth = 1.01;
-        } else if (growth == 1) {
-            defGrowth = 1.015;
-        } else {
             defGrowth = 1.02;
+        } else if (growth == 1) {
+            defGrowth = 1.025;
+        } else {
+            defGrowth = 1.03;
         }
         //  set speed stat growth
         growth = rand.nextInt(3);
         if (growth == 0) {
-            speGrowth = 1.01;
-        } else if (growth == 1) {
-            speGrowth = 1.015;
-        } else {
             speGrowth = 1.02;
+        } else if (growth == 1) {
+            speGrowth = 1.025;
+        } else {
+            speGrowth = 1.03;
         }
     }
 
-    //  set monster hp
+    //  set monster hp stat after level up
     public void setHp() {
-        int hpBoost = (int) (1 + (Math.pow(hpMax, hpGrowth)) / 20);
+        int hpGain = (int) (1 + (Math.pow(hpMax, hpGrowth)) / 20);
         if (hpStatBoost != 0) {
-            hpBoost = hpBoost * (1 + (hpStatBoost / 10));
+            hpGain = hpGain * (1 + (hpStatBoost / 10));
         }
-        if (hpBoost <= 0) {
-            hpBoost = 1;
+        //  set min or max stat growth
+        if (hpGain <= 0) {
+            hpGain = 1;
         }
-        hpCurr += hpBoost;
-        hpMax += hpBoost;
+        if (hpGain > 8) {
+            hpGain = 8;
+        }
+        hpCurr += hpGain;
+        hpMax += hpGain;
     }
     //  set monster current health
     public void setHpCurr(int hp) {
@@ -214,38 +337,50 @@ public class Monster implements java.io.Serializable {
             fainted = false;
         }
     }
-    //  set monster attack
+    //  set monster attack stat after level up
     public void setAttack() {
-        int attBoost = (int) (1 + (Math.pow(attack, attGrowth)) / 20);
+        int attGain = (int) (1 + (Math.pow(attack, attGrowth)) / 20);
         if (attackStatBoost != 0) {
-            attBoost = attBoost * (1 + (attackStatBoost / 10));
+            attGain = attGain * (1 + (attackStatBoost / 10));
         }
-        if (attBoost <= 0) {
-            attBoost = 1;
+        //  set min or max stat growth
+        if (attGain <= 0) {
+            attGain = 1;
         }
-        attack += attBoost;
+        if (attGain > 5) {
+            attGain = 5;
+        }
+        attack += attGain;
     }
-    //  set monster defense
+    //  set monster defense after level up
     public void setDefense() {
-        int defBoost = (int) (1 + (Math.pow(defense, defGrowth)) / 20);
+        int defGain = (int) (1 + (Math.pow(defense, defGrowth)) / 20);
         if (defenseStatBoost != 0) {
-            defBoost = defBoost * (1 + (defenseStatBoost / 10));
+            defGain = defGain * (1 + (defenseStatBoost / 10));
         }
-        if (defBoost <= 0) {
-            defBoost = 1;
+        //  set min or max stat growth
+        if (defGain <= 0) {
+            defGain = 1;
         }
-        defense += defBoost;
+        if (defGain > 5) {
+            defGain = 5;
+        }
+        defense += defGain;
     }
-    //  set monster speed
+    //  set monster speed after level up
     public void setSpeed() {
-        int speBoost = (int) (1 + (Math.pow(speed, speGrowth)) / 20);
+        int speGain = (int) (1 + (Math.pow(speed, speGrowth)) / 20);
         if (speedStatBoost != 0) {
-            speBoost = speBoost * (1 + (speedStatBoost / 10));
+            speGain = speGain * (1 + (speedStatBoost / 10));
         }
-        if (speBoost <= 0) {
-            speBoost = 1;
+        //  set min or max stat growth
+        if (speGain <= 0) {
+            speGain = 1;
         }
-        speed += speBoost;
+        if (speGain > 5) {
+            speGain = 5;
+        }
+        speed += speGain;
     }
 
     //  increase or decrease monster stats based on stats affinities
@@ -397,7 +532,7 @@ public class Monster implements java.io.Serializable {
     //  learn new move after needed level reached
     public void learnMove() {
         for (Move move : moveList) {
-            if (level >= move.level && !learnedMoves.contains(move)) {
+            if (level == move.level && !learnedMoves.contains(move)) {
                 learnedMoves.add(move);
             }
         }

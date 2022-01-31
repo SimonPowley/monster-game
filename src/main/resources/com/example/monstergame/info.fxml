@@ -8,42 +8,42 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.monstergame.InfoController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #36454F;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.monstergame.InfoController">
    <HBox layoutX="17.0" layoutY="64.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
       <VBox prefHeight="200.0" prefWidth="100.0">
          <Circle fx:id="normalCircle" fill="WHITE" onMouseClicked="#onNormalInfoClick" radius="31.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" />
-         <Label alignment="CENTER" prefHeight="17.0" prefWidth="79.0" text="Normal" />
+         <Label alignment="CENTER" prefHeight="17.0" prefWidth="79.0" text="Normal" textFill="WHITE" />
       </VBox>
       <VBox prefHeight="200.0" prefWidth="100.0">
          <Circle fx:id="fireCircle" fill="WHITE" onMouseClicked="#onFireInfoClick" radius="31.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" />
-         <Label alignment="CENTER" prefHeight="17.0" prefWidth="129.0" text="Fire" />
+         <Label alignment="CENTER" prefHeight="17.0" prefWidth="129.0" text="Fire" textFill="WHITE" />
       </VBox>
       <VBox prefHeight="200.0" prefWidth="100.0">
          <Circle fx:id="waterCircle" fill="WHITE" onMouseClicked="#onWaterInfoClick" radius="31.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" />
-         <Label alignment="CENTER" prefHeight="17.0" prefWidth="129.0" text="Water" />
+         <Label alignment="CENTER" prefHeight="17.0" prefWidth="129.0" text="Water" textFill="WHITE" />
       </VBox>
       <VBox prefHeight="200.0" prefWidth="100.0">
          <Circle fx:id="earthCircle" fill="WHITE" onMouseClicked="#onEarthInfoClick" radius="31.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" />
-         <Label alignment="CENTER" prefHeight="17.0" prefWidth="129.0" text="Earth" />
+         <Label alignment="CENTER" prefHeight="17.0" prefWidth="129.0" text="Earth" textFill="WHITE" />
       </VBox>
       <VBox prefHeight="200.0" prefWidth="100.0">
          <Circle fx:id="electricCircle" fill="WHITE" onMouseClicked="#onElectricInfoClick" radius="31.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" />
-         <Label alignment="CENTER" prefHeight="17.0" prefWidth="129.0" text="Electric" />
+         <Label alignment="CENTER" prefHeight="17.0" prefWidth="129.0" text="Electric" textFill="WHITE" />
       </VBox>
       <VBox prefHeight="200.0" prefWidth="100.0">
          <Circle fx:id="natureCircle" fill="WHITE" onMouseClicked="#onNatureInfoClick" radius="31.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" />
-         <Label alignment="CENTER" prefHeight="17.0" prefWidth="129.0" text="Nature" />
+         <Label alignment="CENTER" prefHeight="17.0" prefWidth="129.0" text="Nature" textFill="WHITE" />
       </VBox>
       <VBox prefHeight="200.0" prefWidth="100.0">
          <Circle fx:id="windCircle" fill="WHITE" onMouseClicked="#onWindInfoClick" radius="31.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" />
-         <Label alignment="CENTER" prefHeight="17.0" prefWidth="129.0" text="Wind" />
+         <Label alignment="CENTER" prefHeight="17.0" prefWidth="129.0" text="Wind" textFill="WHITE" />
       </VBox>
       <VBox prefHeight="200.0" prefWidth="100.0">
          <Circle fx:id="iceCircle" fill="WHITE" onMouseClicked="#onIceInfoClick" radius="31.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" />
-         <Label alignment="CENTER" prefHeight="17.0" prefWidth="129.0" text="Ice" />
+         <Label alignment="CENTER" prefHeight="17.0" prefWidth="129.0" text="Ice" textFill="WHITE" />
       </VBox>
    </HBox>
-   <Label alignment="CENTER" layoutX="143.0" layoutY="14.0" prefHeight="17.0" prefWidth="314.0" text="Select a type to view info">
+   <Label alignment="CENTER" layoutX="143.0" layoutY="14.0" prefHeight="17.0" prefWidth="314.0" text="Select a type to view info" textFill="WHITE">
       <font>
          <Font size="24.0" />
       </font>
@@ -52,40 +52,40 @@
    <HBox fx:id="statInfoBox" layoutX="17.0" layoutY="200.0" prefHeight="100.0" prefWidth="566.0" spacing="40.0">
       <VBox prefHeight="200.0" prefWidth="100.0">
          <Circle fx:id="infoCircle" fill="WHITE" radius="62.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" />
-         <Label fx:id="infoNameLabel" alignment="CENTER" prefHeight="17.0" prefWidth="169.0" text="Type Name">
+         <Label fx:id="infoNameLabel" alignment="CENTER" prefHeight="17.0" prefWidth="169.0" text="Type Name" textFill="WHITE">
             <font>
                <Font name="System Bold" size="18.0" />
             </font>
          </Label>
       </VBox>
       <VBox prefHeight="200.0" prefWidth="100.0">
-         <Label alignment="TOP_LEFT" prefHeight="0.0" prefWidth="100.0" text="Strong Against">
+         <Label alignment="TOP_LEFT" prefHeight="0.0" prefWidth="100.0" text="Strong Against" textFill="WHITE">
             <font>
                <Font name="System Bold" size="12.0" />
             </font>
          </Label>
-         <Label fx:id="strong1Label" prefHeight="17.0" prefWidth="141.0" text="Type 1" />
-         <Label fx:id="strong2Label" prefHeight="17.0" prefWidth="145.0" text="Type 2" />
-         <Label fx:id="strong3Label" prefHeight="17.0" prefWidth="193.0" text="Type 3" />
+         <Label fx:id="strong1Label" prefHeight="17.0" prefWidth="141.0" text="Type 1" textFill="WHITE" />
+         <Label fx:id="strong2Label" prefHeight="17.0" prefWidth="145.0" text="Type 2" textFill="WHITE" />
+         <Label fx:id="strong3Label" prefHeight="17.0" prefWidth="193.0" text="Type 3" textFill="WHITE" />
          <Label prefHeight="17.0" prefWidth="157.0" />
-         <Label alignment="TOP_LEFT" prefHeight="0.0" prefWidth="100.0" text="Weak Against">
+         <Label alignment="TOP_LEFT" prefHeight="0.0" prefWidth="100.0" text="Weak Against" textFill="WHITE">
             <font>
                <Font name="System Bold" size="12.0" />
             </font>
          </Label>
-         <Label fx:id="weak1Label" prefHeight="17.0" prefWidth="138.0" text="Type 1" />
-         <Label fx:id="weak2Label" prefHeight="17.0" prefWidth="167.0" text="Type 2" />
-         <Label fx:id="weak3Label" prefHeight="17.0" prefWidth="204.0" text="Type 3" />
+         <Label fx:id="weak1Label" prefHeight="17.0" prefWidth="138.0" text="Type 1" textFill="WHITE" />
+         <Label fx:id="weak2Label" prefHeight="17.0" prefWidth="167.0" text="Type 2" textFill="WHITE" />
+         <Label fx:id="weak3Label" prefHeight="17.0" prefWidth="204.0" text="Type 3" textFill="WHITE" />
       </VBox>
       <VBox prefHeight="200.0" prefWidth="100.0">
-         <Label prefHeight="17.0" prefWidth="196.0" text="Type Statistics">
+         <Label prefHeight="17.0" prefWidth="196.0" text="Type Statistics" textFill="WHITE">
             <font>
                <Font name="System Bold" size="12.0" />
             </font>
          </Label>
-         <Label fx:id="foughtLabel" prefHeight="17.0" prefWidth="126.0" text="Fought: XXXX" />
-         <Label fx:id="beatenLabel" prefHeight="17.0" prefWidth="194.0" text="Beaten: XXXX" />
-         <Label fx:id="caughtLabel" prefHeight="17.0" prefWidth="173.0" text="Caught: XXXX" />
+         <Label fx:id="foughtLabel" prefHeight="17.0" prefWidth="126.0" text="Fought: XXXX" textFill="WHITE" />
+         <Label fx:id="beatenLabel" prefHeight="17.0" prefWidth="194.0" text="Beaten: XXXX" textFill="WHITE" />
+         <Label fx:id="caughtLabel" prefHeight="17.0" prefWidth="173.0" text="Caught: XXXX" textFill="WHITE" />
       </VBox>
    </HBox>
 </AnchorPane>

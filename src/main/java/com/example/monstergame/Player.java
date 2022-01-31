@@ -121,6 +121,46 @@ public class Player implements java.io.Serializable {
         }
         addPcStorage();
     }
+    //  reload monster types
+    public void reloadTypes() {
+        for (Monster monster : pc) {
+            //  reload move types
+            monster.moveList = monster.moves.reloadMove(monster.moveList);
+            monster.learnedMoves = monster.moves.reloadMove(monster.learnedMoves);
+            //  set normal types
+            if (Objects.equals(monster.typeName, "Normal")) {
+                monster.setType(new Type("Normal", 0));
+            }
+            //  set fire types
+            if (Objects.equals(monster.typeName, "Fire")) {
+                monster.setType(new Type("Fire", 1));
+            }
+            //  set water types
+            if (Objects.equals(monster.typeName, "Water")) {
+                monster.setType(new Type("Water", 2));
+            }
+            //  set earth types
+            if (Objects.equals(monster.typeName, "Earth")) {
+                monster.setType(new Type("Earth", 3));
+            }
+            //  set electric types
+            if (Objects.equals(monster.typeName, "Electric")) {
+                monster.setType(new Type("Electric", 4));
+            }
+            //  set nature types
+            if (Objects.equals(monster.typeName, "Nature")) {
+                monster.setType(new Type("Nature", 5));
+            }
+            //  set wind types
+            if (Objects.equals(monster.typeName, "Wind")) {
+                monster.setType(new Type("Wind", 6));
+            }
+            //  set ice types
+            if (Objects.equals(monster.typeName, "Ice")) {
+                monster.setType(new Type("Ice", 7));
+            }
+        }
+    }
 
     //  add monsters fought total
     public void addMonstersFought(Type type) {

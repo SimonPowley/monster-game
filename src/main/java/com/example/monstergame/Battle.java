@@ -4,16 +4,6 @@ import java.util.Objects;
 import java.util.Random;
 
 public class Battle {
-    //  create types for enemy creation
-    Type normal = new Type("Normal", 0);
-    Type fire = new Type("Fire", 1);
-    Type water = new Type("Water", 2);
-    Type earth = new Type("Earth", 3);
-    Type electric = new Type("Electric", 4);
-    Type nature = new Type("Nature", 5);
-    Type wind = new Type("Wind", 6);
-    Type ice = new Type("Ice", 7);
-
     //  battle participants
     boolean trainerBattle;
     boolean playerSwap;
@@ -48,7 +38,7 @@ public class Battle {
             if (bossChance == 0) {
                 enemyMonster = new BossMonster(rand.nextInt(3), player.highestLevel);
             } else {
-                setWildMonsterStats();
+                createWildMonster();
             }
         }
         this.player.addMonstersFought(enemyMonster.type);
@@ -92,7 +82,7 @@ public class Battle {
                         }
                     }
                     //  boss battle
-                    else if (player.quests.get(i).type == 3 && enemyMonster.bossMonster) {
+                    else if (player.quests.get(i).type == 3 && player.quests.get(i).bossMonster.fainted) {
                         if (Objects.equals(player.quests.get(i).bossMonster.name, enemyMonster.name)) {
                             player.quests.get(i).decreaseRemaining();
                         }
@@ -132,53 +122,10 @@ public class Battle {
     }
 
     //  set random wild monster stats, level scaled off player leader monster
-    public void setWildMonsterStats() {
-        Random rand = new Random();
-        //  random type
-        int typeChance = rand.nextInt(160);
-        Type type;
-        //  normal type, 10%
-        if (typeChance >= 144) {
-            type = normal;
-        }
-        //  fire type, 12%
-        else if (typeChance >= 125) {
-            type = fire;
-        }
-        //  water type, 15%
-        else if (typeChance >= 101) {
-            type = water;
-        }
-        //  earth type, 15%
-        else if (typeChance >= 77) {
-            type = earth;
-        }
-        //  electric type, 10%
-        else if (typeChance >= 61) {
-            type = electric;
-        }
-        //  nature type, 15%
-        else if (typeChance >= 37) {
-            type = nature;
-        }
-        //  wind type, 13%
-        else if (typeChance >= 16){
-            type = wind;
-        }
-        //  ice type, 10%
-        else {
-            type = ice;
-        }
-        //  random level
-        int level = randomStats(2, player.teamLeader.level + 1);
-        //  random stats
-        int health = randomStats(15, 20);
-        int attack = randomStats(10, 15);
-        int defense = randomStats(10, 15);
-        int speed = randomStats(10, 15);
-        // create random wild monster
-        enemyMonster = new Monster(type.name + " Monster", type, 1, health, attack, defense, speed, false);
+    public void createWildMonster() {
+        enemyMonster = new Monster(false);
         //  level up monster
+        int level = randomStats(2, player.teamLeader.level + 1);
         for (int i = 0; i < level; i++) {
             enemyMonster.setLevel(1);
         }
@@ -187,10 +134,11 @@ public class Battle {
     public int randomStats(int min, int max) {
         Random rand = new Random();
         int stat = rand.nextInt(max);
-        if (stat < min) {
-            stat = min + 1;
+        //  return stat if in range
+        if (stat >= min && stat <= max) {
+            return stat;
         }
-        return stat;
+        return randomStats(min, max);
     }
 
     //  set damage amount to be done

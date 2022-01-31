@@ -12,7 +12,7 @@ import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.Random;
+import java.util.Objects;
 
 public class StarterController {
     Player player;
@@ -133,16 +133,11 @@ public class StarterController {
         randomNatureMonster();
         hideNameField();
         gameLogLabel.setText("Choose a Monster");
-        gameLogLabel.setTextFill(Paint.valueOf("#000000"));
+        gameLogLabel.setTextFill(Paint.valueOf("#ffffff"));
     }
     //  create random fire monster
     public void randomFireMonster() {
-        Type fire = new Type("Fire", 1);
-        int hp = randomStat(15, 20);
-        int att = randomStat(10, 15);
-        int def = randomStat(10, 15);
-        int spe = randomStat(10, 15);
-        fireMonster = new Monster("Fire Monster", fire, 1, hp, att, def, spe, true);
+        fireMonster = new Monster(new Type("Fire", 1), false);
         for (int i = 0; i < 4; i++) {
             fireMonster.setLevel(1);
         }
@@ -156,12 +151,7 @@ public class StarterController {
     }
     //  create random water monster
     public void randomWaterMonster() {
-        Type water = new Type("Water", 2);
-        int hp = randomStat(15, 20);
-        int att = randomStat(10, 15);
-        int def = randomStat(10, 15);
-        int spe = randomStat(10, 15);
-        waterMonster = new Monster("Water Monster", water, 1, hp, att, def, spe, true);
+        waterMonster = new Monster(new Type("Water", 2), false);
         for (int i = 0; i < 4; i++) {
             waterMonster.setLevel(1);
         }
@@ -175,12 +165,7 @@ public class StarterController {
     }
     //  create random nature monster
     public void randomNatureMonster() {
-        Type nature = new Type("Nature", 5);
-        int hp = randomStat(15, 20);
-        int att = randomStat(10, 15);
-        int def = randomStat(10, 15);
-        int spe = randomStat(10, 15);
-        natureMonster = new Monster("Nature Monster", nature, 1, hp, att, def, spe, true);
+        natureMonster = new Monster(new Type("Nature", 5), false);
         for (int i = 0; i < 4; i++) {
             natureMonster.setLevel(1);
         }
@@ -191,16 +176,6 @@ public class StarterController {
         natureSpeedLabel.setText("Spe: " + natureMonster.speed);
         showNatureStatAffinities();
         showNatureMoves();
-    }
-
-    //  generate random stats within range
-    public int randomStat(int min, int max) {
-        Random rand = new Random();
-        int stat = rand.nextInt(max);
-        if (stat < min) {
-            stat = min + 1;
-        }
-        return stat;
     }
 
     //  show hidden name field
@@ -446,6 +421,7 @@ public class StarterController {
         Parent main = mainLoader.load();
         MainController mainController = mainLoader.getController();
         mainController.setPlayer(player);
+        main.getStylesheets().add(Objects.requireNonNull(getClass().getResource("button.css")).toExternalForm());
         return new Scene(main);
     }
 
@@ -455,8 +431,7 @@ public class StarterController {
         waterChosen = false;
         natureChosen = false;
         fireChosen = true;
-        gameLogLabel.setText("Fire Monster chosen.\nEnter name to confirm.");
-        gameLogLabel.setTextFill(fireMonster.type.color);
+        gameLogLabel.setText("Fire Monster chosen. Enter name to confirm.");
         showNameField();
     }
 
@@ -466,8 +441,7 @@ public class StarterController {
         fireChosen = false;
         natureChosen = false;
         waterChosen = true;
-        gameLogLabel.setText("Water monster chosen.\nEnter name to confirm.");
-        gameLogLabel.setTextFill(waterMonster.type.color);
+        gameLogLabel.setText("Water monster chosen. Enter name to confirm.");
         showNameField();
     }
 
@@ -477,8 +451,7 @@ public class StarterController {
         fireChosen = false;
         waterChosen = false;
         natureChosen = true;
-        gameLogLabel.setText("Nature monster chosen.\nEnter name to confirm.");
-        gameLogLabel.setTextFill(natureMonster.type.color);
+        gameLogLabel.setText("Nature monster chosen. Enter name to confirm.");
         showNameField();
     }
 

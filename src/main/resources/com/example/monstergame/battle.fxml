@@ -10,95 +10,134 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.example.monstergame.BattleController">
-   <Circle fx:id="playerCircle" fill="WHITE" layoutX="114.0" layoutY="172.0" radius="31.0" stroke="BLACK"
-           strokeType="INSIDE" strokeWidth="2.0"/>
-   <Circle fx:id="enemyCircle" fill="WHITE" layoutX="486.0" layoutY="45.0" radius="31.0" stroke="BLACK"
-           strokeType="INSIDE" strokeWidth="2.0"/>
-   <ProgressBar fx:id="playerHealthBar" layoutX="14.0" layoutY="214.0" prefWidth="200.0" progress="1.0"/>
-   <ProgressBar fx:id="enemyHealthBar" layoutX="386.0" layoutY="84.0" prefWidth="200.0" progress="1.0"/>
-   <Label fx:id="playerHealthLabel" layoutX="21.0" layoutY="241.0" prefHeight="17.0" prefWidth="200.0"
-          text="HP:    21/24">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #36454F;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.monstergame.BattleController">
+   <Circle fx:id="playerCircle" fill="WHITE" layoutX="114.0" layoutY="162.0" radius="31.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" />
+   <Circle fx:id="enemyCircle" fill="WHITE" layoutX="486.0" layoutY="36.0" radius="31.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" />
+   <ProgressBar fx:id="playerHealthBar" layoutX="14.0" layoutY="214.0" prefWidth="200.0" progress="1.0" />
+   <ProgressBar fx:id="enemyHealthBar" layoutX="386.0" layoutY="84.0" prefWidth="200.0" progress="1.0" />
+   <Label fx:id="playerHealthLabel" layoutX="14.0" layoutY="245.0" prefHeight="17.0" prefWidth="200.0" text="Lvl: xxx   HP: xxx/xxx" textFill="WHITE">
       <font>
-         <Font name="System Bold" size="12.0"/>
+         <Font name="System Bold" size="12.0" />
       </font>
    </Label>
-   <Label fx:id="enemyHealthLabel" layoutX="386.0" layoutY="102.0" prefHeight="17.0" prefWidth="213.0"
-          text="HP:    21/24">
+   <Label fx:id="enemyHealthLabel" layoutX="386.0" layoutY="102.0" prefHeight="17.0" prefWidth="200.0" text="Lvl: xxx   HP:    xxx/xxx" textFill="WHITE">
       <font>
-         <Font name="System Bold" size="12.0"/>
+         <Font name="System Bold" size="12.0" />
       </font>
    </Label>
-   <TextField fx:id="nameMonsterTextField" layoutX="376.0" layoutY="237.0" onAction="#onNameEntered" prefHeight="25.0"
-              prefWidth="210.0" promptText="New Monster name"/>
-   <ProgressBar fx:id="playerXpBar" layoutX="14.0" layoutY="230.0" prefHeight="11.0" prefWidth="200.0" progress="0.81"/>
-   <Label fx:id="battleLogLabel" alignment="TOP_LEFT" layoutX="14.0" layoutY="271.0" prefHeight="123.0"
-          prefWidth="364.0" text="Wild monster appeared!">
+   <TextField fx:id="nameMonsterTextField" layoutX="378.0" layoutY="210.0" onAction="#onNameEntered" prefHeight="25.0" prefWidth="210.0" promptText="New Monster name" />
+   <ProgressBar fx:id="playerXpBar" layoutX="14.0" layoutY="234.0" prefHeight="11.0" prefWidth="200.0" progress="0.81" />
+   <Label fx:id="battleLogLabel" alignment="TOP_LEFT" layoutX="14.0" layoutY="271.0" prefHeight="123.0" prefWidth="364.0" text="Wild monster appeared!" textFill="WHITE">
       <font>
-         <Font size="14.0"/>
+         <Font size="14.0" />
       </font>
    </Label>
    <HBox layoutX="383.0" layoutY="122.0" prefHeight="11.0" prefWidth="200.0">
-      <Circle fx:id="trainerCircle1" fill="WHITE" radius="9.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0"/>
-      <Circle fx:id="trainerCircle2" fill="WHITE" radius="9.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0"/>
-      <Circle fx:id="trainerCircle3" fill="WHITE" radius="9.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0"/>
-      <Circle fx:id="trainerCircle4" fill="WHITE" radius="9.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0"/>
-      <Circle fx:id="trainerCircle5" fill="WHITE" radius="9.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0"/>
-      <Circle fx:id="trainerCircle6" fill="WHITE" radius="9.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0"/>
+      <Circle fx:id="trainerCircle1" fill="WHITE" radius="9.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" />
+      <Circle fx:id="trainerCircle2" fill="WHITE" radius="9.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" />
+      <Circle fx:id="trainerCircle3" fill="WHITE" radius="9.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" />
+      <Circle fx:id="trainerCircle4" fill="WHITE" radius="9.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" />
+      <Circle fx:id="trainerCircle5" fill="WHITE" radius="9.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" />
+      <Circle fx:id="trainerCircle6" fill="WHITE" radius="9.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" />
    </HBox>
-   <HBox layoutX="376.0" layoutY="274.0" prefHeight="101.0" prefWidth="213.0" spacing="10.0">
-      <VBox prefHeight="101.0" prefWidth="97.0" spacing="5.0">
-         <Button fx:id="move1Button" mnemonicParsing="false" onMouseClicked="#onMove1" prefHeight="25.0"
-                 prefWidth="100.0" text="Flamethrower">
+   <HBox layoutX="376.0" layoutY="268.0" prefHeight="101.0" prefWidth="213.0" spacing="10.0">
+      <VBox prefHeight="115.0" prefWidth="100.0" spacing="5.0">
+         <Button fx:id="move1Button" mnemonicParsing="false" onMouseClicked="#onMove1" prefHeight="25.0" prefWidth="100.0" text="Flamethrower">
             <font>
-               <Font name="System Bold" size="12.0"/>
+               <Font name="System Bold" size="12.0" />
             </font>
          </Button>
-         <Button fx:id="move2Button" mnemonicParsing="false" onMouseClicked="#onMove2" prefHeight="25.0"
-                 prefWidth="100.0" text="Thunderbolt">
+         <Button fx:id="move2Button" mnemonicParsing="false" onMouseClicked="#onMove2" prefHeight="25.0" prefWidth="100.0" text="Thunderbolt">
             <font>
-               <Font name="System Bold" size="12.0"/>
+               <Font name="System Bold" size="12.0" />
             </font>
          </Button>
-         <Button fx:id="move3Button" mnemonicParsing="false" onMouseClicked="#onMove3" prefHeight="25.0"
-                 prefWidth="100.0" text="Hurricane">
+         <Button fx:id="move3Button" mnemonicParsing="false" onMouseClicked="#onMove3" prefHeight="25.0" prefWidth="100.0" text="Hurricane">
             <font>
-               <Font name="System Bold" size="12.0"/>
+               <Font name="System Bold" size="12.0" />
             </font>
          </Button>
-         <Button fx:id="move4Button" mnemonicParsing="false" onMouseClicked="#onMove4" prefHeight="25.0"
-                 prefWidth="100.0" text="Avalanche">
+         <Button fx:id="move4Button" mnemonicParsing="false" onMouseClicked="#onMove4" prefHeight="25.0" prefWidth="100.0" text="Avalanche">
             <font>
-               <Font name="System Bold" size="12.0"/>
+               <Font name="System Bold" size="12.0" />
             </font>
          </Button>
       </VBox>
-      <VBox prefHeight="200.0" prefWidth="100.0">
-         <Button fx:id="fightButton" mnemonicParsing="false" onAction="#onFightButton" prefHeight="30.0"
-                 prefWidth="100.0" text="Fight">
+      <VBox prefHeight="115.0" prefWidth="100.0" spacing="2.5">
+         <Button fx:id="fightButton" mnemonicParsing="false" onAction="#onFightButton" prefHeight="25.0" prefWidth="100.0" text="Fight">
             <font>
-               <Font name="System Bold" size="14.0"/>
+               <Font name="System Bold" size="13.0" />
             </font>
          </Button>
-         <Button fx:id="teamButton" mnemonicParsing="false" onAction="#onTeamButtonClicked" prefHeight="30.0"
-                 prefWidth="100.0" text="Team">
+         <Button fx:id="teamButton" mnemonicParsing="false" onAction="#onTeamButtonClicked" prefHeight="25.0" prefWidth="100.0" text="Team">
             <font>
-               <Font name="System Bold" size="14.0"/>
+               <Font name="System Bold" size="13.0" />
             </font>
          </Button>
-         <Button fx:id="bagButton" mnemonicParsing="false" onAction="#onBagButtonClicked" prefHeight="30.0"
-                 prefWidth="100.0" text="Bag">
+         <Button fx:id="bagButton" mnemonicParsing="false" onAction="#onBagButtonClicked" prefHeight="25.0" prefWidth="100.0" text="Bag">
             <font>
-               <Font name="System Bold" size="14.0"/>
+               <Font name="System Bold" size="13.0" />
             </font>
          </Button>
-         <Button fx:id="runButton" mnemonicParsing="false" onAction="#onRunButtonClicked" prefHeight="30.0"
-                 prefWidth="100.0" text="Run">
+         <Button fx:id="runButton" mnemonicParsing="false" onAction="#onRunButtonClicked" prefHeight="25.0" prefWidth="100.0" text="Run">
             <font>
-               <Font name="System Bold" size="14.0"/>
+               <Font name="System Bold" size="13.0" />
             </font>
          </Button>
       </VBox>
    </HBox>
+   <VBox layoutX="250.0" layoutY="93.0" prefHeight="115.0" prefWidth="100.0" spacing="3.0">
+      <children>
+         <Label fx:id="learnMoveLabel" alignment="CENTER" prefHeight="25.0" prefWidth="100.0" text="Discard a move" textFill="WHITE" />
+         <Button fx:id="discard1Button" mnemonicParsing="false" onAction="#discardMove1" prefHeight="25.0" prefWidth="100.0" text="Flamethrower">
+            <font>
+               <Font name="System Bold" size="10.0" />
+            </font>
+         </Button>
+         <Button fx:id="discard2Button" mnemonicParsing="false" onAction="#discardMove2" prefHeight="25.0" prefWidth="100.0" text="Thunderbolt">
+            <font>
+               <Font name="System Bold" size="10.0" />
+            </font>
+         </Button>
+         <Button fx:id="discard3Button" mnemonicParsing="false" onAction="#discardMove3" prefHeight="25.0" prefWidth="100.0" text="Hurricane">
+            <font>
+               <Font name="System Bold" size="10.0" />
+            </font>
+         </Button>
+         <Button fx:id="discard4Button" mnemonicParsing="false" onAction="#discardMove4" prefHeight="25.0" prefWidth="100.0" text="Avalanche">
+            <font>
+               <Font name="System Bold" size="10.0" />
+            </font>
+         </Button>
+         <Button fx:id="discard5Button" mnemonicParsing="false" onAction="#discardMove5" prefHeight="25.0" prefWidth="100.0" text="New Move">
+            <font>
+               <Font name="System Bold" size="10.0" />
+            </font>
+         </Button>
+         <Button fx:id="discard6Button" mnemonicParsing="false" onAction="#discardMove6" prefHeight="25.0" prefWidth="100.0" text="New Move">
+            <font>
+               <Font name="System Bold" size="10.0" />
+            </font>
+         </Button>
+      </children>
+   </VBox>
+   <VBox layoutX="355.0" layoutY="139.0" prefHeight="128.0" prefWidth="100.0">
+      <children>
+         <Label fx:id="moveNameLabel" prefHeight="17.0" prefWidth="141.0" text="Move Name" textFill="WHITE" />
+         <Label fx:id="moveTypeLabel" prefHeight="17.0" prefWidth="143.0" text="Type: X" textFill="WHITE" />
+         <Label fx:id="moveDamageLabel" prefHeight="17.0" prefWidth="222.0" text="Power: XX" textFill="WHITE" />
+         <Label prefHeight="17.0" prefWidth="173.0" />
+         <Label fx:id="moveInfoLabel" alignment="TOP_LEFT" prefHeight="147.0" prefWidth="100.0" text="Description" textFill="WHITE" />
+      </children>
+   </VBox>
+   <Label fx:id="playerNameLabel" layoutX="14.0" layoutY="195.0" prefHeight="17.0" prefWidth="200.0" text="Player Monster Name" textFill="WHITE">
+      <font>
+         <Font name="System Bold" size="12.0" />
+      </font>
+   </Label>
+   <Label fx:id="enemyNameLabel" layoutX="386.0" layoutY="67.0" prefHeight="17.0" prefWidth="200.0" text="Enemy Monster Name" textFill="WHITE">
+      <font>
+         <Font name="System Bold" size="12.0" />
+      </font>
+   </Label>
 </AnchorPane>

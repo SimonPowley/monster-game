@@ -76,16 +76,6 @@ public class LoadController {
     @FXML
     protected Button backButton;
 
-    //  create types for monster creation
-    Type normal = new Type("Normal", 0);
-    Type fire = new Type("Fire", 1);
-    Type water = new Type("Water", 2);
-    Type earth = new Type("Earth", 3);
-    Type electric = new Type("Electric", 4);
-    Type nature = new Type("Nature", 5);
-    Type wind = new Type("Wind", 6);
-    Type ice = new Type("Ice", 7);
-
 
 
     //  set player
@@ -428,6 +418,7 @@ public class LoadController {
         Parent main = mainLoader.load();
         MainController mainController = mainLoader.getController();
         mainController.setPlayer(player);
+        main.getStylesheets().add(Objects.requireNonNull(getClass().getResource("button.css")).toExternalForm());
         return new Scene(main);
     }
 
@@ -447,225 +438,51 @@ public class LoadController {
         Parent title = titleLoader.load();
         TitleController titleController = titleLoader.getController();
         titleController.setPlayer(player);
+        title.getStylesheets().add(Objects.requireNonNull(getClass().getResource("button.css")).toExternalForm());
         return new Scene(title);
     }
 
     //  load player's monster types for each save file
     public void loadPlayerMonsterTypes() {
+        //  set player save 1 monster types
         if (playerSave1 != null) {
-            //  set player save 1 monster types
-            for (int i = 0; i < playerSave1.pc.size(); i++) {
-                //  set move types
-                playerSave1.pc.get(i).moveList = playerSave1.pc.get(i).moves.reloadMove(playerSave1.pc.get(i).moveList);
-                playerSave1.pc.get(i).learnedMoves = playerSave1.pc.get(i).moves.reloadMove(playerSave1.pc.get(i).learnedMoves);
-                //  set normal types
-                if (Objects.equals(playerSave1.pc.get(i).typeName, "Normal")) {
-                    playerSave1.pc.get(i).setType(normal);
-                }
-                //  set fire types
-                if (Objects.equals(playerSave1.pc.get(i).typeName, "Fire")) {
-                    playerSave1.pc.get(i).setType(fire);
-                }
-                //  set water types
-                if (Objects.equals(playerSave1.pc.get(i).typeName, "Water")) {
-                    playerSave1.pc.get(i).setType(water);
-                }
-                //  set earth types
-                if (Objects.equals(playerSave1.pc.get(i).typeName, "Earth")) {
-                    playerSave1.pc.get(i).setType(earth);
-                }
-                //  set electric types
-                if (Objects.equals(playerSave1.pc.get(i).typeName, "Electric")) {
-                    playerSave1.pc.get(i).setType(electric);
-                }
-                //  set nature types
-                if (Objects.equals(playerSave1.pc.get(i).typeName, "Nature")) {
-                    playerSave1.pc.get(i).setType(nature);
-                }
-                //  set wind types
-                if (Objects.equals(playerSave1.pc.get(i).typeName, "Wind")) {
-                    playerSave1.pc.get(i).setType(wind);
-                }
-                //  set ice types
-                if (Objects.equals(playerSave1.pc.get(i).typeName, "Ice")) {
-                    playerSave1.pc.get(i).setType(ice);
-                }
-            }
+            playerSave1.reloadTypes();
         }
+        //  set player save 2 monster types
         if (playerSave2 != null) {
-            //  set player save 2 monster types
-            for (int i = 0; i < playerSave2.pc.size(); i++) {
-                //  set move types
-                playerSave2.pc.get(i).moveList = playerSave2.pc.get(i).moves.reloadMove(playerSave2.pc.get(i).moveList);
-                playerSave2.pc.get(i).learnedMoves = playerSave2.pc.get(i).moves.reloadMove(playerSave2.pc.get(i).learnedMoves);
-                //  set normal types
-                if (Objects.equals(playerSave2.pc.get(i).typeName, "Normal")) {
-                    playerSave2.pc.get(i).setType(normal);
-                }
-                //  set fire types
-                if (Objects.equals(playerSave2.pc.get(i).typeName, "Fire")) {
-                    playerSave2.pc.get(i).setType(fire);
-                }
-                //  set water types
-                if (Objects.equals(playerSave2.pc.get(i).typeName, "Water")) {
-                    playerSave2.pc.get(i).setType(water);
-                }
-                //  set earth types
-                if (Objects.equals(playerSave2.pc.get(i).typeName, "Earth")) {
-                    playerSave2.pc.get(i).setType(earth);
-                }
-                //  set electric types
-                if (Objects.equals(playerSave2.pc.get(i).typeName, "Electric")) {
-                    playerSave2.pc.get(i).setType(electric);
-                }
-                //  set nature types
-                if (Objects.equals(playerSave2.pc.get(i).typeName, "Nature")) {
-                    playerSave2.pc.get(i).setType(nature);
-                }
-                //  set wind types
-                if (Objects.equals(playerSave2.pc.get(i).typeName, "Wind")) {
-                    playerSave2.pc.get(i).setType(wind);
-                }
-                //  set ice types
-                if (Objects.equals(playerSave2.pc.get(i).typeName, "Ice")) {
-                    playerSave2.pc.get(i).setType(ice);
-                }
-            }
+            playerSave2.reloadTypes();
         }
+        //  set player save 3 monster types
         if (playerSave3 != null) {
-            //  set player save 3 monster types
-            for (int i = 0; i < playerSave3.pc.size(); i++) {
-                //  set move types
-                playerSave3.pc.get(i).moveList = playerSave3.pc.get(i).moves.reloadMove(playerSave3.pc.get(i).moveList);
-                playerSave3.pc.get(i).learnedMoves = playerSave3.pc.get(i).moves.reloadMove(playerSave3.pc.get(i).learnedMoves);
-                //  set normal types
-                if (Objects.equals(playerSave3.pc.get(i).typeName, "Normal")) {
-                    playerSave3.pc.get(i).setType(normal);
-                }
-                //  set fire types
-                if (Objects.equals(playerSave3.pc.get(i).typeName, "Fire")) {
-                    playerSave3.pc.get(i).setType(fire);
-                }
-                //  set water types
-                if (Objects.equals(playerSave3.pc.get(i).typeName, "Water")) {
-                    playerSave3.pc.get(i).setType(water);
-                }
-                //  set earth types
-                if (Objects.equals(playerSave3.pc.get(i).typeName, "Earth")) {
-                    playerSave3.pc.get(i).setType(earth);
-                }
-                //  set electric types
-                if (Objects.equals(playerSave3.pc.get(i).typeName, "Electric")) {
-                    playerSave3.pc.get(i).setType(electric);
-                }
-                //  set nature types
-                if (Objects.equals(playerSave3.pc.get(i).typeName, "Nature")) {
-                    playerSave3.pc.get(i).setType(nature);
-                }
-                //  set wind types
-                if (Objects.equals(playerSave3.pc.get(i).typeName, "Wind")) {
-                    playerSave3.pc.get(i).setType(wind);
-                }
-                //  set ice types
-                if (Objects.equals(playerSave3.pc.get(i).typeName, "Ice")) {
-                    playerSave3.pc.get(i).setType(ice);
-                }
-            }
+            playerSave3.reloadTypes();
         }
     }
     //  load trainer's monster types for quests
-    public void loadTrainerMonsterTypes(int questIndex) {
-        for (int i = 0; i < player.quests.get(questIndex).trainer.pc.size(); i++) {
-            //  set move types
-            Monster monster = player.quests.get(questIndex).trainer.pc.get(i);
-            monster.moveList = monster.moves.reloadMove(monster.moveList);
-            monster.learnedMoves = monster.moves.reloadMove(monster.learnedMoves);
-            //  set normal types
-            if (Objects.equals(monster.typeName, "Normal")) {
-                monster.setType(normal);
+    public void loadTrainerMonsterTypes() {
+        for (Quest quest : player.quests) {
+            if (quest.trainer != null) {
+                quest.trainer.reloadTypes();
             }
-            //  set fire types
-            if (Objects.equals(monster.typeName, "Fire")) {
-                monster.setType(fire);
-            }
-            //  set water types
-            if (Objects.equals(monster.typeName, "Water")) {
-                monster.setType(water);
-            }
-            //  set earth types
-            if (Objects.equals(monster.typeName, "Earth")) {
-                monster.setType(earth);
-            }
-            //  set electric types
-            if (Objects.equals(monster.typeName, "Electric")) {
-                monster.setType(electric);
-            }
-            //  set nature types
-            if (Objects.equals(monster.typeName, "Nature")) {
-                monster.setType(nature);
-            }
-            //  set wind types
-            if (Objects.equals(monster.typeName, "Wind")) {
-                monster.setType(wind);
-            }
-            //  set ice types
-            if (Objects.equals(monster.typeName, "Ice")) {
-                monster.setType(ice);
-            }
-            player.quests.get(questIndex).trainer.pc.set(i, monster);
         }
     }
     //  load boss monster types for quests
-    public void loadBossMonsterTypes(int questIndex) {
-        if (player.quests.get(questIndex).bossMonster != null) {
-            //  set move types
-            player.quests.get(questIndex).bossMonster.moveList = player.quests.get(questIndex).bossMonster.moves.reloadMove(player.quests.get(questIndex).bossMonster.moveList);
-            player.quests.get(questIndex).bossMonster.learnedMoves = player.quests.get(questIndex).bossMonster.moves.reloadMove(player.quests.get(questIndex).bossMonster.learnedMoves);            BossMonster boss = player.quests.get(questIndex).bossMonster;
-            //  set normal types
-            if (Objects.equals(boss.typeName, "Normal")) {
-                boss.setType(normal);
+    public void loadBossMonsterTypes() {
+        for (Quest quest : player.quests) {
+            if (quest.bossMonster != null) {
+                quest.bossMonster.reloadTypes();
             }
-            //  set fire types
-            if (Objects.equals(boss.typeName, "Fire")) {
-                boss.setType(fire);
-            }
-            //  set water types
-            if (Objects.equals(boss.typeName, "Water")) {
-                boss.setType(water);
-            }
-            //  set earth types
-            if (Objects.equals(boss.typeName, "Earth")) {
-                boss.setType(earth);
-            }
-            //  set electric types
-            if (Objects.equals(boss.typeName, "Electric")) {
-                boss.setType(electric);
-            }
-            //  set nature types
-            if (Objects.equals(boss.typeName, "Nature")) {
-                boss.setType(nature);
-            }
-            //  set wind types
-            if (Objects.equals(boss.typeName, "Wind")) {
-                boss.setType(wind);
-            }
-            //  set ice types
-            if (Objects.equals(boss.typeName, "Ice")) {
-                boss.setType(ice);
-            }
-            player.quests.get(questIndex).bossMonster = boss;
         }
     }
     //  load enemy trainer teams for battle quests
     public void loadQuestMonsterTypes() {
-        for (int i = 0; i < player.quests.size(); i++) {
+        for (Quest quest : player.quests) {
             //  if quest is a trainer battle
-            if (player.quests.get(i).type == 0 || player.quests.get(i).type == 4) {
-                loadTrainerMonsterTypes(i);
+            if (quest.type == 0 || quest.type == 4) {
+                loadTrainerMonsterTypes();
             }
             //  if quest is a boss battle
-            else if (player.quests.get(i).type == 3) {
-                loadBossMonsterTypes(i);
+            if (quest.type == 3) {
+                loadBossMonsterTypes();
             }
         }
     }

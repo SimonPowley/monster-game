@@ -200,6 +200,7 @@ public class InfoController {
         } else {
             mainController.resetLoseButtons();
         }
+        main.getStylesheets().add(Objects.requireNonNull(getClass().getResource("button.css")).toExternalForm());
         return new Scene(main);
     }
 

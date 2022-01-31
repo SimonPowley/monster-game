@@ -1,6 +1,7 @@
 package com.example.monstergame;
 
 import java.util.LinkedList;
+import java.util.Objects;
 import java.util.Random;
 
 public class Trainer implements java.io.Serializable {
@@ -82,37 +83,10 @@ public class Trainer implements java.io.Serializable {
 
     //  set random monster for trainer team, level scaled off player's highest level monster
     public Monster setRandomMonster() {
-        Random rand = new Random();
-        //  random type
-        int typeChance = rand.nextInt(8);
-        Type randType;
-        if (typeChance == 0) {
-            randType = new Type("Normal", 0);
-        } else if (typeChance == 1) {
-            randType = new Type("Fire", 1);
-        } else if (typeChance == 2) {
-            randType = new Type("Water", 2);
-        } else if (typeChance == 3) {
-            randType = new Type("Earth", 3);
-        } else if (typeChance == 4) {
-            randType = new Type("Electric", 4);
-        } else if (typeChance == 5) {
-            randType = new Type("Nature", 5);
-        } else if (typeChance == 6) {
-            randType = new Type("Wind", 6);
-        } else {
-            randType = new Type("Ice", 7);
-        }
-        //  random level
-        int level = randomStats(2, levelCap+1);
-        //  random stats
-        int hp = randomStats(15, 20);
-        int att = randomStats(10, 15);
-        int def = randomStats(10, 15);
-        int spe = randomStats(10, 15);
         // create random wild monster
-        Monster monster = new Monster(randType.name + " Monster", randType, 1, hp, att, def, spe, false);
+        Monster monster = new Monster(false);
         //  level up monster
+        int level = randomStats(2, levelCap+1);
         for (int i = 0; i < level; i++) {
             monster.setLevel(1);
         }
@@ -122,10 +96,11 @@ public class Trainer implements java.io.Serializable {
     public int randomStats(int min, int max) {
         Random rand = new Random();
         int stat = rand.nextInt(max);
-        if (stat < min) {
-            stat = min + 1;
+        //  return stat if in range
+        if (stat >= min && stat <= max) {
+            return stat;
         }
-        return stat;
+        return randomStats(min, max);
     }
 
     //  reset trainer team to pc backup after battle
@@ -138,5 +113,46 @@ public class Trainer implements java.io.Serializable {
             monster.setHpCurr(monster.hpMax);
         }
         teamSize = pc.size();
+    }
+
+    //  reload monster types
+    public void reloadTypes() {
+        for (Monster monster : pc) {
+            //  reload move types
+            monster.moveList = monster.moves.reloadMove(monster.moveList);
+            monster.learnedMoves = monster.moves.reloadMove(monster.learnedMoves);
+            //  set normal types
+            if (Objects.equals(monster.typeName, "Normal")) {
+                monster.setType(new Type("Normal", 0));
+            }
+            //  set fire types
+            if (Objects.equals(monster.typeName, "Fire")) {
+                monster.setType(new Type("Fire", 1));
+            }
+            //  set water types
+            if (Objects.equals(monster.typeName, "Water")) {
+                monster.setType(new Type("Water", 2));
+            }
+            //  set earth types
+            if (Objects.equals(monster.typeName, "Earth")) {
+                monster.setType(new Type("Earth", 3));
+            }
+            //  set electric types
+            if (Objects.equals(monster.typeName, "Electric")) {
+                monster.setType(new Type("Electric", 4));
+            }
+            //  set nature types
+            if (Objects.equals(monster.typeName, "Nature")) {
+                monster.setType(new Type("Nature", 5));
+            }
+            //  set wind types
+            if (Objects.equals(monster.typeName, "Wind")) {
+                monster.setType(new Type("Wind", 6));
+            }
+            //  set ice types
+            if (Objects.equals(monster.typeName, "Ice")) {
+                monster.setType(new Type("Ice", 7));
+            }
+        }
     }
 }

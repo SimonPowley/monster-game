@@ -10,121 +10,172 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.example.monstergame.TeamController">
-   <HBox layoutX="14.0" layoutY="16.0" prefHeight="379.0" prefWidth="200.0" spacing="10.0">
-      <VBox prefHeight="379.0" prefWidth="95.0" spacing="5.0">
-         <VBox prefHeight="120.0" prefWidth="80.0">
-            <Circle fx:id="team1Circle" fill="WHITE" onMouseClicked="#onTeamCircle1Click" radius="31.0"
-                    stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0"/>
-            <Label fx:id="team1NameLabel" prefHeight="17.0" prefWidth="121.0" text="Slot Empty"/>
-            <Label fx:id="team1LevelLabel" prefHeight="17.0" prefWidth="227.0" text="Lvl: 5"/>
-            <ProgressBar fx:id="team1HpBar" prefHeight="18.0" prefWidth="64.0" progress="1.0"/>
-            <ProgressBar fx:id="team1XpBar" prefHeight="18.0" prefWidth="64.0" progress="0.62"/>
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #36454F;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.monstergame.TeamController">
+   <HBox layoutX="14.0" layoutY="5.0" prefHeight="389.0" prefWidth="200.0">
+      <VBox prefHeight="379.0" prefWidth="95.0" spacing="4.0">
+         <VBox prefHeight="124.0" prefWidth="80.0">
+            <Circle fx:id="team1Circle" fill="WHITE" onMouseClicked="#onTeamCircle1Click" radius="28.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" />
+            <Label fx:id="team1NameLabel" alignment="TOP_LEFT" maxHeight="16.0" maxWidth="90.0" text="Slot Empty" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Label>
+            <Label fx:id="team1LevelLabel" alignment="TOP_LEFT" maxHeight="16.0" maxWidth="90.0" text="Lvl: 5" textFill="WHITE">
+               <font>
+                  <Font size="11.0" />
+               </font></Label>
+            <Label fx:id="team1HpLabel" alignment="TOP_LEFT" maxHeight="16.0" maxWidth="90.0" text="HP: xxx/xxx" textFill="WHITE">
+               <font>
+                  <Font size="11.0" />
+               </font>
+            </Label>
+            <ProgressBar fx:id="team1HpBar" maxHeight="10.0" maxWidth="64.0" progress="1.0" />
+            <ProgressBar fx:id="team1XpBar" maxHeight="10.0" maxWidth="64.0" progress="0.62" />
          </VBox>
-         <VBox prefHeight="120.0" prefWidth="80.0">
-            <Circle fx:id="team2Circle" fill="WHITE" onMouseClicked="#onTeamCircle2Click" radius="31.0"
-                    stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0"/>
-            <Label fx:id="team2NameLabel" prefHeight="17.0" prefWidth="109.0" text="Slot Empty"/>
-            <Label fx:id="team2LevelLabel" prefHeight="17.0" prefWidth="133.0" text="Lvl: 10"/>
-            <ProgressBar fx:id="team2HpBar" prefHeight="18.0" prefWidth="64.0" progress="1.0"/>
-            <ProgressBar fx:id="team2XpBar" prefHeight="18.0" prefWidth="64.0" progress="0.62"/>
+         <VBox prefHeight="124.0" prefWidth="80.0">
+            <Circle fx:id="team2Circle" fill="WHITE" onMouseClicked="#onTeamCircle2Click" radius="28.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" />
+            <Label fx:id="team2NameLabel" alignment="TOP_LEFT" maxHeight="16.0" maxWidth="90.0" text="Slot Empty" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Label>
+            <Label fx:id="team2LevelLabel" alignment="TOP_LEFT" maxHeight="16.0" maxWidth="90.0" text="Lvl: 10" textFill="WHITE">
+               <font>
+                  <Font size="11.0" />
+               </font></Label>
+            <Label fx:id="team2HpLabel" alignment="TOP_LEFT" maxHeight="16.0" maxWidth="90.0" text="HP: xxx/xxx" textFill="WHITE">
+               <font>
+                  <Font size="11.0" />
+               </font>
+            </Label>
+            <ProgressBar fx:id="team2HpBar" maxHeight="10.0" maxWidth="64.0" progress="1.0" />
+            <ProgressBar fx:id="team2XpBar" maxHeight="10.0" maxWidth="64.0" progress="0.62" />
          </VBox>
-         <VBox prefHeight="120.0" prefWidth="80.0">
-            <Circle fx:id="team3Circle" fill="WHITE" onMouseClicked="#onTeamCircle3Click" radius="31.0"
-                    stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0"/>
-            <Label fx:id="team3NameLabel" prefHeight="17.0" prefWidth="109.0" text="Slot Empty"/>
-            <Label fx:id="team3LevelLabel" prefHeight="17.0" prefWidth="189.0" text="Lvl: 100"/>
-            <ProgressBar fx:id="team3HpBar" prefHeight="18.0" prefWidth="64.0" progress="1.0"/>
-            <ProgressBar fx:id="team3XpBar" prefHeight="18.0" prefWidth="64.0" progress="0.62"/>
+         <VBox prefHeight="124.0" prefWidth="80.0">
+            <Circle fx:id="team3Circle" fill="WHITE" onMouseClicked="#onTeamCircle3Click" radius="28.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" />
+            <Label fx:id="team3NameLabel" alignment="TOP_LEFT" maxHeight="16.0" maxWidth="90.0" text="Slot Empty" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Label>
+            <Label fx:id="team3LevelLabel" alignment="TOP_LEFT" maxHeight="16.0" maxWidth="90.0" text="Lvl: 100" textFill="WHITE">
+               <font>
+                  <Font size="11.0" />
+               </font></Label>
+            <Label fx:id="team3HpLabel" alignment="TOP_LEFT" maxHeight="16.0" maxWidth="90.0" text="HP: xxx/xxx" textFill="WHITE">
+               <font>
+                  <Font size="11.0" />
+               </font>
+            </Label>
+            <ProgressBar fx:id="team3HpBar" maxHeight="10.0" maxWidth="64.0" progress="1.0" />
+            <ProgressBar fx:id="team3XpBar" maxHeight="10.0" maxWidth="64.0" progress="0.62" />
          </VBox>
       </VBox>
-      <VBox prefHeight="379.0" prefWidth="95.0" spacing="5.0">
-         <VBox prefHeight="120.0" prefWidth="80.0">
-            <Circle fx:id="team4Circle" fill="WHITE" onMouseClicked="#onTeamCircle4Click" radius="31.0"
-                    stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0"/>
-            <Label fx:id="team4NameLabel" prefHeight="18.0" prefWidth="80.0" text="Slot Empty"/>
-            <Label fx:id="team4LevelLabel" prefHeight="17.0" prefWidth="256.0" text="Lvl: 80"/>
-            <ProgressBar fx:id="team4HpBar" prefHeight="18.0" prefWidth="64.0" progress="1.0"/>
-            <ProgressBar fx:id="team4XpBar" prefHeight="18.0" prefWidth="64.0" progress="0.62"/>
+      <VBox prefHeight="379.0" prefWidth="95.0" spacing="4.0">
+         <VBox prefHeight="124.0" prefWidth="80.0">
+            <Circle fx:id="team4Circle" fill="WHITE" onMouseClicked="#onTeamCircle4Click" radius="28.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" />
+            <Label fx:id="team4NameLabel" maxHeight="16.0" maxWidth="90.0" text="Slot Empty" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Label>
+            <Label fx:id="team4LevelLabel" alignment="TOP_LEFT" maxHeight="16.0" maxWidth="90.0" text="Lvl: 80" textFill="WHITE">
+               <font>
+                  <Font size="11.0" />
+               </font></Label>
+            <Label fx:id="team4HpLabel" alignment="TOP_LEFT" maxHeight="16.0" maxWidth="90.0" text="HP: xxx/xxx" textFill="WHITE">
+               <font>
+                  <Font size="11.0" />
+               </font>
+            </Label>
+            <ProgressBar fx:id="team4HpBar" maxHeight="10.0" maxWidth="64.0" progress="1.0" />
+            <ProgressBar fx:id="team4XpBar" maxHeight="10.0" maxWidth="64.0" progress="0.62" />
          </VBox>
-         <VBox prefHeight="120.0" prefWidth="80.0">
-            <Circle fx:id="team5Circle" fill="WHITE" onMouseClicked="#onTeamCircle5Click" radius="31.0"
-                    stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0"/>
-            <Label fx:id="team5NameLabel" prefHeight="18.0" prefWidth="80.0" text="Slot Empty"/>
-            <Label fx:id="team5LevelLabel" prefHeight="17.0" prefWidth="198.0" text="Lvl: 50"/>
-            <ProgressBar fx:id="team5HpBar" prefHeight="18.0" prefWidth="64.0" progress="1.0"/>
-            <ProgressBar fx:id="team5XpBar" prefHeight="18.0" prefWidth="64.0" progress="0.62"/>
+         <VBox prefHeight="124.0" prefWidth="80.0">
+            <Circle fx:id="team5Circle" fill="WHITE" onMouseClicked="#onTeamCircle5Click" radius="28.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" />
+            <Label fx:id="team5NameLabel" maxHeight="16.0" maxWidth="90.0" text="Slot Empty" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Label>
+            <Label fx:id="team5LevelLabel" alignment="TOP_LEFT" maxHeight="16.0" maxWidth="90.0" text="Lvl: 50" textFill="WHITE">
+               <font>
+                  <Font size="11.0" />
+               </font></Label>
+            <Label fx:id="team5HpLabel" alignment="TOP_LEFT" maxHeight="16.0" maxWidth="90.0" text="HP: xxx/xxx" textFill="WHITE">
+               <font>
+                  <Font size="11.0" />
+               </font>
+            </Label>
+            <ProgressBar fx:id="team5HpBar" maxHeight="10.0" maxWidth="64.0" progress="1.0" />
+            <ProgressBar fx:id="team5XpBar" maxHeight="10.0" maxWidth="64.0" progress="0.62" />
          </VBox>
-         <VBox prefHeight="120.0" prefWidth="80.0">
-            <Circle fx:id="team6Circle" fill="WHITE" onMouseClicked="#onTeamCircle6Click" radius="31.0"
-                    stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0"/>
-            <Label fx:id="team6NameLabel" prefHeight="18.0" prefWidth="80.0" text="Slot Empty"/>
-            <Label fx:id="team6LevelLabel" prefHeight="17.0" prefWidth="199.0" text="Lvl: 20"/>
-            <ProgressBar fx:id="team6HpBar" prefHeight="18.0" prefWidth="64.0" progress="1.0"/>
-            <ProgressBar fx:id="team6XpBar" prefHeight="18.0" prefWidth="64.0" progress="0.62"/>
+         <VBox prefHeight="124.0" prefWidth="80.0">
+            <Circle fx:id="team6Circle" fill="WHITE" onMouseClicked="#onTeamCircle6Click" radius="28.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" />
+            <Label fx:id="team6NameLabel" maxHeight="16.0" maxWidth="90.0" text="Slot Empty" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Label>
+            <Label fx:id="team6LevelLabel" alignment="TOP_LEFT" maxHeight="16.0" maxWidth="90.0" text="Lvl: 20" textFill="WHITE">
+               <font>
+                  <Font size="11.0" />
+               </font></Label>
+            <Label fx:id="team6HpLabel" alignment="TOP_LEFT" maxHeight="16.0" maxWidth="90.0" text="HP: xxx/xxx" textFill="WHITE">
+               <font>
+                  <Font size="11.0" />
+               </font>
+            </Label>
+            <ProgressBar fx:id="team6HpBar" maxHeight="10.0" maxWidth="64.0" progress="1.0" />
+            <ProgressBar fx:id="team6XpBar" maxHeight="10.0" maxWidth="64.0" progress="0.62" />
          </VBox>
       </VBox>
    </HBox>
    <VBox alignment="TOP_CENTER" layoutX="458.0" layoutY="5.0" prefHeight="389.0" prefWidth="128.0">
-      <Circle fx:id="statCircle" fill="WHITE" onMouseClicked="#onTeamCircle1Click" radius="64.0" stroke="BLACK"
-              strokeType="INSIDE" strokeWidth="2.0"/>
+      <Circle fx:id="statCircle" fill="WHITE" onMouseClicked="#onTeamCircle1Click" radius="64.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" />
       <VBox prefHeight="97.0" prefWidth="100.0">
-         <Label fx:id="statNameLabel" prefHeight="3.0" prefWidth="128.0" text="Monster Name"/>
-         <Label fx:id="statLevelLabel" prefHeight="17.0" prefWidth="219.0" text="Lvl: 100"/>
+         <Label fx:id="statNameLabel" prefHeight="3.0" prefWidth="128.0" text="Monster Name" textFill="WHITE">
+            <font>
+               <Font name="System Bold" size="12.0" />
+            </font></Label>
+         <Label fx:id="statLevelLabel" prefHeight="17.0" prefWidth="219.0" text="Lvl: 100" textFill="WHITE" />
          <VBox prefHeight="200.0" prefWidth="100.0">
-            <Label fx:id="statHpLabel" prefHeight="17.0" prefWidth="153.0" text="HP: xxx/xxx"/>
-            <ProgressBar fx:id="statHpBar" prefHeight="18.0" prefWidth="172.0" progress="1.0"/>
-            <Label fx:id="statXpLabel" prefHeight="17.0" prefWidth="164.0" text="Xp: xxxxx/xxxxx"/>
-            <ProgressBar fx:id="statXpBar" prefHeight="11.0" prefWidth="128.0" progress="0.62"/>
+            <Label fx:id="statHpLabel" prefHeight="17.0" prefWidth="153.0" text="HP: xxx/xxx" textFill="WHITE" />
+            <ProgressBar fx:id="statHpBar" prefHeight="18.0" prefWidth="172.0" progress="1.0" />
+            <Label fx:id="statXpLabel" prefHeight="17.0" prefWidth="164.0" text="Xp: xxxxx/xxxxx" textFill="WHITE" />
+            <ProgressBar fx:id="statXpBar" prefHeight="11.0" prefWidth="128.0" progress="0.62" />
          </VBox>
       </VBox>
       <VBox prefHeight="71.0" prefWidth="100.0">
-         <Label fx:id="statTypeLabel" prefHeight="17.0" prefWidth="111.0" text="Type: Type"/>
-         <Label fx:id="statAttackLabel" prefHeight="17.0" prefWidth="115.0" text="Att: 50"/>
-         <Label fx:id="statDefenseLabel" prefHeight="17.0" prefWidth="140.0" text="Def: 50"/>
-         <Label fx:id="statSpeedLabel" prefHeight="17.0" prefWidth="148.0" text="Spe: 50"/>
+         <Label fx:id="statTypeLabel" prefHeight="17.0" prefWidth="111.0" text="Type: Type" textFill="WHITE" />
+         <Label fx:id="statAttackLabel" prefHeight="17.0" prefWidth="115.0" text="Att: 50" textFill="WHITE" />
+         <Label fx:id="statDefenseLabel" prefHeight="17.0" prefWidth="140.0" text="Def: 50" textFill="WHITE" />
+         <Label fx:id="statSpeedLabel" prefHeight="17.0" prefWidth="148.0" text="Spe: 50" textFill="WHITE" />
       </VBox>
-      <HBox prefHeight="11.0" prefWidth="128.0" spacing="4.0"/>
+      <HBox prefHeight="11.0" prefWidth="128.0" spacing="4.0" />
       <VBox prefHeight="97.0" prefWidth="100.0">
-         <Label fx:id="statMoveLabel" prefHeight="17.0" prefWidth="223.0" text="Moves (click to view)">
+         <Label fx:id="statMoveLabel" prefHeight="17.0" prefWidth="223.0" text="Moves (click for info)" textFill="WHITE">
             <font>
-               <Font name="System Bold" size="12.0"/>
+               <Font name="System Bold" size="12.0" />
             </font>
          </Label>
-         <Label fx:id="statMove1Label" onMouseClicked="#onMove1View" prefHeight="17.0" prefWidth="231.0"
-                text="Move 1"/>
-         <Label fx:id="statMove2Label" onMouseClicked="#onMove2View" prefHeight="17.0" prefWidth="211.0"
-                text="Move 2"/>
-         <Label fx:id="statMove3Label" onMouseClicked="#onMove3View" prefHeight="17.0" prefWidth="233.0"
-                text="Move 3"/>
-         <Label fx:id="statMove4Label" onMouseClicked="#onMove4View" prefHeight="17.0" prefWidth="267.0"
-                text="Move 4"/>
+         <Label fx:id="statMove1Label" onMouseClicked="#onMove1View" prefHeight="17.0" prefWidth="231.0" text="Move 1" textFill="WHITE" />
+         <Label fx:id="statMove2Label" onMouseClicked="#onMove2View" prefHeight="17.0" prefWidth="211.0" text="Move 2" textFill="WHITE" />
+         <Label fx:id="statMove3Label" onMouseClicked="#onMove3View" prefHeight="17.0" prefWidth="233.0" text="Move 3" textFill="WHITE" />
+         <Label fx:id="statMove4Label" onMouseClicked="#onMove4View" prefHeight="17.0" prefWidth="267.0" text="Move 4" textFill="WHITE" />
       </VBox>
    </VBox>
-   <TextField fx:id="changeNameField" layoutX="225.0" layoutY="187.0" onAction="#onNameEntered"
-              promptText="Change Monster Name"/>
-   <Label fx:id="gameLogLabel" alignment="TOP_CENTER" layoutX="195.0" layoutY="16.0" prefHeight="97.0" prefWidth="210.0"
-          text="Game Log Label">
+   <TextField fx:id="changeNameField" layoutX="225.0" layoutY="187.0" onAction="#onNameEntered" promptText="Change Monster Name" />
+   <Label fx:id="gameLogLabel" alignment="TOP_CENTER" layoutX="179.0" layoutY="14.0" prefHeight="97.0" prefWidth="242.0" text="Game Log Label" textFill="WHITE">
       <font>
-         <Font size="14.0"/>
+         <Font size="14.0" />
       </font>
    </Label>
-   <VBox layoutX="252.0" layoutY="284.0" prefHeight="101.0" prefWidth="95.0">
-      <Button fx:id="makeLeaderButton" mnemonicParsing="false" onAction="#onChangeLeaderButton" prefHeight="25.0"
-              prefWidth="95.0" text="Make Leader"/>
-      <Button fx:id="changeNameButton" mnemonicParsing="false" onAction="#onChangeNameButton" prefHeight="25.0"
-              prefWidth="95.0" text="Change Name"/>
-      <Button fx:id="releaseButton" mnemonicParsing="false" onAction="#onReleaseButton" prefHeight="25.0"
-              prefWidth="95.0" text="Release"/>
-      <Button fx:id="backButton" mnemonicParsing="false" onAction="#onBackButtonClick" prefHeight="25.0"
-              prefWidth="95.0" text="Back"/>
+   <VBox layoutX="252.0" layoutY="275.0" prefHeight="101.0" prefWidth="95.0" spacing="3.0">
+      <Button fx:id="makeLeaderButton" mnemonicParsing="false" onAction="#onChangeLeaderButton" prefHeight="25.0" prefWidth="95.0" text="Make Leader" />
+      <Button fx:id="changeNameButton" mnemonicParsing="false" onAction="#onChangeNameButton" prefHeight="25.0" prefWidth="95.0" text="Change Name" />
+      <Button fx:id="releaseButton" mnemonicParsing="false" onAction="#onReleaseButton" prefHeight="25.0" prefWidth="95.0" text="Release" />
+      <Button fx:id="backButton" mnemonicParsing="false" onAction="#onBackButtonClick" prefHeight="25.0" prefWidth="95.0" text="Back" />
    </VBox>
    <VBox layoutX="355.0" layoutY="259.0" prefHeight="128.0" prefWidth="100.0">
-      <Label fx:id="moveNameLabel" prefHeight="17.0" prefWidth="141.0" text="Move Name"/>
-      <Label fx:id="moveTypeLabel" prefHeight="17.0" prefWidth="143.0" text="Type: X"/>
-      <Label fx:id="moveDamageLabel" prefHeight="17.0" prefWidth="222.0" text="Power: XX"/>
-      <Label prefHeight="17.0" prefWidth="173.0"/>
-      <Label fx:id="moveInfoLabel" alignment="TOP_LEFT" prefHeight="147.0" prefWidth="100.0" text="Description"/>
+      <Label fx:id="moveNameLabel" prefHeight="17.0" prefWidth="141.0" text="Move Name" textFill="WHITE" />
+      <Label fx:id="moveTypeLabel" prefHeight="17.0" prefWidth="143.0" text="Type: X" textFill="WHITE" />
+      <Label fx:id="moveDamageLabel" prefHeight="17.0" prefWidth="222.0" text="Power: XX" textFill="WHITE" />
+      <Label prefHeight="17.0" prefWidth="173.0" />
+      <Label fx:id="moveInfoLabel" alignment="TOP_LEFT" prefHeight="147.0" prefWidth="100.0" text="Description" textFill="WHITE" />
    </VBox>
 </AnchorPane>

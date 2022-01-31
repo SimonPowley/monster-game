@@ -1,0 +1,637 @@
+/*  title scene buttons */
+#newGameButton {
+    -fx-background-color:
+        #090a0c,
+        linear-gradient(#38424b 0%, #1f2429 20%, #191d22 100%),
+        linear-gradient(#20262b, #191d22),
+        radial-gradient(center 50% 0%, radius 100%, rgba(114,131,148,0.9), rgba(255,255,255,0));
+    -fx-background-radius: 5,4,3,5;
+    -fx-background-insets: 0,1,2,0;
+    -fx-text-fill: white;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+    -fx-font-family: "Arial";
+    -fx-text-fill: linear-gradient(white, #d0d0d0);
+    -fx-font-size: 12px;
+    -fx-padding: 5 5 5 5;
+}
+#loadGameButton {
+    -fx-background-color:
+        #090a0c,
+        linear-gradient(#38424b 0%, #1f2429 20%, #191d22 100%),
+        linear-gradient(#20262b, #191d22),
+        radial-gradient(center 50% 0%, radius 100%, rgba(114,131,148,0.9), rgba(255,255,255,0));
+    -fx-background-radius: 5,4,3,5;
+    -fx-background-insets: 0,1,2,0;
+    -fx-text-fill: white;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+    -fx-font-family: "Arial";
+    -fx-text-fill: linear-gradient(white, #d0d0d0);
+    -fx-font-size: 12px;
+    -fx-padding: 5 5 5 5;
+}
+#exitButton {
+    -fx-background-color:
+        #090a0c,
+        linear-gradient(#38424b 0%, #1f2429 20%, #191d22 100%),
+        linear-gradient(#20262b, #191d22),
+        radial-gradient(center 50% 0%, radius 100%, rgba(114,131,148,0.9), rgba(255,255,255,0));
+    -fx-background-radius: 5,4,3,5;
+    -fx-background-insets: 0,1,2,0;
+    -fx-text-fill: white;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+    -fx-font-family: "Arial";
+    -fx-text-fill: linear-gradient(white, #d0d0d0);
+    -fx-font-size: 12px;
+    -fx-padding: 5 5 5 5;
+}
+/*  starter scene button  */
+#rerollButton {
+    -fx-background-color:
+        #090a0c,
+        linear-gradient(#38424b 0%, #1f2429 20%, #191d22 100%),
+        linear-gradient(#20262b, #191d22),
+        radial-gradient(center 50% 0%, radius 100%, rgba(114,131,148,0.9), rgba(255,255,255,0));
+    -fx-background-radius: 5,4,3,5;
+    -fx-background-insets: 0,1,2,0;
+    -fx-text-fill: white;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+    -fx-font-family: "Arial";
+    -fx-text-fill: linear-gradient(white, #d0d0d0);
+    -fx-font-size: 12px;
+    -fx-padding: 5 5 5 5;
+}
+/*  load scene buttons */
+#backButton {
+    -fx-background-color:
+        #090a0c,
+        linear-gradient(#38424b 0%, #1f2429 20%, #191d22 100%),
+        linear-gradient(#20262b, #191d22),
+        radial-gradient(center 50% 0%, radius 100%, rgba(114,131,148,0.9), rgba(255,255,255,0));
+    -fx-background-radius: 5,4,3,5;
+    -fx-background-insets: 0,1,2,0;
+    -fx-text-fill: white;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+    -fx-font-family: "Arial";
+    -fx-text-fill: linear-gradient(white, #d0d0d0);
+    -fx-font-size: 12px;
+    -fx-padding: 5 5 5 5;
+}
+#loadSave1Button {
+    -fx-background-color:
+        #090a0c,
+        linear-gradient(#38424b 0%, #1f2429 20%, #191d22 100%),
+        linear-gradient(#20262b, #191d22),
+        radial-gradient(center 50% 0%, radius 100%, rgba(114,131,148,0.9), rgba(255,255,255,0));
+    -fx-background-radius: 5,4,3,5;
+    -fx-background-insets: 0,1,2,0;
+    -fx-text-fill: white;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+    -fx-font-family: "Arial";
+    -fx-text-fill: linear-gradient(white, #d0d0d0);
+    -fx-font-size: 12px;
+    -fx-padding: 5 5 5 5;
+}
+#deleteSave1Button {
+    -fx-background-color:
+        #090a0c,
+        linear-gradient(#38424b 0%, #1f2429 20%, #191d22 100%),
+        linear-gradient(#20262b, #191d22),
+        radial-gradient(center 50% 0%, radius 100%, rgba(114,131,148,0.9), rgba(255,255,255,0));
+    -fx-background-radius: 5,4,3,5;
+    -fx-background-insets: 0,1,2,0;
+    -fx-text-fill: white;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+    -fx-font-family: "Arial";
+    -fx-text-fill: linear-gradient(white, #d0d0d0);
+    -fx-font-size: 12px;
+    -fx-padding: 5 5 5 5;
+}
+#loadSave2Button {
+    -fx-background-color:
+        #090a0c,
+        linear-gradient(#38424b 0%, #1f2429 20%, #191d22 100%),
+        linear-gradient(#20262b, #191d22),
+        radial-gradient(center 50% 0%, radius 100%, rgba(114,131,148,0.9), rgba(255,255,255,0));
+    -fx-background-radius: 5,4,3,5;
+    -fx-background-insets: 0,1,2,0;
+    -fx-text-fill: white;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+    -fx-font-family: "Arial";
+    -fx-text-fill: linear-gradient(white, #d0d0d0);
+    -fx-font-size: 12px;
+    -fx-padding: 5 5 5 5;
+}
+#deleteSave2Button {
+    -fx-background-color:
+        #090a0c,
+        linear-gradient(#38424b 0%, #1f2429 20%, #191d22 100%),
+        linear-gradient(#20262b, #191d22),
+        radial-gradient(center 50% 0%, radius 100%, rgba(114,131,148,0.9), rgba(255,255,255,0));
+    -fx-background-radius: 5,4,3,5;
+    -fx-background-insets: 0,1,2,0;
+    -fx-text-fill: white;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+    -fx-font-family: "Arial";
+    -fx-text-fill: linear-gradient(white, #d0d0d0);
+    -fx-font-size: 12px;
+    -fx-padding: 5 5 5 5;
+}
+#loadSave3Button {
+    -fx-background-color:
+        #090a0c,
+        linear-gradient(#38424b 0%, #1f2429 20%, #191d22 100%),
+        linear-gradient(#20262b, #191d22),
+        radial-gradient(center 50% 0%, radius 100%, rgba(114,131,148,0.9), rgba(255,255,255,0));
+    -fx-background-radius: 5,4,3,5;
+    -fx-background-insets: 0,1,2,0;
+    -fx-text-fill: white;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+    -fx-font-family: "Arial";
+    -fx-text-fill: linear-gradient(white, #d0d0d0);
+    -fx-font-size: 12px;
+    -fx-padding: 5 5 5 5;
+}
+#deleteSave3Button {
+    -fx-background-color:
+        #090a0c,
+        linear-gradient(#38424b 0%, #1f2429 20%, #191d22 100%),
+        linear-gradient(#20262b, #191d22),
+        radial-gradient(center 50% 0%, radius 100%, rgba(114,131,148,0.9), rgba(255,255,255,0));
+    -fx-background-radius: 5,4,3,5;
+    -fx-background-insets: 0,1,2,0;
+    -fx-text-fill: white;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+    -fx-font-family: "Arial";
+    -fx-text-fill: linear-gradient(white, #d0d0d0);
+    -fx-font-size: 12px;
+    -fx-padding: 5 5 5 5;
+}
+/*  main scene buttons  */
+#infoButton {
+    -fx-background-color:
+        #090a0c,
+        linear-gradient(#38424b 0%, #1f2429 20%, #191d22 100%),
+        linear-gradient(#20262b, #191d22),
+        radial-gradient(center 50% 0%, radius 100%, rgba(114,131,148,0.9), rgba(255,255,255,0));
+    -fx-background-radius: 5,4,3,5;
+    -fx-background-insets: 0,1,2,0;
+    -fx-text-fill: white;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+    -fx-font-family: "Arial";
+    -fx-text-fill: linear-gradient(white, #d0d0d0);
+    -fx-font-size: 12px;
+    -fx-padding: 5 5 5 5;
+}
+#saveGameButton {
+    -fx-background-color:
+        #090a0c,
+        linear-gradient(#38424b 0%, #1f2429 20%, #191d22 100%),
+        linear-gradient(#20262b, #191d22),
+        radial-gradient(center 50% 0%, radius 100%, rgba(114,131,148,0.9), rgba(255,255,255,0));
+    -fx-background-radius: 5,4,3,5;
+    -fx-background-insets: 0,1,2,0;
+    -fx-text-fill: white;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+    -fx-font-family: "Arial";
+    -fx-text-fill: linear-gradient(white, #d0d0d0);
+    -fx-font-size: 12px;
+    -fx-padding: 5 5 5 5;
+}
+#battleButton {
+    -fx-background-color:
+        #090a0c,
+        linear-gradient(#38424b 0%, #1f2429 20%, #191d22 100%),
+        linear-gradient(#20262b, #191d22),
+        radial-gradient(center 50% 0%, radius 100%, rgba(114,131,148,0.9), rgba(255,255,255,0));
+    -fx-background-radius: 5,4,3,5;
+    -fx-background-insets: 0,1,2,0;
+    -fx-text-fill: white;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+    -fx-font-family: "Arial";
+    -fx-text-fill: linear-gradient(white, #d0d0d0);
+    -fx-font-size: 12px;
+    -fx-padding: 5 5 5 5;
+}
+#teamButton {
+    -fx-background-color:
+        #090a0c,
+        linear-gradient(#38424b 0%, #1f2429 20%, #191d22 100%),
+        linear-gradient(#20262b, #191d22),
+        radial-gradient(center 50% 0%, radius 100%, rgba(114,131,148,0.9), rgba(255,255,255,0));
+    -fx-background-radius: 5,4,3,5;
+    -fx-background-insets: 0,1,2,0;
+    -fx-text-fill: white;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+    -fx-font-family: "Arial";
+    -fx-text-fill: linear-gradient(white, #d0d0d0);
+    -fx-font-size: 12px;
+    -fx-padding: 5 5 5 5;
+}
+#bagButton {
+    -fx-background-color:
+        #090a0c,
+        linear-gradient(#38424b 0%, #1f2429 20%, #191d22 100%),
+        linear-gradient(#20262b, #191d22),
+        radial-gradient(center 50% 0%, radius 100%, rgba(114,131,148,0.9), rgba(255,255,255,0));
+    -fx-background-radius: 5,4,3,5;
+    -fx-background-insets: 0,1,2,0;
+    -fx-text-fill: white;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+    -fx-font-family: "Arial";
+    -fx-text-fill: linear-gradient(white, #d0d0d0);
+    -fx-font-size: 12px;
+    -fx-padding: 5 5 5 5;
+}
+#shopButton {
+    -fx-background-color:
+        #090a0c,
+        linear-gradient(#38424b 0%, #1f2429 20%, #191d22 100%),
+        linear-gradient(#20262b, #191d22),
+        radial-gradient(center 50% 0%, radius 100%, rgba(114,131,148,0.9), rgba(255,255,255,0));
+    -fx-background-radius: 5,4,3,5;
+    -fx-background-insets: 0,1,2,0;
+    -fx-text-fill: white;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+    -fx-font-family: "Arial";
+    -fx-text-fill: linear-gradient(white, #d0d0d0);
+    -fx-font-size: 12px;
+    -fx-padding: 5 5 5 5;
+}
+#titleButton {
+    -fx-background-color:
+        #090a0c,
+        linear-gradient(#38424b 0%, #1f2429 20%, #191d22 100%),
+        linear-gradient(#20262b, #191d22),
+        radial-gradient(center 50% 0%, radius 100%, rgba(114,131,148,0.9), rgba(255,255,255,0));
+    -fx-background-radius: 5,4,3,5;
+    -fx-background-insets: 0,1,2,0;
+    -fx-text-fill: white;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+    -fx-font-family: "Arial";
+    -fx-text-fill: linear-gradient(white, #d0d0d0);
+    -fx-font-size: 12px;
+    -fx-padding: 5 5 5 5;
+}
+#quest1Button {
+    -fx-background-color:
+        #090a0c,
+        linear-gradient(#38424b 0%, #1f2429 20%, #191d22 100%),
+        linear-gradient(#20262b, #191d22),
+        radial-gradient(center 50% 0%, radius 100%, rgba(114,131,148,0.9), rgba(255,255,255,0));
+    -fx-background-radius: 5,4,3,5;
+    -fx-background-insets: 0,1,2,0;
+    -fx-text-fill: white;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+    -fx-font-family: "Arial";
+    -fx-text-fill: linear-gradient(white, #d0d0d0);
+    -fx-font-size: 12px;
+    -fx-padding: 5 5 5 5;
+}
+#quest2Button {
+    -fx-background-color:
+        #090a0c,
+        linear-gradient(#38424b 0%, #1f2429 20%, #191d22 100%),
+        linear-gradient(#20262b, #191d22),
+        radial-gradient(center 50% 0%, radius 100%, rgba(114,131,148,0.9), rgba(255,255,255,0));
+    -fx-background-radius: 5,4,3,5;
+    -fx-background-insets: 0,1,2,0;
+    -fx-text-fill: white;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+    -fx-font-family: "Arial";
+    -fx-text-fill: linear-gradient(white, #d0d0d0);
+    -fx-font-size: 12px;
+    -fx-padding: 5 5 5 5;
+}
+#quest3Button {
+    -fx-background-color:
+        #090a0c,
+        linear-gradient(#38424b 0%, #1f2429 20%, #191d22 100%),
+        linear-gradient(#20262b, #191d22),
+        radial-gradient(center 50% 0%, radius 100%, rgba(114,131,148,0.9), rgba(255,255,255,0));
+    -fx-background-radius: 5,4,3,5;
+    -fx-background-insets: 0,1,2,0;
+    -fx-text-fill: white;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+    -fx-font-family: "Arial";
+    -fx-text-fill: linear-gradient(white, #d0d0d0);
+    -fx-font-size: 12px;
+    -fx-padding: 5 5 5 5;
+}
+/*  save scene buttons  */
+#save1Button {
+    -fx-background-color:
+        #090a0c,
+        linear-gradient(#38424b 0%, #1f2429 20%, #191d22 100%),
+        linear-gradient(#20262b, #191d22),
+        radial-gradient(center 50% 0%, radius 100%, rgba(114,131,148,0.9), rgba(255,255,255,0));
+    -fx-background-radius: 5,4,3,5;
+    -fx-background-insets: 0,1,2,0;
+    -fx-text-fill: white;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+    -fx-font-family: "Arial";
+    -fx-text-fill: linear-gradient(white, #d0d0d0);
+    -fx-font-size: 12px;
+    -fx-padding: 5 5 5 5;
+}
+#overwrite1Button {
+    -fx-background-color:
+        #090a0c,
+        linear-gradient(#38424b 0%, #1f2429 20%, #191d22 100%),
+        linear-gradient(#20262b, #191d22),
+        radial-gradient(center 50% 0%, radius 100%, rgba(114,131,148,0.9), rgba(255,255,255,0));
+    -fx-background-radius: 5,4,3,5;
+    -fx-background-insets: 0,1,2,0;
+    -fx-text-fill: white;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+    -fx-font-family: "Arial";
+    -fx-text-fill: linear-gradient(white, #d0d0d0);
+    -fx-font-size: 12px;
+    -fx-padding: 5 5 5 5;
+}
+#save2Button {
+    -fx-background-color:
+        #090a0c,
+        linear-gradient(#38424b 0%, #1f2429 20%, #191d22 100%),
+        linear-gradient(#20262b, #191d22),
+        radial-gradient(center 50% 0%, radius 100%, rgba(114,131,148,0.9), rgba(255,255,255,0));
+    -fx-background-radius: 5,4,3,5;
+    -fx-background-insets: 0,1,2,0;
+    -fx-text-fill: white;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+    -fx-font-family: "Arial";
+    -fx-text-fill: linear-gradient(white, #d0d0d0);
+    -fx-font-size: 12px;
+    -fx-padding: 5 5 5 5;
+}
+#overwrite2Button {
+    -fx-background-color:
+        #090a0c,
+        linear-gradient(#38424b 0%, #1f2429 20%, #191d22 100%),
+        linear-gradient(#20262b, #191d22),
+        radial-gradient(center 50% 0%, radius 100%, rgba(114,131,148,0.9), rgba(255,255,255,0));
+    -fx-background-radius: 5,4,3,5;
+    -fx-background-insets: 0,1,2,0;
+    -fx-text-fill: white;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+    -fx-font-family: "Arial";
+    -fx-text-fill: linear-gradient(white, #d0d0d0);
+    -fx-font-size: 12px;
+    -fx-padding: 5 5 5 5;
+}
+#save3Button {
+    -fx-background-color:
+        #090a0c,
+        linear-gradient(#38424b 0%, #1f2429 20%, #191d22 100%),
+        linear-gradient(#20262b, #191d22),
+        radial-gradient(center 50% 0%, radius 100%, rgba(114,131,148,0.9), rgba(255,255,255,0));
+    -fx-background-radius: 5,4,3,5;
+    -fx-background-insets: 0,1,2,0;
+    -fx-text-fill: white;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+    -fx-font-family: "Arial";
+    -fx-text-fill: linear-gradient(white, #d0d0d0);
+    -fx-font-size: 12px;
+    -fx-padding: 5 5 5 5;
+}
+#overwrite3Button {
+    -fx-background-color:
+        #090a0c,
+        linear-gradient(#38424b 0%, #1f2429 20%, #191d22 100%),
+        linear-gradient(#20262b, #191d22),
+        radial-gradient(center 50% 0%, radius 100%, rgba(114,131,148,0.9), rgba(255,255,255,0));
+    -fx-background-radius: 5,4,3,5;
+    -fx-background-insets: 0,1,2,0;
+    -fx-text-fill: white;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+    -fx-font-family: "Arial";
+    -fx-text-fill: linear-gradient(white, #d0d0d0);
+    -fx-font-size: 12px;
+    -fx-padding: 5 5 5 5;
+}
+/*  team scene buttons  */
+#makeLeaderButton {
+    -fx-background-color:
+        #090a0c,
+        linear-gradient(#38424b 0%, #1f2429 20%, #191d22 100%),
+        linear-gradient(#20262b, #191d22),
+        radial-gradient(center 50% 0%, radius 100%, rgba(114,131,148,0.9), rgba(255,255,255,0));
+    -fx-background-radius: 5,4,3,5;
+    -fx-background-insets: 0,1,2,0;
+    -fx-text-fill: white;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+    -fx-font-family: "Arial";
+    -fx-text-fill: linear-gradient(white, #d0d0d0);
+    -fx-font-size: 12px;
+    -fx-padding: 5 5 5 5;
+}
+#changeNameButton {
+    -fx-background-color:
+        #090a0c,
+        linear-gradient(#38424b 0%, #1f2429 20%, #191d22 100%),
+        linear-gradient(#20262b, #191d22),
+        radial-gradient(center 50% 0%, radius 100%, rgba(114,131,148,0.9), rgba(255,255,255,0));
+    -fx-background-radius: 5,4,3,5;
+    -fx-background-insets: 0,1,2,0;
+    -fx-text-fill: white;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+    -fx-font-family: "Arial";
+    -fx-text-fill: linear-gradient(white, #d0d0d0);
+    -fx-font-size: 12px;
+    -fx-padding: 5 5 5 5;
+}
+#releaseButton {
+    -fx-background-color:
+        #090a0c,
+        linear-gradient(#38424b 0%, #1f2429 20%, #191d22 100%),
+        linear-gradient(#20262b, #191d22),
+        radial-gradient(center 50% 0%, radius 100%, rgba(114,131,148,0.9), rgba(255,255,255,0));
+    -fx-background-radius: 5,4,3,5;
+    -fx-background-insets: 0,1,2,0;
+    -fx-text-fill: white;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+    -fx-font-family: "Arial";
+    -fx-text-fill: linear-gradient(white, #d0d0d0);
+    -fx-font-size: 12px;
+    -fx-padding: 5 5 5 5;
+}
+/*  battle scene buttons  */
+#fightButton {
+    -fx-background-color:
+        #090a0c,
+        linear-gradient(#38424b 0%, #1f2429 20%, #191d22 100%),
+        linear-gradient(#20262b, #191d22),
+        radial-gradient(center 50% 0%, radius 100%, rgba(114,131,148,0.9), rgba(255,255,255,0));
+    -fx-background-radius: 5,4,3,5;
+    -fx-background-insets: 0,1,2,0;
+    -fx-text-fill: white;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+    -fx-font-family: "Arial";
+    -fx-text-fill: linear-gradient(white, #d0d0d0);
+    -fx-font-size: 12px;
+    -fx-padding: 5 5 5 5;
+}
+#runButton {
+    -fx-background-color:
+        #090a0c,
+        linear-gradient(#38424b 0%, #1f2429 20%, #191d22 100%),
+        linear-gradient(#20262b, #191d22),
+        radial-gradient(center 50% 0%, radius 100%, rgba(114,131,148,0.9), rgba(255,255,255,0));
+    -fx-background-radius: 5,4,3,5;
+    -fx-background-insets: 0,1,2,0;
+    -fx-text-fill: white;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+    -fx-font-family: "Arial";
+    -fx-text-fill: linear-gradient(white, #d0d0d0);
+    -fx-font-size: 12px;
+    -fx-padding: 5 5 5 5;
+}
+#move1Button {
+    -fx-background-color:
+        #090a0c,
+        linear-gradient(#38424b 0%, #1f2429 20%, #191d22 100%),
+        linear-gradient(#20262b, #191d22),
+        radial-gradient(center 50% 0%, radius 100%, rgba(114,131,148,0.9), rgba(255,255,255,0));
+    -fx-background-radius: 5,4,3,5;
+    -fx-background-insets: 0,1,2,0;
+    -fx-text-fill: white;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+    -fx-font-family: "Arial";
+    -fx-text-fill: linear-gradient(white, #d0d0d0);
+    -fx-font-size: 12px;
+    -fx-padding: 5 5 5 5;
+}
+#move2Button {
+    -fx-background-color:
+        #090a0c,
+        linear-gradient(#38424b 0%, #1f2429 20%, #191d22 100%),
+        linear-gradient(#20262b, #191d22),
+        radial-gradient(center 50% 0%, radius 100%, rgba(114,131,148,0.9), rgba(255,255,255,0));
+    -fx-background-radius: 5,4,3,5;
+    -fx-background-insets: 0,1,2,0;
+    -fx-text-fill: white;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+    -fx-font-family: "Arial";
+    -fx-text-fill: linear-gradient(white, #d0d0d0);
+    -fx-font-size: 12px;
+    -fx-padding: 5 5 5 5;
+}
+#move3Button {
+    -fx-background-color:
+        #090a0c,
+        linear-gradient(#38424b 0%, #1f2429 20%, #191d22 100%),
+        linear-gradient(#20262b, #191d22),
+        radial-gradient(center 50% 0%, radius 100%, rgba(114,131,148,0.9), rgba(255,255,255,0));
+    -fx-background-radius: 5,4,3,5;
+    -fx-background-insets: 0,1,2,0;
+    -fx-text-fill: white;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+    -fx-font-family: "Arial";
+    -fx-text-fill: linear-gradient(white, #d0d0d0);
+    -fx-font-size: 12px;
+    -fx-padding: 5 5 5 5;
+}
+#move4Button {
+    -fx-background-color:
+        #090a0c,
+        linear-gradient(#38424b 0%, #1f2429 20%, #191d22 100%),
+        linear-gradient(#20262b, #191d22),
+        radial-gradient(center 50% 0%, radius 100%, rgba(114,131,148,0.9), rgba(255,255,255,0));
+    -fx-background-radius: 5,4,3,5;
+    -fx-background-insets: 0,1,2,0;
+    -fx-text-fill: white;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+    -fx-font-family: "Arial";
+    -fx-text-fill: linear-gradient(white, #d0d0d0);
+    -fx-font-size: 12px;
+    -fx-padding: 5 5 5 5;
+}
+#discard1Button {
+    -fx-background-color:
+        #090a0c,
+        linear-gradient(#38424b 0%, #1f2429 20%, #191d22 100%),
+        linear-gradient(#20262b, #191d22),
+        radial-gradient(center 50% 0%, radius 100%, rgba(114,131,148,0.9), rgba(255,255,255,0));
+    -fx-background-radius: 5,4,3,5;
+    -fx-background-insets: 0,1,2,0;
+    -fx-text-fill: white;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+    -fx-font-family: "Arial";
+    -fx-text-fill: linear-gradient(white, #d0d0d0);
+    -fx-font-size: 12px;
+    -fx-padding: 5 5 5 5;
+}
+#discard2Button {
+    -fx-background-color:
+        #090a0c,
+        linear-gradient(#38424b 0%, #1f2429 20%, #191d22 100%),
+        linear-gradient(#20262b, #191d22),
+        radial-gradient(center 50% 0%, radius 100%, rgba(114,131,148,0.9), rgba(255,255,255,0));
+    -fx-background-radius: 5,4,3,5;
+    -fx-background-insets: 0,1,2,0;
+    -fx-text-fill: white;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+    -fx-font-family: "Arial";
+    -fx-text-fill: linear-gradient(white, #d0d0d0);
+    -fx-font-size: 12px;
+    -fx-padding: 5 5 5 5;
+}
+#discard3Button {
+    -fx-background-color:
+        #090a0c,
+        linear-gradient(#38424b 0%, #1f2429 20%, #191d22 100%),
+        linear-gradient(#20262b, #191d22),
+        radial-gradient(center 50% 0%, radius 100%, rgba(114,131,148,0.9), rgba(255,255,255,0));
+    -fx-background-radius: 5,4,3,5;
+    -fx-background-insets: 0,1,2,0;
+    -fx-text-fill: white;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+    -fx-font-family: "Arial";
+    -fx-text-fill: linear-gradient(white, #d0d0d0);
+    -fx-font-size: 12px;
+    -fx-padding: 5 5 5 5;
+}
+#discard4Button {
+    -fx-background-color:
+        #090a0c,
+        linear-gradient(#38424b 0%, #1f2429 20%, #191d22 100%),
+        linear-gradient(#20262b, #191d22),
+        radial-gradient(center 50% 0%, radius 100%, rgba(114,131,148,0.9), rgba(255,255,255,0));
+    -fx-background-radius: 5,4,3,5;
+    -fx-background-insets: 0,1,2,0;
+    -fx-text-fill: white;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+    -fx-font-family: "Arial";
+    -fx-text-fill: linear-gradient(white, #d0d0d0);
+    -fx-font-size: 12px;
+    -fx-padding: 5 5 5 5;
+}
+#discard5Button {
+    -fx-background-color:
+        #090a0c,
+        linear-gradient(#38424b 0%, #1f2429 20%, #191d22 100%),
+        linear-gradient(#20262b, #191d22),
+        radial-gradient(center 50% 0%, radius 100%, rgba(114,131,148,0.9), rgba(255,255,255,0));
+    -fx-background-radius: 5,4,3,5;
+    -fx-background-insets: 0,1,2,0;
+    -fx-text-fill: white;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+    -fx-font-family: "Arial";
+    -fx-text-fill: linear-gradient(white, #d0d0d0);
+    -fx-font-size: 12px;
+    -fx-padding: 5 5 5 5;
+}
+#discard6Button {
+    -fx-background-color:
+        #090a0c,
+        linear-gradient(#38424b 0%, #1f2429 20%, #191d22 100%),
+        linear-gradient(#20262b, #191d22),
+        radial-gradient(center 50% 0%, radius 100%, rgba(114,131,148,0.9), rgba(255,255,255,0));
+    -fx-background-radius: 5,4,3,5;
+    -fx-background-insets: 0,1,2,0;
+    -fx-text-fill: white;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+    -fx-font-family: "Arial";
+    -fx-text-fill: linear-gradient(white, #d0d0d0);
+    -fx-font-size: 12px;
+    -fx-padding: 5 5 5 5;
+}

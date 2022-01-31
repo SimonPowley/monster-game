@@ -31,9 +31,13 @@ public class BattleController {
     @FXML
     private Circle playerCircle;
     @FXML
+    private Label playerNameLabel;
+    @FXML
     private Label playerHealthLabel;
     @FXML
     private Circle enemyCircle;
+    @FXML
+    private Label enemyNameLabel;
     @FXML
     private Label enemyHealthLabel;
     @FXML
@@ -64,6 +68,28 @@ public class BattleController {
     private Button move3Button;
     @FXML
     private Button move4Button;
+    @FXML
+    private Button discard1Button;
+    @FXML
+    private Button discard2Button;
+    @FXML
+    private Button discard3Button;
+    @FXML
+    private Button discard4Button;
+    @FXML
+    private Button discard5Button;
+    @FXML
+    private Button discard6Button;
+    @FXML
+    private Label learnMoveLabel;
+    @FXML
+    private Label moveNameLabel;
+    @FXML
+    private Label moveTypeLabel;
+    @FXML
+    private Label moveDamageLabel;
+    @FXML
+    private Label moveInfoLabel;
 
 
     //  set player
@@ -89,6 +115,8 @@ public class BattleController {
         }
         setMonsterCircles();
         setTrainerCircles();
+        hideDiscardMoves();
+        hideMoveInfo();
     }
 
     //  set battle log label
@@ -100,6 +128,61 @@ public class BattleController {
     public Label getBattleLog() {
         //  get battle log text
         return battleLogLabel;
+    }
+
+    //  show moves to discard when learning 5th move
+    public void showDiscardMoves() {
+        learnMoveLabel.setVisible(true);
+        //  move 1
+        discard1Button.setVisible(true);
+        discard1Button.setText(player.teamLeader.learnedMoves.get(0).name);
+        //  move 2
+        discard2Button.setVisible(true);
+        discard2Button.setText(player.teamLeader.learnedMoves.get(1).name);
+        //  move 3
+        discard3Button.setVisible(true);
+        discard3Button.setText(player.teamLeader.learnedMoves.get(2).name);
+        //  move 4
+        discard4Button.setVisible(true);
+        discard4Button.setText(player.teamLeader.learnedMoves.get(3).name);
+        //  new move 1
+        discard5Button.setVisible(true);
+        discard5Button.setText(player.teamLeader.learnedMoves.get(4).name);
+        //  new move 2
+        discard6Button.setVisible(false);
+        if (player.teamLeader.learnedMoves.size() == 6) {
+            discard6Button.setVisible(true);
+            discard6Button.setText(player.teamLeader.learnedMoves.get(5).name);
+        }
+    }
+    //  hide moves to discard after discarding 5th move
+    public void hideDiscardMoves() {
+        learnMoveLabel.setVisible(false);
+        discard1Button.setVisible(false);
+        discard2Button.setVisible(false);
+        discard3Button.setVisible(false);
+        discard4Button.setVisible(false);
+        discard5Button.setVisible(false);
+        discard6Button.setVisible(false);
+    }
+    //  show move info when discarding moves
+    public void showMoveInfo(int moveIndex) {
+        moveNameLabel.setVisible(true);
+        moveNameLabel.setText(player.teamLeader.learnedMoves.get(moveIndex).name);
+        moveTypeLabel.setVisible(true);
+        moveTypeLabel.setText("Type: " + player.teamLeader.learnedMoves.get(moveIndex).type.name);
+        moveDamageLabel.setVisible(true);
+        moveDamageLabel.setText("Power: " + player.teamLeader.learnedMoves.get(moveIndex).damage);
+        moveInfoLabel.setVisible(true);
+        moveInfoLabel.setWrapText(true);
+        moveInfoLabel.setText(player.teamLeader.learnedMoves.get(moveIndex).info);
+    }
+    //  hide move info
+    public void hideMoveInfo() {
+        moveNameLabel.setVisible(false);
+        moveTypeLabel.setVisible(false);
+        moveDamageLabel.setVisible(false);
+        moveInfoLabel.setVisible(false);
     }
 
     //  set player and enemy, hp and xp bars
@@ -181,10 +264,12 @@ public class BattleController {
     public void setMonsterCircles() {
         //  set player monster
         playerCircle.setFill(player.teamLeader.type.color);
-        playerHealthLabel.setText(player.teamLeader.name + "   Lvl: " + player.teamLeader.level + "    HP: " + player.teamLeader.hpCurr + "/" + player.teamLeader.hpMax);
+        playerNameLabel.setText(player.teamLeader.name);
+        playerHealthLabel.setText("Lvl: " + player.teamLeader.level + "   HP: " + player.teamLeader.hpCurr + "/" + player.teamLeader.hpMax);
         //  set enemy monster
         enemyCircle.setFill(battle.enemyMonster.type.color);
-        enemyHealthLabel.setText(battle.enemyMonster.name + "    Lvl: " +battle.enemyMonster.level + "   HP: " + battle.enemyMonster.hpCurr + "/" + battle.enemyMonster.hpMax);
+        enemyNameLabel.setText(battle.enemyMonster.name);
+        enemyHealthLabel.setText("Lvl: " +battle.enemyMonster.level + "   HP: " + battle.enemyMonster.hpCurr + "/" + battle.enemyMonster.hpMax);
         setBars();
         hideMoves();
     }
@@ -197,6 +282,7 @@ public class BattleController {
         //  if player uses ball on monster: if successful: player chooses name, battle ends
         //  else: battle resumes
         if (player.useBall(battle.enemyMonster, battleLogLabel)) {
+            //  hide battle buttons, show monster name field
             fightButton.setVisible(false);
             teamButton.setVisible(false);
             bagButton.setVisible(false);
@@ -285,6 +371,7 @@ public class BattleController {
         TeamController teamController = teamLoader.getController();
         teamController.setPlayer(player, 2);
         teamController.setBattleController(this);
+        team.getStylesheets().add(Objects.requireNonNull(getClass().getResource("button.css")).toExternalForm());
         return new Scene(team);
     }
 
@@ -305,6 +392,7 @@ public class BattleController {
         BagController bagController = bagLoader.getController();
         bagController.setPlayer(player, 1);
         bagController.setBattleController(this);
+        bag.getStylesheets().add(Objects.requireNonNull(getClass().getResource("button.css")).toExternalForm());
         return new Scene(bag);
     }
 
@@ -327,6 +415,7 @@ public class BattleController {
         if (mode == 2) {
             mainController.setLoseButtons();
         }
+        main.getStylesheets().add(Objects.requireNonNull(getClass().getResource("button.css")).toExternalForm());
         return new Scene(main);
     }
 
@@ -376,7 +465,7 @@ public class BattleController {
                 battleLogLabel.setText(player.name + " lost!\nGame Over\nScore: " + player.score);
                 mode = 2;
             } else {
-                battleLogLabel.setText(battleLogLabel.getText() + "\n" + player.name + " won!");
+                battleLogLabel.setText(battleLogLabel.getText() + "\n" + player.name + " won! Gained $" + ((battle.enemyMonster.xpYield + 20) / 2) + "!");
                 player.trainer = null;
                 if (player.pcSizeLimit > pcSize) {
                     battleLogLabel.setText(battleLogLabel.getText() + "\nTeam size expanded!");
@@ -385,7 +474,15 @@ public class BattleController {
             fightButton.setVisible(false);
             teamButton.setVisible(false);
             bagButton.setVisible(false);
-            runButton.setText("Back");
+            //  discard move if monster learns 5th move
+            if (player.teamLeader.learnedMoves.size() >= 5) {
+                runButton.setVisible(false);
+                showDiscardMoves();
+            } else {
+                hideDiscardMoves();
+                runButton.setVisible(true);
+                runButton.setText("Back");
+            }
         }
         player.setLeader();
     }
@@ -433,5 +530,127 @@ public class BattleController {
         player.trainer = null;
         setMainScene();
         getMainScene();
+    }
+
+    //  discard moves after learning 5th/6th move
+    @FXML
+    public void discardMove1() {
+        if (Objects.equals(discard1Button.getText(), "Confirm")) {
+            player.teamLeader.learnedMoves.remove(0);
+            //  discard another move if 6th was learned
+            if (player.teamLeader.learnedMoves.size() == 5) {
+                showDiscardMoves();
+                hideMoveInfo();
+            } else {
+                hideDiscardMoves();
+                hideMoveInfo();
+                runButton.setVisible(true);
+                runButton.setText("Back");
+            }
+        } else {
+            showDiscardMoves();
+            discard1Button.setText("Confirm");
+            showMoveInfo(0);
+        }
+    }
+    @FXML
+    public void discardMove2() {
+        if (Objects.equals(discard2Button.getText(), "Confirm")) {
+            player.teamLeader.learnedMoves.remove(1);
+            //  discard another move if 6th was learned
+            if (player.teamLeader.learnedMoves.size() == 5) {
+                showDiscardMoves();
+                hideMoveInfo();
+            } else {
+                hideDiscardMoves();
+                hideMoveInfo();
+                runButton.setVisible(true);
+                runButton.setText("Back");
+            }
+        } else {
+            showDiscardMoves();
+            discard2Button.setText("Confirm");
+            showMoveInfo(1);
+        }
+    }
+    @FXML
+    public void discardMove3() {
+        if (Objects.equals(discard3Button.getText(), "Confirm")) {
+            player.teamLeader.learnedMoves.remove(2);
+            //  discard another move if 6th was learned
+            if (player.teamLeader.learnedMoves.size() == 5) {
+                showDiscardMoves();
+                hideMoveInfo();
+            } else {
+                hideDiscardMoves();
+                hideMoveInfo();
+                runButton.setVisible(true);
+                runButton.setText("Back");
+            }
+        } else {
+            showDiscardMoves();
+            discard3Button.setText("Confirm");
+            showMoveInfo(2);
+        }
+    }
+    @FXML
+    public void discardMove4() {
+        if (Objects.equals(discard4Button.getText(), "Confirm")) {
+            player.teamLeader.learnedMoves.remove(3);
+            //  discard another move if 6th was learned
+            if (player.teamLeader.learnedMoves.size() == 5) {
+                showDiscardMoves();
+                hideMoveInfo();
+            } else {
+                hideDiscardMoves();
+                hideMoveInfo();
+                runButton.setVisible(true);
+                runButton.setText("Back");
+            }
+        } else {
+            showDiscardMoves();
+            discard4Button.setText("Confirm");
+            showMoveInfo(3);
+        }
+    }
+    @FXML
+    public void discardMove5() {
+        if (Objects.equals(discard5Button.getText(), "Confirm")) {
+            player.teamLeader.learnedMoves.remove(4);
+            //  discard another move if 6th was learned
+            if (player.teamLeader.learnedMoves.size() == 5) {
+                showDiscardMoves();
+                hideMoveInfo();
+            } else {
+                hideDiscardMoves();
+                hideMoveInfo();
+                runButton.setVisible(true);
+                runButton.setText("Back");
+            }
+        } else {
+            showDiscardMoves();
+            discard5Button.setText("Confirm");
+            showMoveInfo(4);
+        }
+    }
+    @FXML
+    public void discardMove6() {
+        if (Objects.equals(discard6Button.getText(), "Confirm")) {
+            player.teamLeader.learnedMoves.remove(5);
+            //  discard another move if 6th was learned
+            if (player.teamLeader.learnedMoves.size() == 5) {
+                showDiscardMoves();
+                hideMoveInfo();
+            } else {
+                hideDiscardMoves();
+                hideMoveInfo();
+                runButton.setVisible(true);
+                runButton.setText("Back");
+            }
+        } else {
+            showDiscardMoves();
+            discard6Button.setText("Confirm");
+            showMoveInfo(5);
+        }
     }
 }

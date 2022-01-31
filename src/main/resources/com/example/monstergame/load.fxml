@@ -6,15 +6,19 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.monstergame.LoadController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #36454F;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.monstergame.LoadController">
    <children>
       <VBox alignment="TOP_CENTER" layoutX="231.0" layoutY="73.0" prefHeight="254.0" prefWidth="128.0" spacing="20.0">
          <children>
             <VBox prefHeight="0.0" prefWidth="100.0" spacing="5.0">
                <children>
-                  <Label fx:id="saveFile1Label" prefHeight="17.0" prefWidth="210.0" text="Save File 1" />
-                  <HBox prefHeight="18.0" prefWidth="82.0">
+                  <Label fx:id="saveFile1Label" prefHeight="17.0" prefWidth="210.0" text="Save File 1" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font></Label>
+                  <HBox prefHeight="18.0" prefWidth="82.0" spacing="2.0">
                      <children>
                         <Circle fx:id="save1Circle1" fill="WHITE" radius="9.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" />
                         <Circle fx:id="save1Circle2" fill="WHITE" radius="9.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" />
@@ -34,8 +38,11 @@
             </VBox>
             <VBox prefHeight="0.0" prefWidth="100.0" spacing="5.0">
                <children>
-                  <Label fx:id="saveFile2Label" prefHeight="17.0" prefWidth="281.0" text="Save File 2" />
-                  <HBox prefHeight="18.0" prefWidth="103.0">
+                  <Label fx:id="saveFile2Label" prefHeight="17.0" prefWidth="281.0" text="Save File 2" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font></Label>
+                  <HBox prefHeight="18.0" prefWidth="103.0" spacing="2.0">
                      <children>
                         <Circle fx:id="save2Circle1" fill="WHITE" radius="9.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" />
                         <Circle fx:id="save2Circle2" fill="WHITE" radius="9.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" />
@@ -55,8 +62,11 @@
             </VBox>
             <VBox prefHeight="0.0" prefWidth="100.0" spacing="5.0">
                <children>
-                  <Label fx:id="saveFile3Label" prefHeight="17.0" prefWidth="316.0" text="Save File 3" />
-                  <HBox prefHeight="18.0" prefWidth="103.0">
+                  <Label fx:id="saveFile3Label" prefHeight="17.0" prefWidth="316.0" text="Save File 3" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font></Label>
+                  <HBox prefHeight="18.0" prefWidth="103.0" spacing="2.0">
                      <children>
                         <Circle fx:id="save3Circle1" fill="WHITE" radius="9.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" />
                         <Circle fx:id="save3Circle2" fill="WHITE" radius="9.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" />

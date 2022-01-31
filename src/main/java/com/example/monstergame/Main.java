@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Objects;
 
 public class Main extends Application {
     Player player;
@@ -34,6 +35,7 @@ public class Main extends Application {
         Parent title = titleLoader.load();
         this.titleController = titleLoader.getController();
         this.titleController.setPlayer(this.player);
+        title.getStylesheets().add(Objects.requireNonNull(getClass().getResource("button.css")).toExternalForm());
         return new Scene(title);
     }
 

@@ -171,6 +171,7 @@ public class MainController {
         else {
             battleController.setPlayer(player, new Battle(player, false, ""));
         }
+        battle.getStylesheets().add(Objects.requireNonNull(getClass().getResource("button.css")).toExternalForm());
         return new Scene(battle);
     }
 
@@ -193,6 +194,7 @@ public class MainController {
         if (mode == 1) {
             bagController.mode = 2;
         }
+        bag.getStylesheets().add(Objects.requireNonNull(getClass().getResource("button.css")).toExternalForm());
         return new Scene(bag);
     }
 
@@ -212,6 +214,7 @@ public class MainController {
         Parent shop = shopLoader.load();
         ShopController shopController = shopLoader.getController();
         shopController.setPlayer(player);
+        shop.getStylesheets().add(Objects.requireNonNull(getClass().getResource("button.css")).toExternalForm());
         return new Scene(shop);
     }
 
@@ -234,6 +237,7 @@ public class MainController {
         if (mode == 1) {
             teamController.mode = 5;
         }
+        team.getStylesheets().add(Objects.requireNonNull(getClass().getResource("button.css")).toExternalForm());
         return new Scene(team);
     }
 
@@ -253,6 +257,7 @@ public class MainController {
         Parent save = saveLoader.load();
         SaveController saveController = saveLoader.getController();
         saveController.setPlayer(player);
+        save.getStylesheets().add(Objects.requireNonNull(getClass().getResource("button.css")).toExternalForm());
         return new Scene(save);
     }
 
@@ -272,6 +277,7 @@ public class MainController {
         Parent title = titleLoader.load();
         TitleController titleController = titleLoader.getController();
         titleController.setPlayer(player);
+        title.getStylesheets().add(Objects.requireNonNull(getClass().getResource("button.css")).toExternalForm());
         return new Scene(title);
     }
 
@@ -291,6 +297,7 @@ public class MainController {
         Parent info = infoLoader.load();
         InfoController infoController = infoLoader.getController();
         infoController.setPlayer(player);
+        info.getStylesheets().add(Objects.requireNonNull(getClass().getResource("button.css")).toExternalForm());
         return new Scene(info);
     }
 

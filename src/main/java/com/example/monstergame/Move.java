@@ -349,7 +349,7 @@ public class Move implements java.io.Serializable {
         return moveList;
     }
 
-    //  adjust move learn levels to avoid multiple same level moves
+    //  adjust move learn levels to (mostly) avoid multiple same level moves
     public LinkedList<Move> adjustLevels(LinkedList<Move> moveList) {
         Move nextMove = moveList.get(1);
         for (int i = 0; i < moveList.size()-1; i++) {
@@ -365,44 +365,36 @@ public class Move implements java.io.Serializable {
     //  reload types for all moves
     public void reloadTypes() {
         //  reload normal types
-        Type normal = new Type("Normal", 0);
         for (Move normalMove : normalMoves) {
-            normalMove.type = normal;
+            normalMove.type = new Type("Normal", 0);
         }
         //  reload fire types
-        Type fire = new Type("Fire", 1);
         for (Move fireMove : fireMoves) {
-            fireMove.type = fire;
+            fireMove.type = new Type("Fire", 1);
         }
         //  reload water types
-        Type water = new Type("Water", 2);
         for (Move waterMove : waterMoves) {
-            waterMove.type = water;
+            waterMove.type = new Type("Water", 2);
         }
         //  reload earth types
-        Type earth = new Type("Earth", 3);
         for (Move earthMove : earthMoves) {
-            earthMove.type = earth;
+            earthMove.type = new Type("Earth", 3);
         }
         //  reload electric types
-        Type electric = new Type("Electric", 4);
         for (Move electricMove : electricMoves) {
-            electricMove.type = electric;
+            electricMove.type = new Type("Electric", 4);
         }
         //  reload nature types
-        Type nature = new Type("Nature", 5);
         for (Move natureMove : natureMoves) {
-            natureMove.type = nature;
+            natureMove.type = new Type("Nature", 5);
         }
         //  reload wind types
-        Type wind = new Type("Wind", 6);
         for (Move windMove : windMoves) {
-            windMove.type = wind;
+            windMove.type = new Type("Wind", 6);
         }
         //  reload ice types
-        Type ice = new Type("Ice", 7);
         for (Move iceMove : iceMoves) {
-            iceMove.type = ice;
+            iceMove.type = new Type("Ice", 7);
         }
     }
     //  reload type for individual move

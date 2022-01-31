@@ -43,15 +43,27 @@ public class TeamController {
     @FXML
     private Label team1LevelLabel;
     @FXML
+    private Label team1HpLabel;
+    @FXML
     private Label team2LevelLabel;
+    @FXML
+    private Label team2HpLabel;
     @FXML
     private Label team3LevelLabel;
     @FXML
+    private Label team3HpLabel;
+    @FXML
     private Label team4LevelLabel;
+    @FXML
+    private Label team4HpLabel;
     @FXML
     private Label team5LevelLabel;
     @FXML
+    private Label team5HpLabel;
+    @FXML
     private Label team6LevelLabel;
+    @FXML
+    private Label team6HpLabel;
     @FXML
     private Label gameLogLabel;
     @FXML
@@ -263,9 +275,9 @@ public class TeamController {
             team1Circle.setFill(player.pc.get(0).type.color);
             team1LevelLabel.setText("Lvl: " + player.pc.get(0).level);
             if (player.pc.get(0).hpCurr <= 0) {
-                team1LevelLabel.setText(team1LevelLabel.getText() + " Fainted!");
+                team1HpLabel.setText("Fainted!");
             } else {
-                team1LevelLabel.setText(team1LevelLabel.getText() + " Hp: " + player.pc.get(0).hpCurr + "/" + player.pc.get(0).hpMax);
+                team1HpLabel.setText("HP: " + player.pc.get(0).hpCurr + "/" + player.pc.get(0).hpMax);
             }
             team1NameLabel.setText(player.pc.get(0).name);
             setBars(0);
@@ -274,9 +286,9 @@ public class TeamController {
                 team2Circle.setFill(player.pc.get(1).type.color);
                 team2LevelLabel.setText("Lvl: " + player.pc.get(1).level);
                 if (player.pc.get(1).hpCurr <= 0) {
-                    team2LevelLabel.setText(team2LevelLabel.getText() + " Fainted!");
+                    team2HpLabel.setText("Fainted!");
                 } else {
-                    team2LevelLabel.setText(team2LevelLabel.getText() + " Hp: " + player.pc.get(1).hpCurr + "/" + player.pc.get(1).hpMax);
+                    team2HpLabel.setText("HP: " + player.pc.get(1).hpCurr + "/" + player.pc.get(1).hpMax);
                 }
                 team2NameLabel.setText(player.pc.get(1).name);
                 setBars(1);
@@ -292,9 +304,9 @@ public class TeamController {
                 team3Circle.setFill(player.pc.get(2).type.color);
                 team3LevelLabel.setText("Lvl: " + player.pc.get(2).level);
                 if (player.pc.get(2).hpCurr <= 0) {
-                    team3LevelLabel.setText(team3LevelLabel.getText() + " Fainted!");
+                    team3HpLabel.setText("Fainted!");
                 } else {
-                    team3LevelLabel.setText(team3LevelLabel.getText() + " Hp: " + player.pc.get(2).hpCurr + "/" + player.pc.get(2).hpMax);
+                    team3HpLabel.setText("HP: " + player.pc.get(2).hpCurr + "/" + player.pc.get(2).hpMax);
                 }
                 team3NameLabel.setText(player.pc.get(2).name);
                 setBars(2);
@@ -309,9 +321,9 @@ public class TeamController {
                 team4Circle.setFill(player.pc.get(3).type.color);
                 team4LevelLabel.setText("Lvl: " + player.pc.get(3).level);
                 if (player.pc.get(3).hpCurr <= 0) {
-                    team4LevelLabel.setText(team4LevelLabel.getText() + " Fainted!");
+                    team4HpLabel.setText("Fainted!");
                 } else {
-                    team4LevelLabel.setText(team4LevelLabel.getText() + " Hp: " + player.pc.get(3).hpCurr + "/" + player.pc.get(3).hpMax);
+                    team4HpLabel.setText("HP: " + player.pc.get(3).hpCurr + "/" + player.pc.get(3).hpMax);
                 }
                 team4NameLabel.setText(player.pc.get(3).name);
                 setBars(3);
@@ -325,9 +337,9 @@ public class TeamController {
                 team5Circle.setFill(player.pc.get(4).type.color);
                 team5LevelLabel.setText("Lvl: " + player.pc.get(4).level);
                 if (player.pc.get(4).hpCurr <= 0) {
-                    team5LevelLabel.setText(team5LevelLabel.getText() + " Fainted!");
+                    team5HpLabel.setText("Fainted!");
                 } else {
-                    team5LevelLabel.setText(team5LevelLabel.getText() + " Hp: " + player.pc.get(4).hpCurr + "/" + player.pc.get(4).hpMax);
+                    team5HpLabel.setText("HP: " + player.pc.get(4).hpCurr + "/" + player.pc.get(4).hpMax);
                 }
                 team5NameLabel.setText(player.pc.get(4).name);
                 setBars(4);
@@ -340,9 +352,9 @@ public class TeamController {
                 team6Circle.setFill(player.pc.get(5).type.color);
                 team6LevelLabel.setText("Lvl: " + player.pc.get(5).level);
                 if (player.pc.get(5).hpCurr <= 0) {
-                    team6LevelLabel.setText(team6LevelLabel.getText() + " Fainted!");
+                    team6HpLabel.setText("Fainted!");
                 } else {
-                    team6LevelLabel.setText(team6LevelLabel.getText() + " Hp: " + player.pc.get(5).hpCurr + "/" + player.pc.get(5).hpMax);
+                    team6HpLabel.setText("HP: " + player.pc.get(5).hpCurr + "/" + player.pc.get(5).hpMax);
                 }
                 team6NameLabel.setText(player.pc.get(5).name);
                 setBars(5);
@@ -361,6 +373,7 @@ public class TeamController {
             team1NameLabel.setVisible(false);
         }
         team1LevelLabel.setVisible(false);
+        team1HpLabel.setVisible(false);
         team1HpBar.setVisible(false);
         team1XpBar.setVisible(false);
     }
@@ -374,6 +387,7 @@ public class TeamController {
             team2NameLabel.setVisible(false);
         }
         team2LevelLabel.setVisible(false);
+        team2HpLabel.setVisible(false);
         team2HpBar.setVisible(false);
         team2XpBar.setVisible(false);
     }
@@ -387,6 +401,7 @@ public class TeamController {
             team3NameLabel.setVisible(false);
         }
         team3LevelLabel.setVisible(false);
+        team3HpLabel.setVisible(false);
         team3HpBar.setVisible(false);
         team3XpBar.setVisible(false);
     }
@@ -400,6 +415,7 @@ public class TeamController {
             team4NameLabel.setVisible(false);
         }
         team4LevelLabel.setVisible(false);
+        team4HpLabel.setVisible(false);
         team4HpBar.setVisible(false);
         team4XpBar.setVisible(false);
     }
@@ -413,6 +429,7 @@ public class TeamController {
             team5NameLabel.setVisible(false);
         }
         team5LevelLabel.setVisible(false);
+        team5HpLabel.setVisible(false);
         team5HpBar.setVisible(false);
         team5XpBar.setVisible(false);
     }
@@ -426,6 +443,7 @@ public class TeamController {
             team6NameLabel.setVisible(false);
         }
         team6LevelLabel.setVisible(false);
+        team6HpLabel.setVisible(false);
         team6HpBar.setVisible(false);
         team6XpBar.setVisible(false);
     }
@@ -756,6 +774,7 @@ public class TeamController {
         } else {
             mainController.resetLoseButtons();
         }
+        main.getStylesheets().add(Objects.requireNonNull(getClass().getResource("button.css")).toExternalForm());
         return new Scene(main);
     }
 
@@ -782,6 +801,7 @@ public class TeamController {
         } else if (mode == 5) {
             bagController.setPlayer(player, 2);
         }
+        bag.getStylesheets().add(Objects.requireNonNull(getClass().getResource("button.css")).toExternalForm());
         return new Scene(bag);
     }
 
@@ -807,6 +827,7 @@ public class TeamController {
         } else {
             battleController.setBattleLog(this.battleController.getBattleLog().getText());
         }
+        battle.getStylesheets().add(Objects.requireNonNull(getClass().getResource("button.css")).toExternalForm());
         return new Scene(battle);
     }
 
@@ -836,6 +857,9 @@ public class TeamController {
     @FXML
     //  swap stat view monster with monster leader
     protected void onChangeLeaderButton() {
+        changeNameField.setText("");
+        changeNameField.setVisible(false);
+        changeNameButton.setText("Change Name");
         if (swapIndex != 0 && !player.pc.get(swapIndex).fainted) {
             swapTemp = player.pc.get(0);
             Monster monster = player.pc.get(swapIndex);
@@ -874,8 +898,11 @@ public class TeamController {
     @FXML
     //  release a monster
     protected void onReleaseButton() {
+        changeNameField.setText("");
+        changeNameField.setVisible(false);
+        changeNameButton.setText("Change Name");
         if (player.pc.size() == 1) {
-            gameLogLabel.setText("Cannot release your last monster!");
+            gameLogLabel.setText("Cannot release your only monster!");
             return;
         } else if (mode == 2) {
             gameLogLabel.setText("Cannot release while in battle!");

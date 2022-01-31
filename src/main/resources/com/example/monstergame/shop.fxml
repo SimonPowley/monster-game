@@ -8,7 +8,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.monstergame.ShopController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #36454F;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.monstergame.ShopController">
    <children>
       <Button fx:id="exitButton" layoutX="267.0" layoutY="360.0" mnemonicParsing="false" onAction="#onExitButtonClicked" text="Exit Shop" />
       <HBox layoutX="167.0" layoutY="134.0" prefHeight="132.0" prefWidth="286.0" spacing="10.0">
@@ -20,32 +20,32 @@
                   <Rectangle fx:id="reviveRectangle" arcHeight="5.0" arcWidth="5.0" fill="#ffe552" height="26.0" onMouseClicked="#onReviveRectangleClick" stroke="BLACK" strokeType="INSIDE" width="26.0" />
                </children>
             </VBox>
-            <VBox prefHeight="132.0" prefWidth="61.0" spacing="35.0">
+            <VBox alignment="CENTER_LEFT" prefHeight="132.0" prefWidth="61.0" spacing="34.0">
                <children>
-                  <Label alignment="TOP_LEFT" prefHeight="17.0" prefWidth="168.0" text="Potions:" />
-                  <Label alignment="TOP_LEFT" prefHeight="18.0" prefWidth="114.0" text="Balls:" />
-                  <Label alignment="TOP_LEFT" prefHeight="9.0" prefWidth="100.0" text="Revives:" />
+                  <Label alignment="TOP_LEFT" prefHeight="17.0" prefWidth="168.0" text="Potions:" textFill="WHITE" />
+                  <Label alignment="TOP_LEFT" prefHeight="18.0" prefWidth="114.0" text="Balls:" textFill="WHITE" />
+                  <Label alignment="TOP_LEFT" prefHeight="9.0" prefWidth="100.0" text="Revives:" textFill="WHITE" />
                </children>
             </VBox>
-            <VBox prefHeight="129.0" prefWidth="88.0" spacing="35.0">
+            <VBox alignment="CENTER_LEFT" prefHeight="129.0" prefWidth="88.0" spacing="34.0">
                <children>
-                  <Label fx:id="potionPriceLabel" prefHeight="17.0" prefWidth="111.0" text="\$price" />
-                  <Label fx:id="ballPriceLabel" prefHeight="17.0" prefWidth="181.0" text="\$price" />
-                  <Label fx:id="revivePriceLabel" prefHeight="17.0" prefWidth="234.0" text="\$price" />
+                  <Label fx:id="potionPriceLabel" prefHeight="17.0" prefWidth="111.0" text="\$price" textFill="WHITE" />
+                  <Label fx:id="ballPriceLabel" prefHeight="17.0" prefWidth="181.0" text="\$price" textFill="WHITE" />
+                  <Label fx:id="revivePriceLabel" prefHeight="17.0" prefWidth="234.0" text="\$price" textFill="WHITE" />
                </children>
             </VBox>
-            <VBox prefHeight="200.0" prefWidth="100.0" spacing="35.0">
+            <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" spacing="34.0">
                <children>
-                  <Label fx:id="potionBagLabel" prefHeight="17.0" prefWidth="231.0" text="0 in bag" />
-                  <Label fx:id="ballBagLabel" prefHeight="17.0" prefWidth="232.0" text="0 in bag" />
-                  <Label fx:id="reviveBagLabel" prefHeight="17.0" prefWidth="254.0" text="0 in bag" />
+                  <Label fx:id="potionBagLabel" prefHeight="17.0" prefWidth="231.0" text="0 in bag" textFill="WHITE" />
+                  <Label fx:id="ballBagLabel" prefHeight="17.0" prefWidth="232.0" text="0 in bag" textFill="WHITE" />
+                  <Label fx:id="reviveBagLabel" prefHeight="17.0" prefWidth="254.0" text="0 in bag" textFill="WHITE" />
                </children>
             </VBox>
          </children>
       </HBox>
-      <Label layoutX="248.0" layoutY="111.0" prefHeight="17.0" prefWidth="61.0" text="Money:" />
-      <Label fx:id="playerMoneyLabel" layoutX="310.0" layoutY="111.0" prefHeight="17.0" prefWidth="61.0" text="\$1000" />
-      <Label fx:id="shopLogLabel" alignment="TOP_CENTER" layoutX="167.0" layoutY="14.0" prefHeight="69.0" prefWidth="286.0" text="Select item to buy">
+      <Label layoutX="248.0" layoutY="111.0" prefHeight="17.0" prefWidth="61.0" text="Money:" textFill="WHITE" />
+      <Label fx:id="playerMoneyLabel" layoutX="310.0" layoutY="111.0" prefHeight="17.0" prefWidth="61.0" text="\$1000" textFill="WHITE" />
+      <Label fx:id="shopLogLabel" alignment="TOP_CENTER" layoutX="167.0" layoutY="14.0" prefHeight="69.0" prefWidth="286.0" text="Select item to buy" textFill="WHITE">
          <font>
             <Font size="14.0" />
          </font>

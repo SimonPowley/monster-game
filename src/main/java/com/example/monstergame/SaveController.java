@@ -71,16 +71,6 @@ public class SaveController {
     @FXML
     protected Circle save3Circle6;
 
-    //  create types for monster creation
-    Type normal = new Type("Normal", 0);
-    Type fire = new Type("Fire", 1);
-    Type water = new Type("Water", 2);
-    Type earth = new Type("Earth", 3);
-    Type electric = new Type("Electric", 4);
-    Type nature = new Type("Nature", 5);
-    Type wind = new Type("Wind", 6);
-    Type ice = new Type("Ice", 7);
-
 
 
     //  set player
@@ -173,116 +163,17 @@ public class SaveController {
 
     //  load player's monster types for each save file
     public void loadPlayerMonsterTypes() {
+        //  set player save 1 monster types
         if (playerSave1 != null) {
-            //  set player save 1 monster types
-            for (int i = 0; i < playerSave1.pc.size(); i++) {
-                //  set normal types
-                if (Objects.equals(playerSave1.pc.get(i).typeName, "Normal")) {
-                    playerSave1.pc.get(i).setType(normal);
-                }
-                //  set fire types
-                if (Objects.equals(playerSave1.pc.get(i).typeName, "Fire")) {
-                    playerSave1.pc.get(i).setType(fire);
-                }
-                //  set water types
-                if (Objects.equals(playerSave1.pc.get(i).typeName, "Water")) {
-                    playerSave1.pc.get(i).setType(water);
-                }
-                //  set earth types
-                if (Objects.equals(playerSave1.pc.get(i).typeName, "Earth")) {
-                    playerSave1.pc.get(i).setType(earth);
-                }
-                //  set electric types
-                if (Objects.equals(playerSave1.pc.get(i).typeName, "Electric")) {
-                    playerSave1.pc.get(i).setType(electric);
-                }
-                //  set nature types
-                if (Objects.equals(playerSave1.pc.get(i).typeName, "Nature")) {
-                    playerSave1.pc.get(i).setType(nature);
-                }
-                //  set wind types
-                if (Objects.equals(playerSave1.pc.get(i).typeName, "Wind")) {
-                    playerSave1.pc.get(i).setType(wind);
-                }
-                //  set ice types
-                if (Objects.equals(playerSave1.pc.get(i).typeName, "Ice")) {
-                    playerSave1.pc.get(i).setType(ice);
-                }
-            }
+            playerSave1.reloadTypes();
         }
+        //  set player save 2 monster types
         if (playerSave2 != null) {
-            //  set player save 2 monster types
-            for (int i = 0; i < playerSave2.pc.size(); i++) {
-                //  set normal types
-                if (Objects.equals(playerSave2.pc.get(i).typeName, "Normal")) {
-                    playerSave2.pc.get(i).setType(normal);
-                }
-                //  set fire types
-                if (Objects.equals(playerSave2.pc.get(i).typeName, "Fire")) {
-                    playerSave2.pc.get(i).setType(fire);
-                }
-                //  set water types
-                if (Objects.equals(playerSave2.pc.get(i).typeName, "Water")) {
-                    playerSave2.pc.get(i).setType(water);
-                }
-                //  set earth types
-                if (Objects.equals(playerSave2.pc.get(i).typeName, "Earth")) {
-                    playerSave2.pc.get(i).setType(earth);
-                }
-                //  set electric types
-                if (Objects.equals(playerSave2.pc.get(i).typeName, "Electric")) {
-                    playerSave2.pc.get(i).setType(electric);
-                }
-                //  set nature types
-                if (Objects.equals(playerSave2.pc.get(i).typeName, "Nature")) {
-                    playerSave2.pc.get(i).setType(nature);
-                }
-                //  set wind types
-                if (Objects.equals(playerSave2.pc.get(i).typeName, "Wind")) {
-                    playerSave2.pc.get(i).setType(wind);
-                }
-                //  set ice types
-                if (Objects.equals(playerSave2.pc.get(i).typeName, "Ice")) {
-                    playerSave2.pc.get(i).setType(ice);
-                }
-            }
+            playerSave2.reloadTypes();
         }
+        //  set player save 3 monster types
         if (playerSave3 != null) {
-            //  set player save 3 monster types
-            for (int i = 0; i < playerSave3.pc.size(); i++) {
-                //  set normal types
-                if (Objects.equals(playerSave3.pc.get(i).typeName, "Normal")) {
-                    playerSave3.pc.get(i).setType(normal);
-                }
-                //  set fire types
-                if (Objects.equals(playerSave3.pc.get(i).typeName, "Fire")) {
-                    playerSave3.pc.get(i).setType(fire);
-                }
-                //  set water types
-                if (Objects.equals(playerSave3.pc.get(i).typeName, "Water")) {
-                    playerSave3.pc.get(i).setType(water);
-                }
-                //  set earth types
-                if (Objects.equals(playerSave3.pc.get(i).typeName, "Earth")) {
-                    playerSave3.pc.get(i).setType(earth);
-                }
-                //  set electric types
-                if (Objects.equals(playerSave3.pc.get(i).typeName, "Electric")) {
-                    playerSave3.pc.get(i).setType(electric);
-                }
-                //  set nature types
-                if (Objects.equals(playerSave3.pc.get(i).typeName, "Nature")) {
-                    playerSave3.pc.get(i).setType(nature);
-                }
-                //  set wind types
-                if (Objects.equals(playerSave3.pc.get(i).typeName, "Wind")) {
-                    playerSave3.pc.get(i).setType(wind);
-                }
-                //  set ice types
-                if (Objects.equals(playerSave3.pc.get(i).typeName, "Ice")) {
-                    playerSave3.pc.get(i).setType(ice);
-                }
-            }
+            playerSave3.reloadTypes();
         }
     }
     //  set circles for save slot teams
@@ -515,6 +406,7 @@ public class SaveController {
         Parent main = mainLoader.load();
         MainController mainController = mainLoader.getController();
         mainController.setPlayer(player);
+        main.getStylesheets().add(Objects.requireNonNull(getClass().getResource("button.css")).toExternalForm());
         return new Scene(main);
     }
 

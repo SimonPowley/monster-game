@@ -8,6 +8,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Objects;
 
 public class StartupController {
     Player player;
@@ -37,6 +38,7 @@ public class StartupController {
         Parent starter = starterLoader.load();
         StarterController starterController = starterLoader.getController();
         starterController.setPlayer(player);
+        starter.getStylesheets().add(Objects.requireNonNull(getClass().getResource("button.css")).toExternalForm());
         return new Scene(starter);
     }
 

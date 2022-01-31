@@ -9,6 +9,7 @@ import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Objects;
 
 public class ShopController {
     Player player;
@@ -73,6 +74,7 @@ public class ShopController {
         Parent main = mainLoader.load();
         MainController mainController = mainLoader.getController();
         mainController.setPlayer(player);
+        main.getStylesheets().add(Objects.requireNonNull(getClass().getResource("button.css")).toExternalForm());
         return new Scene(main);
     }
 

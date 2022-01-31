@@ -5,9 +5,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.monstergame.StartupController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #36454F;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.monstergame.StartupController">
    <children>
-      <Label fx:id="gameLogLabel" alignment="TOP_CENTER" layoutX="20.0" layoutY="332.0" prefHeight="53.0" prefWidth="557.0" text="Please enter your name." textFill="#313030">
+      <Label fx:id="gameLogLabel" alignment="TOP_CENTER" layoutX="20.0" layoutY="332.0" prefHeight="53.0" prefWidth="557.0" text="Please enter your name." textFill="WHITE">
          <font>
             <Font name="Franklin Gothic Book Italic" size="24.0" />
          </font>

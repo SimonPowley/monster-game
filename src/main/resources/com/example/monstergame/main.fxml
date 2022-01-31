@@ -7,9 +7,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.monstergame.MainController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #36454F;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.monstergame.MainController">
    <children>
-      <VBox alignment="BOTTOM_CENTER" layoutX="250.0" layoutY="186.0" prefHeight="200.0" prefWidth="100.0">
+      <VBox alignment="BOTTOM_CENTER" layoutX="250.0" layoutY="186.0" prefHeight="200.0" prefWidth="100.0" spacing="3.0">
          <children>
             <Button fx:id="battleButton" mnemonicParsing="false" onAction="#onBattleButtonClick" prefHeight="25.0" prefWidth="80.0" text="Battle" />
             <Button fx:id="teamButton" mnemonicParsing="false" onAction="#onTeamButtonClick" prefHeight="25.0" prefWidth="80.0" text="Team" />
@@ -21,34 +21,43 @@
       </VBox>
       <VBox layoutX="14.0" layoutY="14.0" prefHeight="200.0" prefWidth="189.0">
          <children>
-            <Label alignment="TOP_CENTER" prefHeight="17.0" prefWidth="190.0" text="QUEST LIST">
+            <Label alignment="TOP_CENTER" prefHeight="17.0" prefWidth="190.0" text="QUEST LIST" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font></Label>
             <Label prefHeight="0.0" prefWidth="0.0" />
             <HBox alignment="TOP_CENTER" prefHeight="31.0" prefWidth="210.0" spacing="15.0">
                <children>
-                  <Label fx:id="quest1Label" prefHeight="17.0" prefWidth="65.0" text="Battle" />
+                  <Label fx:id="quest1Label" prefHeight="17.0" prefWidth="65.0" text="Battle" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font></Label>
                   <Button fx:id="quest1Button" mnemonicParsing="false" onMouseClicked="#onQuest1Click" prefHeight="25.0" prefWidth="80.0" text="Reward" />
                </children>
             </HBox>
             <HBox alignment="TOP_CENTER" prefHeight="31.0" prefWidth="210.0" spacing="15.0">
                <children>
-                  <Label fx:id="quest2Label" prefHeight="17.0" prefWidth="65.0" text="Trade" />
+                  <Label fx:id="quest2Label" prefHeight="17.0" prefWidth="65.0" text="Trade" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font></Label>
                   <Button fx:id="quest2Button" mnemonicParsing="false" onMouseClicked="#onQuest2Click" prefHeight="25.0" prefWidth="80.0" text="Quest Info" />
                </children>
             </HBox>
             <HBox alignment="TOP_CENTER" prefHeight="31.0" prefWidth="210.0" spacing="15.0">
                <children>
-                  <Label fx:id="quest3Label" prefHeight="17.0" prefWidth="65.0" text="Catch" />
+                  <Label fx:id="quest3Label" prefHeight="17.0" prefWidth="65.0" text="Catch" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font></Label>
                   <Button fx:id="quest3Button" mnemonicParsing="false" onMouseClicked="#onQuest3Click" prefHeight="25.0" prefWidth="80.0" text="Battle" />
                </children>
             </HBox>
-            <Label fx:id="questLabel" alignment="TOP_LEFT" prefHeight="179.0" prefWidth="189.0" text="Words to describe quest" />
+            <Label fx:id="questLabel" alignment="TOP_LEFT" prefHeight="179.0" prefWidth="189.0" text="Words to describe quest" textFill="WHITE" />
             <Label />
          </children>
       </VBox>
-      <Label fx:id="scoreLabel" layoutX="14.0" layoutY="369.0" text="Score: 999">
+      <Label fx:id="scoreLabel" layoutX="14.0" layoutY="369.0" text="Score: 999" textFill="WHITE">
          <font>
             <Font name="System Bold" size="14.0" />
          </font></Label>
