@@ -1,4 +1,4 @@
-# MonsterGame
+# Monster Game
 A Pokemon inspired game built with Java
 
 # Intro
